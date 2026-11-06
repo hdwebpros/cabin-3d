@@ -220,6 +220,13 @@ export function buildRoof() {
   gable('North', NORTH - WR, north, [[RIDGE_X, sill, RIDGE_UNDER - 2 * R]],
     `Windows G-N1 and G-N2: 2'-6" x 4'-0", sill 3'-0" above the loft floor, each side of the ridge post (A-2 d2, A-4 North, stated; positions inferred). ` +
     `The Menards order may make them 36" wide (conflicts.md item 35). Ridge post ${A.log}" (A-4 North scaled 1'-2"). Frames white (assumed, as the other windows).`)
+  // Inside the loft the north gable wall is T&G (Ryan, 2026-11-06); the outside stays log siding. Flat board face on the inside of the logs, from the loft floor to the ceiling.
+  const tgY = NORTH - 2 * WR
+  add([prism([[WEST, LOFT], [EAST, LOFT], [EAST, WALL_TOP], [RIDGE_X, RIDGE_UNDER], [WEST, WALL_TOP]], tgY - 0.75, tgY, north)].map((g) => {
+    const p = g.attributes.position, uv = g.attributes.uv
+    for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / IN / 42, p.getY(i) / IN / 42) // boards run level, like the ceiling and blocking
+    return g
+  }), pine, 'North gable, inside the loft: 1x T&G pine from the loft floor to the ceiling (Ryan, 2026-11-06, stated). Outside is log siding. Board direction level (assumed).')
 
   // South gable: 4 windows (triangle, pentagon, pentagon, triangle), log posts between them. No sizes ("field measure").
   // Side posts stand under the inner purlins; the center post under the ridge log (photos).

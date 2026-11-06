@@ -130,3 +130,4 @@
 ## 2026-11-06 — White screen ("Context Lost")
 - Cause, from the kernel log: the Intel GPU driver (xe) logged "Timedout job ... in chromium" at 14:16 and 16:01 and reset the GPU. The browser then drops the WebGL picture. No other GPU resets in 6 weeks of logs, so this page is what triggers it.
 - Done: sun shadow map 4096 to 2048 and plain PCF shadows (less GPU work per frame). The page now rebuilds its lighting image and draws again when the browser gives the GPU back. Tested with a forced loss: the picture comes back.
+- Ryan (2026-11-06): the north gable wall in the loft is T&G inside; the outside stays log siding. Done in roof.js: flat 3/4" T&G pine face on the inside of the gable logs, from the loft floor to the ceiling, boards level, holes for G-N1 and G-N2. The north ridge post is now inside the wall (hidden from the loft).
