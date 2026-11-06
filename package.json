@@ -1,0 +1,18 @@
+{
+  "name": "cabin-3d",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "check": "sh scripts/locked.sh node scripts/check.mjs",
+    "shot": "sh scripts/locked.sh node scripts/shot.mjs"
+  },
+  "dependencies": {
+    "three": "^0.181.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0",
+    "vite": "^7.3.7"
+  }
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boog cabin</title>
+  <link rel="icon" href="data:," />
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1d21; font: 14px/1.4 system-ui, sans-serif; color: #f2f2f2; }
+    canvas { display: block; }
+    .panel { position: fixed; background: rgba(20, 22, 26, 0.86); border-radius: 8px; padding: 10px 12px; }
+    #ui { top: 12px; left: 12px; max-width: 330px; }
+    #ui h1 { font-size: 15px; margin: 0 0 8px; }
+    #ui button { font: inherit; padding: 5px 10px; margin: 0 4px 6px 0; border: 1px solid #555; border-radius: 5px; background: #2b2e34; color: inherit; cursor: pointer; }
+    #ui button.on { background: #e8e1d3; color: #1b1d21; border-color: #e8e1d3; }
+    #ui label { display: block; margin: 2px 0 6px; cursor: pointer; }
+    #versions { margin: 0 0 8px; padding-bottom: 2px; border-bottom: 1px solid #444; }
+    #ui p { margin: 6px 0 0; color: #c9c9c9; font-size: 13px; }
+    #info { left: 12px; bottom: 12px; max-width: 520px; display: none; font-size: 13px; }
+    #crosshair { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: #fff; opacity: .7; display: none; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="ui" class="panel">
+    <h1>Boog cabin</h1>
+    <div id="versions" title="Press V to go to the next version"></div>
+    <button id="btn-overview" class="on">Overview</button><button id="btn-walk">Walk the basement</button><button id="btn-walk-main">Walk the main floor</button>
+    <label><input type="checkbox" id="chk-shell" checked /> Show the cabin above the basement</label>
+    <label><input type="checkbox" id="chk-ceiling" /> Show the basement ceiling (floor trusses)</label>
+    <p id="help"></p>
+  </div>
+  <div id="info" class="panel"></div>
+  <div id="crosshair"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

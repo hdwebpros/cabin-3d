@@ -1,0 +1,1722 @@
+{
+  "_notes": [
+    "Units: inches. Origin: outside south-west corner of the foundation (lake side, west end). x = east, y = north, z = up from top of basement slab (elevation 90'-0\").",
+    "Directions are real compass directions. Ryan (2026-11-05, stated): the lake wall with the walkout faces south and the driveway is north. The plan sheets have no north arrow, but elevations A-4 (North, East) and A-5 (South, West) use the same names, so the top of each plan sheet = north. Permit site plans p09 and p11 agree.",
+    "Phone-compass headings in the photos read the lake wall as facing east. This was resolved in favor of Ryan; see facts/conflicts.md item 2.",
+    "Conversion from sheet A-1: x = A-1 'X' (from west outside face); y = 552 - A-1 'Y' (Y measured down from the north outside face).",
+    "Opening offsets: along the outside foundation line, from the west end (north and south walls) or from the south end (east and west walls). Sill is above the floor of that level.",
+    "Rectangles: [x_min, y_min, x_max, y_max].",
+    "Values marked 'scaled' are measured on 1/4\"=1'-0\" drawings, about +/- 2 in. 'inferred' values are worked out from other facts. null = unknown; see facts/questions-for-ryan.md.",
+    "Window unit sizes from the Menards window order (source/orders/menards-windows.pdf, 9/6/2021) are in work/findings/menards-windows.md. Only the basement windows W-L1 and W-L2 are changed here; main-level matches (S3, W-west-bath, W1, N1-N3, G-N1, G-N2) are listed there and in conflicts.md item 35."
+  ],
+  "footprint": {
+    "width_x": {
+      "value": 336,
+      "source": "A-1 d1/d2, A-2 d1, A-3, A-5 South '28'-0\" FOUNDATION'",
+      "confidence": "stated",
+      "note": "A-4 North writes 30'-0\"; resolved: Ryan confirmed 28 x 46 ft (2026-11-05)."
+    },
+    "length_y": {
+      "value": 552,
+      "source": "A-1 d1/d2, A-2 d1, A-3, A-5 West '46'-0\"'",
+      "confidence": "stated",
+      "note": "Ryan confirmed 28 x 46 ft (2026-11-05)."
+    },
+    "area_sqft": {
+      "value": 1288,
+      "source": "title block all sheets; permit p05",
+      "confidence": "stated"
+    }
+  },
+  "walls": {
+    "foundation_thickness": {
+      "value": 8,
+      "source": "A-1 note '8\" MIN POURED FOUNDATION WALLS'; A-1/A-6 drawn about 8\"",
+      "confidence": "stated",
+      "note": "A-6 detail 5 says 8-10\" and dimensions 10\"; see conflicts.md"
+    },
+    "foundation_inside_width_x": {
+      "value": 320,
+      "source": "336 - 2 x 8",
+      "confidence": "inferred"
+    },
+    "foundation_inside_length_y": {
+      "value": 536,
+      "source": "552 - 2 x 8",
+      "confidence": "inferred"
+    },
+    "furring_wall_depth_future": {
+      "value": 4.5,
+      "source": "A-1 note 'FURRING WALL W/ RIGID INSULATION ... (FUTURE)', drawn 4-5\"",
+      "confidence": "scaled",
+      "note": "A-1 draws it on the west and north walls only. As built: pink FOAMULAR 250 foam with wood furring (photos PXL_20250905_215819202, PXL_20250906_011045382.MP, PXL_20221016_151511095; seen). Ryan, 2026-11-05 (stated): pink foam is on every basement wall except the south walkout wall (north, east and west are concrete). All of it will be covered with tongue-and-groove. Thickness unknown."
+    },
+    "foam_walls": {
+      "value": [
+        "north",
+        "east",
+        "west"
+      ],
+      "source": "Ryan, 2026-11-05",
+      "confidence": "stated",
+      "note": "Not on the south (lake) stud wall. Finish on all basement outside walls, including the lake wall: tongue-and-groove (Ryan, 2026-11-05, stated)."
+    },
+    "footing": {
+      "width": {
+        "value": 24,
+        "source": "A-1 note; A-6 detail 5",
+        "confidence": "stated"
+      },
+      "depth": {
+        "value": 10,
+        "source": "A-1 note; A-6 detail 5",
+        "confidence": "stated"
+      },
+      "top_z": {
+        "value": -6,
+        "source": "A-6 section: footing top at slab bottom; slab 6\"",
+        "confidence": "inferred"
+      }
+    },
+    "slab_thickness": {
+      "value": 6,
+      "source": "A-6 section",
+      "confidence": "stated"
+    },
+    "log_wall_thickness": {
+      "value": 18,
+      "source": "title block 'LOG SIZE: 18\" AVG.'; A-2/A-3 drawn 18\"",
+      "confidence": "stated"
+    },
+    "log_wall_centerline_inset_from_foundation_line": {
+      "value": 4,
+      "source": "A-3 joist string 8 x 3'-5\" = 27'-4\" between log centerlines",
+      "confidence": "inferred"
+    },
+    "log_wall_inner_face_inset": {
+      "value": 13,
+      "source": "4\" centerline inset + 9\" half log",
+      "confidence": "inferred"
+    },
+    "east_log_wall_thickness_drawn": {
+      "value": 13,
+      "source": "A-2 drawn",
+      "confidence": "scaled",
+      "note": "drawn thinner than other walls; reason unknown"
+    },
+    "log_course_height": {
+      "value": 18,
+      "source": "A-4, A-5",
+      "confidence": "scaled"
+    },
+    "log_stub_wall_line_y": {
+      "value": 432,
+      "source": "A-2 'LOG STUB WALL' at 10'-0\" south of north line",
+      "confidence": "stated"
+    },
+    "south_wall_as_built": {
+      "value": "wood stud wall",
+      "source": "Ryan, 2026-11-05; PXL_20250905_215819202_southwall.jpg (seen)",
+      "confidence": "stated",
+      "note": "Wood stud wall with R19 batts, not concrete. It can be changed freely. It will get tongue-and-groove. A-1 draws 8\" concrete with 2'-6\" piers; resolved, see conflicts.md item 17. Stud size and wall thickness not known."
+    }
+  },
+  "levels_z": {
+    "footing_top": {
+      "value": -6,
+      "source": "A-6 section; dashed line on A-4 East / A-5 West",
+      "confidence": "inferred"
+    },
+    "basement_slab_top": {
+      "value": 0,
+      "source": "A-4, A-5, A-6 'LOWER LEVEL 90'-0\"'",
+      "confidence": "stated"
+    },
+    "basement_underside_of_floor_system": {
+      "value": 144,
+      "source": "Ryan, 2026-11-05: basement walls are 12 ft, 100% certain",
+      "confidence": "stated",
+      "plan_value": 102,
+      "plan_source": "A-6 section clear height 8'-6\"",
+      "note": "Use 144 for the 3D model. Plans say 102 clear and 120 to the first floor; see conflicts.md top item. Drop ceiling hangs lower, below the pipes."
+    },
+    "ryan_basement_offset": {
+      "value": 38,
+      "source": "first_floor_ryan_check 158 - plan first floor 120",
+      "confidence": "assumed",
+      "note": "The first-floor and higher z values below are plan values. With Ryan's 12 ft walls and about 1 ft trusses, add 38 to each of them (first floor about 158). With the plan's 16\" truss it would be 42 (first floor about 162). Rests on the truss depth, which Ryan is not sure of. Whether grade moves too is open; see conflicts.md top item."
+    },
+    "first_floor_ryan_check": {
+      "value": 158,
+      "source": "144 (12 ft wall, Ryan, stated) + 12 (truss depth, Ryan, assumed) + 2 (subfloor and finish above the truss, A-6 build-up 18\" less the 16\" truss, inferred)",
+      "confidence": "assumed",
+      "note": "About 13'-2\" from top of slab to the main floor. Plans: 120. Check the truss depth by tape (questions-for-ryan.md question 1)."
+    },
+    "first_floor_system_depth": {
+      "value": 16,
+      "source": "A-6 section '1'-4\"'",
+      "confidence": "stated",
+      "note": "On the A-6 section the 1'-4\" dimension starts 2\" below the first-floor line, and the 8'-6\" dimension starts where the 1'-4\" ends. So 1'-4\" is likely the truss only; the floor build-up from z 102 to z 120 is 18\" (drawn). Underside of floor at z 102 holds."
+    },
+    "grade_north": {
+      "value": 96,
+      "source": "A-4, A-5, A-6 'GRADE 98'-0\"'",
+      "confidence": "stated"
+    },
+    "first_floor": {
+      "value": 120,
+      "source": "A-4, A-5, A-6 'FIRST FLOOR 100'-0\"'",
+      "confidence": "stated"
+    },
+    "main_underside_loft_joists": {
+      "value": 216,
+      "source": "A-6 section 8'-0\" above first floor",
+      "confidence": "stated"
+    },
+    "second_floor": {
+      "value": 234,
+      "source": "A-4, A-5, A-6 'SECOND FLOOR 109'-6\"'",
+      "confidence": "stated"
+    },
+    "eave_underside_long_walls": {
+      "value": 219,
+      "source": "A-5 West, about 108'-3\"",
+      "confidence": "scaled"
+    },
+    "ridge_top": {
+      "value": 410,
+      "source": "A-4, A-5, A-6 'ROOF 124'-2\"'",
+      "confidence": "stated"
+    },
+    "porch_ceiling": {
+      "value": 224,
+      "source": "A-6 section 8'-8\" above first floor",
+      "confidence": "stated"
+    }
+  },
+  "rooms": {
+    "basement": {
+      "utility_room": {
+        "rect": {
+          "value": [
+            8,
+            279.6,
+            165.7,
+            415.3
+          ],
+          "source": "A-1 d2 vector geometry: west inside face x 8, partition west face x 165.7, wall faces y 279.6 and 415.3",
+          "confidence": "stated (size) / scaled (position)"
+        },
+        "clear_x": {
+          "value": 157.7,
+          "source": "A-1 d2: the '13'-6 1/2\"' dimension ticks are at x 8 and x 170.2 (east face of the 4 1/2\" partition), so it includes the partition; clear = 8 to 165.7",
+          "confidence": "scaled"
+        },
+        "clear_y": {
+          "value": 135.5,
+          "source": "A-1 d2 '11'-3 1/2\"' ticks at the wall faces y 279.6 and 415.3 (true clear)",
+          "confidence": "stated"
+        },
+        "note": "Exists and stays (Ryan, 2026-11-05, stated). On the west wall; door in its east wall, about in the middle (Ryan, 2026-11-05, stated); see opening B-utility."
+      },
+      "bath_stub_in": {
+        "rect": {
+          "value": [
+            8,
+            419.8,
+            165.7,
+            544.1
+          ],
+          "source": "A-1 d2 vector geometry: wall face y 419.8 (11'-0\" from north outside face) to north inside face; x to partition west face 165.7",
+          "confidence": "scaled"
+        },
+        "shower_width": {
+          "value": 48,
+          "source": "A-1 d1/d2",
+          "confidence": "stated"
+        },
+        "shower_toilet_zone_width": {
+          "value": 96,
+          "source": "A-1 d2",
+          "confidence": "stated"
+        },
+        "toilet_room_depth": {
+          "value": 42,
+          "source": "A-1 d1/d2",
+          "confidence": "stated"
+        },
+        "vanity": {
+          "value": [
+            22,
+            72
+          ],
+          "source": "A-1 d2 '22\" X 72\" VANITY' on north wall",
+          "confidence": "stated"
+        },
+        "note": "Drain and water lines exist and stay (Ryan, 2026-11-05, stated). Use the A-1 drawing positions for the drains; do not worry about the pipes under the slab (Ryan, 2026-11-05, stated)."
+      },
+      "stair_area": {
+        "rect": {
+          "value": [
+            12.8,
+            154.1,
+            123,
+            275.1
+          ],
+          "source": "A-1 d2 stair outline: stair wall face x 12.8 to top of run B x 123, y 154.1 (bottom riser) to 275.1 (utility wall south face)",
+          "confidence": "scaled"
+        }
+      },
+      "open_unfinished": {
+        "note": "Everything else inside the foundation: east half full length, and the west part south of the stair. A-1 'UNFINISHED LOWER LEVEL' / 'STORAGE'. Nothing else is built (Ryan, 2026-11-05, stated)."
+      },
+      "centerline_partition_x": {
+        "value": 168,
+        "source": "A-1 d2 partition on 14'-0\" centerline, north wall to stair",
+        "confidence": "scaled"
+      },
+      "centerline_partition_thickness": {
+        "value": 4.5,
+        "source": "A-1 d1/d2 drawn x 165.7 to 170.2 (2x4 plus drywall both sides)",
+        "confidence": "scaled"
+      }
+    },
+    "main": {
+      "bedroom_1": {
+        "rect": {
+          "value": [
+            13,
+            392,
+            185,
+            539
+          ],
+          "source": "A-2 d1 14'-4\" x 12'-3\" from inner log faces",
+          "confidence": "stated (size) / inferred (position)"
+        }
+      },
+      "bedroom_2": {
+        "rect": {
+          "value": [
+            185,
+            418.5,
+            323,
+            539
+          ],
+          "source": "A-2 d1 11'-6\" x 10'-0 1/2\"",
+          "confidence": "stated (size) / inferred (position)"
+        }
+      },
+      "bath_west": {
+        "size": {
+          "value": null,
+          "source": "A-2 d1 widths 5'-4\"/5'-8 1/2\"/5'-0\", shower 3'-0\" x 5'-0\"",
+          "confidence": "stated",
+          "note": "position not fixed"
+        }
+      },
+      "three_quarter_bath": {
+        "size": {
+          "value": [
+            86.5,
+            94.5
+          ],
+          "source": "A-2 d1 7'-2 1/2\" x 7'-10 1/2\"",
+          "confidence": "stated"
+        }
+      },
+      "entry": {
+        "size": {
+          "value": [
+            109,
+            65
+          ],
+          "source": "A-2 d1 9'-1\" x 5'-5\"",
+          "confidence": "stated"
+        }
+      },
+      "hall_width": {
+        "value": 44,
+        "source": "A-2 d1 3'-8\"",
+        "confidence": "stated"
+      },
+      "kitchen_island": {
+        "size": {
+          "value": [
+            102,
+            44
+          ],
+          "source": "A-2 d1 8'-6\" x 3'-8\"",
+          "confidence": "stated",
+          "note": "photo shows sink on east wall; layout by owner"
+        }
+      },
+      "great_room": {
+        "rect": {
+          "value": [
+            13,
+            13,
+            323,
+            229
+          ],
+          "source": "A-2 d1: 19'-1\" from stair enclosure south wall to south foundation line",
+          "confidence": "stated (19'-1\") / inferred (rest)"
+        }
+      },
+      "stove_base": {
+        "rect": {
+          "value": [
+            13,
+            78,
+            61,
+            126
+          ],
+          "source": "Ryan, 2026-11-06: pad pushed against the west wall, centred between W-west-1 (y 36 to 66) and W-west-2 (y 138 to 168). Size 48\" x 48\" from A-2 d1 crop main-r2c1 (scaled). x 13 = inner face of the west logs (walls.js)",
+          "confidence": "stated (position) / scaled (size)"
+        },
+        "firebox": {
+          "value": [
+            20,
+            30
+          ],
+          "source": "A-2 d1",
+          "confidence": "stated"
+        }
+      }
+    },
+    "upper": {
+      "loft_east_half": {
+        "rect": {
+          "value": [
+            168,
+            224,
+            323,
+            539
+          ],
+          "source": "A-2 d2 loft edge 27'-4\" VFY from north line",
+          "confidence": "stated"
+        }
+      },
+      "loft_west_half": {
+        "rect": {
+          "value": [
+            13,
+            282,
+            168,
+            539
+          ],
+          "source": "A-3 beam at 22'-6\" from north line",
+          "confidence": "scaled"
+        }
+      },
+      "railing_height": {
+        "value": 36,
+        "source": "A-6 section",
+        "confidence": "stated"
+      },
+      "headroom_5ft_line_inset": {
+        "value": 46,
+        "source": "A-2 d2 '3'-10\" 5' HEADROOM'",
+        "confidence": "stated"
+      }
+    }
+  },
+  "openings": [
+    {
+      "id": "W-L1",
+      "level": "basement",
+      "wall": "south",
+      "type": "2-panel sliding window (Menards Builders single slider)",
+      "offset": {
+        "value": 36,
+        "source": "centered on the A-1 plan opening (30 to 102, center 66) with a 60\" unit",
+        "confidence": "assumed",
+        "plan_value": 30,
+        "note": "The lake wall is wood framed (Ryan, 2026-11-05), so the plan opening does not fix the position. Check by tape."
+      },
+      "width": {
+        "value": 60,
+        "source": "Menards order line 500-1 or 600-1: unit 60 x 60, rough opening 60.5 x 60.5",
+        "confidence": "stated",
+        "rough_opening": 60.5,
+        "plan_value": 72,
+        "plan_source": "A-1 '6'-0\"'",
+        "note": "Order beats plan; conflicts.md item 35. Ryan remembers about 5 x 5 ft (2026-11-05)."
+      },
+      "height": {
+        "value": 60,
+        "source": "Menards order line 500-1 or 600-1 (rough opening 60.5); agrees with A-5 South 5'-0\"",
+        "confidence": "stated",
+        "rough_opening": 60.5
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5 South",
+        "confidence": "inferred"
+      },
+      "note": "Match to the order is inferred (no room labels). Lines 500-1 (XO) and 600-1 (OX) are a mirrored pair; which is west is not stated. See work/findings/menards-windows.md."
+    },
+    {
+      "id": "D-L1",
+      "level": "basement",
+      "wall": "south",
+      "type": "patio slider",
+      "offset": {
+        "value": 132,
+        "source": "A-1 d1",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 72,
+        "source": "A-1",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 84,
+        "source": "A-5 South: frame head drawn 7'-0\" above the slab, same as the window heads; trim top about 7'-3\" (87\")",
+        "confidence": "scaled"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-5 South; photos",
+        "confidence": "inferred"
+      },
+      "note": "Not in the Menards window order (the order has no doors). Size stays the plan value."
+    },
+    {
+      "id": "W-L2",
+      "level": "basement",
+      "wall": "south",
+      "type": "2-panel sliding window (Menards Builders single slider)",
+      "offset": {
+        "value": 240,
+        "source": "centered on the A-1 plan opening (234 to 306, center 270) with a 60\" unit",
+        "confidence": "assumed",
+        "plan_value": 234,
+        "note": "The lake wall is wood framed (Ryan, 2026-11-05), so the plan opening does not fix the position. Check by tape."
+      },
+      "width": {
+        "value": 60,
+        "source": "Menards order line 600-1 or 500-1: unit 60 x 60, rough opening 60.5 x 60.5",
+        "confidence": "stated",
+        "rough_opening": 60.5,
+        "plan_value": 72,
+        "plan_source": "A-1 '6'-0\"'",
+        "note": "Order beats plan; conflicts.md item 35."
+      },
+      "height": {
+        "value": 60,
+        "source": "Menards order (rough opening 60.5); agrees with A-5 South 5'-0\"",
+        "confidence": "stated",
+        "rough_opening": 60.5
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5 South",
+        "confidence": "stated"
+      },
+      "note": "A window, not a door: one window on each side of the slider (Ryan, 2026-11-05, stated). Match to the order is inferred. See work/findings/menards-windows.md."
+    },
+    {
+      "id": "S1",
+      "level": "main",
+      "wall": "south",
+      "type": "window pair",
+      "offset": {
+        "value": 30,
+        "source": "A-2 d1 south chain",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 72,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 60,
+        "source": "A-5 South",
+        "confidence": "inferred"
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5 South",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "S2",
+      "level": "main",
+      "wall": "south",
+      "type": "sliding door 72\"",
+      "offset": {
+        "value": 132,
+        "source": "A-2 d1",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 72,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "not dimensioned; A-5 shows 5'-0\"/2'-0\" sill on the openings but A-2 and photos show a door",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-2; photo PXL_20260523_152023253",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "S3",
+      "level": "main",
+      "wall": "south",
+      "type": "window (2 x 3'-0\")",
+      "offset": {
+        "value": 234,
+        "source": "A-2 d1",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 72,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 60,
+        "source": "A-5 South",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5 South",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "N1",
+      "level": "main",
+      "wall": "north",
+      "type": "window",
+      "offset": {
+        "value": 30,
+        "source": "A-2 d1 north chain; A-4 North",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 24,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-4 North",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-4 North",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "N2",
+      "level": "main",
+      "wall": "north",
+      "type": "window",
+      "offset": {
+        "value": 138,
+        "source": "A-2 d1",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 24,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-4",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-4",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "N3",
+      "level": "main",
+      "wall": "north",
+      "type": "window pair",
+      "offset": {
+        "value": 230,
+        "source": "A-2 d1 (start scaled); A-4 North 4'-10\" from east",
+        "confidence": "scaled"
+      },
+      "width": {
+        "value": 48,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-4",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-4",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "W-west-1",
+      "level": "main",
+      "wall": "west",
+      "type": "window",
+      "offset": {
+        "value": 36,
+        "source": "A-2 d1 west south chain",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 30,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 60,
+        "source": "A-5 West",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5 West",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "W-west-2",
+      "level": "main",
+      "wall": "west",
+      "type": "window",
+      "offset": {
+        "value": 138,
+        "source": "A-2 d1",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 30,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 60,
+        "source": "A-5",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 24,
+        "source": "A-5",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "W-west-bath",
+      "level": "main",
+      "wall": "west",
+      "type": "window",
+      "offset": {
+        "value": 334,
+        "source": "A-5 West 16.2 to 18.2 ft from north line",
+        "confidence": "scaled"
+      },
+      "width": {
+        "value": 24,
+        "source": "A-5 West",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 24,
+        "source": "A-5 West",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 60,
+        "source": "A-5 West",
+        "confidence": "stated"
+      },
+      "note": "A-2 shows the 2'-0\" gap but no window symbol"
+    },
+    {
+      "id": "W1",
+      "level": "main",
+      "wall": "west",
+      "type": "window pair",
+      "offset": {
+        "value": 462,
+        "source": "A-2 d1 west north chain (chain may start 4\" south: 458)",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 60,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-5 West",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-5 West",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "E-door-60",
+      "level": "main",
+      "wall": "east",
+      "type": "sliding door to porch",
+      "offset": {
+        "value": 42,
+        "source": "A-2 d1 east chain",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 60,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "not dimensioned",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-2",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "E1",
+      "level": "main",
+      "wall": "east",
+      "type": "window pair (kitchen)",
+      "offset": {
+        "value": 216,
+        "source": "A-2 d1 east chain",
+        "confidence": "stated"
+      },
+      "width": {
+        "value": 48,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "not dimensioned",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": null,
+        "source": "not dimensioned",
+        "confidence": "unknown"
+      }
+    },
+    {
+      "id": "E-entry",
+      "level": "main",
+      "wall": "east",
+      "type": "entry opening, 36\" swing door",
+      "offset": {
+        "value": 341,
+        "source": "A-2 d1 chain 18'-0\" + 4'-0\" + 6'-5\"",
+        "confidence": "inferred"
+      },
+      "width": {
+        "value": 40,
+        "source": "A-2 d1 3'-4\"",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "not dimensioned",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-2",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "G-N1",
+      "level": "upper",
+      "wall": "north",
+      "type": "gable window",
+      "offset": {
+        "value": 120,
+        "source": "A-2 d2 2'-6\" windows each side of 3'-0\" ridge post",
+        "confidence": "inferred"
+      },
+      "width": {
+        "value": 30,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-4 North",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-4 North",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "G-N2",
+      "level": "upper",
+      "wall": "north",
+      "type": "gable window",
+      "offset": {
+        "value": 186,
+        "source": "A-2 d2",
+        "confidence": "inferred"
+      },
+      "width": {
+        "value": 30,
+        "source": "A-2",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": 48,
+        "source": "A-4",
+        "confidence": "stated"
+      },
+      "sill": {
+        "value": 36,
+        "source": "A-4",
+        "confidence": "stated"
+      }
+    },
+    {
+      "id": "G-S",
+      "level": "upper",
+      "wall": "south",
+      "type": "4 gable windows (triangle, pentagon, pentagon, triangle)",
+      "offset": {
+        "value": null,
+        "source": "A-5 South 'FIELD MEASURE ALL WINDOWS IN GABLE END'",
+        "confidence": "unknown"
+      },
+      "width": {
+        "value": null,
+        "source": "A-5",
+        "confidence": "unknown"
+      },
+      "height": {
+        "value": null,
+        "source": "A-5",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": null,
+        "source": "A-5",
+        "confidence": "unknown"
+      }
+    },
+    {
+      "id": "B-bath-entry",
+      "level": "basement",
+      "wall": "centerline partition",
+      "type": "door",
+      "offset": {
+        "value": 423.6,
+        "source": "A-1 d2 jambs in centerline partition, y 423.6 to 455.6",
+        "confidence": "scaled",
+        "note": "Interior door: offset is the south jamb y (or west jamb x for B-bath-inner), from the origin, not along an outside wall"
+      },
+      "width": {
+        "value": 32,
+        "source": "A-1",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "A-1",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-1",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "B-bath-inner",
+      "level": "basement",
+      "wall": "bath interior partition",
+      "type": "door",
+      "offset": {
+        "value": 68.4,
+        "source": "A-1 d2 opening in the toilet-room north wall (y 461.8 to 466.3), x 68.4 to 100.5",
+        "confidence": "scaled",
+        "note": "Interior door: offset is the south jamb y (or west jamb x for B-bath-inner), from the origin, not along an outside wall"
+      },
+      "width": {
+        "value": 32,
+        "source": "A-1",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "A-1",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-1",
+        "confidence": "inferred"
+      }
+    },
+    {
+      "id": "B-utility",
+      "level": "basement",
+      "wall": "centerline partition",
+      "type": "door",
+      "offset": {
+        "value": 329.5,
+        "source": "Ryan, 2026-11-05: door in the utility room's east wall, about in the middle of its north-south length. 36\" door centered on the room faces y 279.6 and 415.3 (center 347.5): y 329.5 to 365.5",
+        "confidence": "stated (approximate) / inferred (exact y)",
+        "plan_value": 292.5,
+        "plan_source": "A-1 d2 jambs y 292.5 to 328.6 (near the south end)",
+        "note": "Interior door: offset is the south jamb y (or west jamb x for B-bath-inner), from the origin, not along an outside wall"
+      },
+      "width": {
+        "value": 36,
+        "source": "A-1",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "A-1",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-1",
+        "confidence": "inferred"
+      },
+      "note": "Earlier facts (A-1 south end; photo read as north end) were wrong. Resolved by Ryan; see conflicts.md item 34."
+    },
+    {
+      "id": "B-under-stair",
+      "level": "basement",
+      "wall": "stair enclosure east side",
+      "type": "door",
+      "offset": {
+        "value": 233.7,
+        "source": "A-1 d2 jambs in centerline partition, y 233.7 to 269.7; swings west into the room under run B",
+        "confidence": "scaled",
+        "note": "Interior door: offset is the south jamb y (or west jamb x for B-bath-inner), from the origin, not along an outside wall"
+      },
+      "width": {
+        "value": 36,
+        "source": "A-1",
+        "confidence": "stated"
+      },
+      "height": {
+        "value": null,
+        "source": "A-1",
+        "confidence": "unknown"
+      },
+      "sill": {
+        "value": 0,
+        "source": "A-1",
+        "confidence": "inferred"
+      }
+    }
+  ],
+  "stairs": {
+    "basement": {
+      "width": {
+        "value": 46,
+        "source": "A-1 d2 '3'-10\"' (ticks at y 229.1 and 275.1, run B); run A is also 46\" (x 12.8 to 58.8)",
+        "confidence": "stated"
+      },
+      "total_rise": {
+        "value": 120,
+        "source": "levels 90'-0\" to 100'-0\"",
+        "confidence": "stated",
+        "note": "Plan value. With Ryan's 12 ft walls and about 1 ft trusses the rise is about 158 (162 with the plan's 16\" truss); see levels_z.first_floor_ryan_check and conflicts.md top item."
+      },
+      "risers": {
+        "value": 15,
+        "source": "A-1 d2 drawn treads: 7 in run A (y 154.1 to 231.1 at 11\") + 6 in run B (x 57.8 to 122.8) = 13 treads, 15 risers; 120/15 = 8.0\"",
+        "confidence": "scaled",
+        "note": "Plan drawing. A 158 rise needs about 21 risers (about 7 1/2\" each); the built count is unknown. Question 22."
+      },
+      "tread_depth": {
+        "value": 11,
+        "source": "A-1 d2 tread spacing",
+        "confidence": "scaled"
+      },
+      "landing_rect": {
+        "value": [
+          12.8,
+          231.1,
+          58.8,
+          275.1
+        ],
+        "source": "A-1 d2 NW corner of stair area",
+        "confidence": "scaled"
+      },
+      "upper_run_rect": {
+        "value": [
+          57.8,
+          229.1,
+          122.8,
+          275.1
+        ],
+        "source": "A-1 d2 run B (dashed, overhead), X 4'-9\" to 10'-3\"",
+        "confidence": "scaled"
+      },
+      "lower_run_rect": {
+        "value": [
+          12.8,
+          154.1,
+          58.8,
+          231.1
+        ],
+        "source": "A-1 d2 run A: stair wall face x 12.8 to stair post west face x 58.8 (46\" = 3'-10\"), bottom riser y 154.1, 7 treads at 11\"",
+        "confidence": "scaled"
+      },
+      "top_landing_main_rect": {
+        "value": [
+          123,
+          229,
+          168,
+          275
+        ],
+        "source": "A-2 d1 '3'-9\" VFY' space with 30\" door facing kitchen",
+        "confidence": "stated (3'-9\") / scaled"
+      },
+      "top_enclosure": {
+        "value": "open, log railing on the main level, no door",
+        "source": "Ryan, 2026-11-05; floor-level log rail in PXL_20260310_232337640 (seen)",
+        "confidence": "stated",
+        "note": "A-2 draws a 30\" door; not built. Whether the bottom of the stair is walled in is not known (Ryan is looking for photos)."
+      },
+      "bottom_step_y": {
+        "value": 154.1,
+        "source": "A-1 d2",
+        "confidence": "scaled"
+      },
+      "direction": "Walk down from main level going west (upper run), turn at NW landing, walk down going south (toward lake) along the west wall.",
+      "direction_ryan": {
+        "value": "down, landing, turn left, down",
+        "source": "Ryan, 2026-11-05",
+        "confidence": "stated",
+        "note": "Matches A-1/A-2: west down run B, left (south) down run A."
+      }
+    },
+    "main_to_loft": {
+      "lower_treads": {
+        "value": 5,
+        "source": "Ryan, 2026-11-06, with photo PXL_20221020_201833908 (sent by Ryan; also seen in PXL_20260310_232337640)",
+        "confidence": "stated",
+        "note": "Five steps, then the first landing. A-2 d1 draws only 4."
+      },
+      "tread_depth": {
+        "value": 11,
+        "source": "A-2 d1 tread spacing (lower run 4 treads in 44\", upper run 6 treads in 66\")",
+        "confidence": "scaled",
+        "note": "With 5 lower treads the run starts at y 174 (229 - 5 x 11), north of window W-west-2 (y 138 to 168), as the photo PXL_20260310_232337640 shows (inferred)."
+      },
+      "width_upper_run": {
+        "value": 46,
+        "source": "A-2 d1 '3'-10\"'",
+        "confidence": "stated"
+      },
+      "width_lower_run": {
+        "value": 43,
+        "source": "A-2 d1",
+        "confidence": "scaled"
+      },
+      "total_rise": {
+        "value": 114,
+        "source": "levels 100'-0\" to 109'-6\"",
+        "confidence": "stated"
+      },
+      "lower_run_rect": {
+        "value": [
+          14,
+          184,
+          57,
+          229
+        ],
+        "source": "A-2 d1 crop main-r2c1, 'UP' at south end",
+        "confidence": "scaled"
+      },
+      "upper_run_rect": {
+        "value": [
+          57,
+          229,
+          123,
+          275
+        ],
+        "source": "A-2 d1",
+        "confidence": "scaled"
+      },
+      "enclosure_south_y": {
+        "value": 229,
+        "source": "A-2 d1 19'-1\" to south foundation line",
+        "confidence": "stated"
+      },
+      "direction_ryan": {
+        "value": "up, landing, turn right, up",
+        "source": "Ryan, 2026-11-05",
+        "confidence": "stated",
+        "note": "Matches A-2: north along the west wall, right (east) to the loft."
+      }
+    }
+  },
+  "structure": {
+    "basement_posts": [
+      {
+        "id": "center_post",
+        "x": {
+          "value": 168,
+          "source": "A-1 d1 14'-0\" + 14'-0\"",
+          "confidence": "stated"
+        },
+        "y": {
+          "value": 282,
+          "source": "A-1 d1 22'-6\" from north",
+          "confidence": "stated"
+        },
+        "size": {
+          "value": null,
+          "source": "'SUPPORT POST AS REQUIRED'",
+          "confidence": "unknown",
+          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+        },
+        "footing": {
+          "value": [
+            24,
+            24,
+            10
+          ],
+          "source": "A-1",
+          "confidence": "stated"
+        },
+        "note": "Aligned below main-level log post, which carries the loft beam. Cannot move."
+      },
+      {
+        "id": "stair_post_1",
+        "x": {
+          "value": 63,
+          "source": "A-1 d1 4'-7\" from inside face + 8\" wall",
+          "confidence": "inferred"
+        },
+        "y": {
+          "value": 225,
+          "source": "A-1 d1 chain 22'-6\" + 4'-9\"",
+          "confidence": "stated"
+        },
+        "size": {
+          "value": null,
+          "source": "A-1",
+          "confidence": "unknown",
+          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+        },
+        "footing": {
+          "value": [
+            24,
+            24,
+            10
+          ],
+          "source": "A-1",
+          "confidence": "stated"
+        }
+      },
+      {
+        "id": "stair_post_2",
+        "x": {
+          "value": 63,
+          "source": "A-1 d1",
+          "confidence": "inferred"
+        },
+        "y": {
+          "value": 158,
+          "source": "A-1 d1 chain + 5'-7\"",
+          "confidence": "stated"
+        },
+        "size": {
+          "value": null,
+          "source": "A-1",
+          "confidence": "unknown",
+          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+        },
+        "footing": {
+          "value": [
+            24,
+            24,
+            10
+          ],
+          "source": "A-1",
+          "confidence": "stated"
+        }
+      }
+    ],
+    "basement_beams": [
+      {
+        "id": "stair_beam",
+        "from": [
+          63,
+          225
+        ],
+        "to": [
+          63,
+          158
+        ],
+        "span": {
+          "value": 67,
+          "source": "A-1 d1 '5'-7\"'",
+          "confidence": "stated"
+        },
+        "size": {
+          "value": null,
+          "source": "'VFY SIZE W/ FLOOR TRUSS MANUFACTURER'",
+          "confidence": "unknown"
+        },
+        "bottom_z": {
+          "value": null,
+          "source": "",
+          "confidence": "unknown"
+        }
+      }
+    ],
+    "floor_trusses": {
+      "span_direction": "east-west",
+      "depth": {
+        "value": 16,
+        "source": "A-6 section 1'-4\"; 'VFY DEPTH'",
+        "confidence": "stated",
+        "note": "Total floor build-up drawn 18\" (z 102 to 120); 16\" is likely truss only. VFY."
+      },
+      "depth_ryan": {
+        "value": 12,
+        "source": "Ryan, 2026-11-05: about 1 ft (memory, not sure)",
+        "confidence": "assumed",
+        "note": "Use for the main floor height check (levels_z.first_floor_ryan_check = 158). Measure on the next visit (question 1)."
+      },
+      "source": {
+        "value": null,
+        "source": "A-1 d1 arrows; A-6",
+        "confidence": "inferred",
+        "note": "clear span vs bearing on centerline unknown"
+      }
+    },
+    "loft_beam": {
+      "y": {
+        "value": 282,
+        "source": "A-3 beam 22'-6\" from north line",
+        "confidence": "scaled"
+      },
+      "post_x": {
+        "value": 168,
+        "source": "A-3",
+        "confidence": "scaled"
+      }
+    },
+    "loft_joists": {
+      "spacing": {
+        "value": 41,
+        "source": "A-3 8 x 3'-5\"",
+        "confidence": "stated"
+      },
+      "count": {
+        "value": 7,
+        "source": "A-3",
+        "confidence": "inferred"
+      },
+      "cantilever_east_half": {
+        "value": 58.5,
+        "source": "A-3 '4'-10 1/2\"'",
+        "confidence": "stated"
+      }
+    }
+  },
+  "plumbing": {
+    "floor_drain": {
+      "x": {
+        "value": 48,
+        "source": "A-1 d1 '4'-0\"'",
+        "confidence": "stated"
+      },
+      "y": {
+        "value": 360,
+        "source": "A-1 d1 '16'-0\"' from north",
+        "confidence": "stated"
+      }
+    },
+    "shower_drain": {
+      "x": {
+        "value": 38,
+        "source": "A-1 d1 2'-6\" from inside west face",
+        "confidence": "stated"
+      },
+      "y": {
+        "value": 508,
+        "source": "A-1 d1 3'-0\" from inside north face",
+        "confidence": "stated"
+      }
+    },
+    "water_heater": {
+      "value": null,
+      "source": "Ryan, 2026-11-05",
+      "confidence": "stated",
+      "note": "No separate water heater. The Navien is a combi unit: boiler and instant hot water."
+    },
+    "sump_pit": {
+      "value": null,
+      "source": "Ryan, 2026-11-05",
+      "confidence": "stated",
+      "note": "No sump pit and no sewage pump."
+    },
+    "furnace": {
+      "value": null,
+      "source": "PXL_20221016_151511095.jpg, PXL_20250405_200342711.mp4, PXL_20260905_012801106.MP.jpg",
+      "confidence": "seen",
+      "note": "No furnace and no ducts. Heat is hot water (boiler and in-floor tubing)."
+    },
+    "electric_panel": {
+      "value": null,
+      "location": "utility room, north wall near the door",
+      "source": "PXL_20221016_151511095.jpg, PXL_20250405_200342711.mp4, PXL_20260905_012801106.MP.jpg; meter on post by driveway (PXL_20251207_184328201)",
+      "confidence": "seen"
+    },
+    "sewer_exit": {
+      "value": null,
+      "source": "Ryan, 2026-11-05; septic tank south-west of house (permit p17)",
+      "confidence": "stated",
+      "note": "Leaves under the slab to the septic system. Exact path not known and not needed for the design (Ryan)."
+    },
+    "toilet_drawn": {
+      "x": {
+        "value": 25,
+        "source": "A-1 d1/d2 toilet symbol: tank against the furring face x 12.7, bowl to x 29; flange about 12\" off the wall face",
+        "confidence": "scaled"
+      },
+      "y": {
+        "value": 440,
+        "source": "A-1 d1/d2 toilet symbol centered y 440 in the toilet room (y 419.8 to 461.8)",
+        "confidence": "scaled"
+      },
+      "note": "Drawn symbol. Use the drawing position for the toilet stub (Ryan, 2026-11-05, stated: use the drawings for drain locations)."
+    },
+    "boiler": {
+      "value": null,
+      "location": "utility room, west wall near the north corner, wall-hung",
+      "source": "PXL_20221016_151511095.jpg, PXL_20250405_200342711.mp4, PXL_20260905_012801106.MP.jpg",
+      "confidence": "seen",
+      "note": "Navien condensing gas combi boiler (boiler and instant hot water; Ryan, 2026-11-05, stated), two PVC vent pipes up through the ceiling; expansion tank, glycol feeder, condensate pump."
+    },
+    "well_pressure_tank": {
+      "value": null,
+      "location": "utility room, floor at the west wall",
+      "source": "PXL_20221016_151511095.jpg, PXL_20250405_200342711.mp4, PXL_20260905_012801106.MP.jpg",
+      "confidence": "seen"
+    },
+    "water_filter": {
+      "value": null,
+      "location": "utility room, west wall",
+      "source": "Ryan, 2026-11-05; PXL_20250405_200342711.mp4 (seen)",
+      "confidence": "stated",
+      "note": "The big black tank is a whole-house water filtration system (was read as a water softener from the video)."
+    },
+    "laundry_tub": {
+      "value": null,
+      "location": "utility room, beside the door",
+      "source": "PXL_20250405_200342711.mp4",
+      "confidence": "seen"
+    },
+    "in_floor_heat_manifolds": {
+      "value": null,
+      "location": "utility room, north wall: upper manifold feeds the main floor, lower manifold feeds about 7 loops in the basement slab",
+      "source": "PXL_20221016_151511095.jpg, PXL_20250405_200342711.mp4, PXL_20260905_012801106.MP.jpg",
+      "confidence": "seen"
+    }
+  },
+  "roof": {
+    "pitch_main": {
+      "value": 0.8333333333333334,
+      "source": "A-3, A-4, A-5 '10/12 SLOPE'",
+      "confidence": "stated"
+    },
+    "ridge_x": {
+      "value": 168,
+      "source": "A-3, A-5, A-6 centered",
+      "confidence": "scaled"
+    },
+    "eave_overhang_east_west": {
+      "value": 42,
+      "source": "A-3, A-4, A-6 '3'-6\"'",
+      "confidence": "stated"
+    },
+    "gable_overhang_north": {
+      "value": 48,
+      "source": "A-3, A-5 West '4'-0\"'",
+      "confidence": "stated"
+    },
+    "gable_overhang_south": {
+      "value": 60,
+      "source": "A-3 '5'-0\"'",
+      "confidence": "stated"
+    },
+    "outline_rect": {
+      "value": [
+        -42,
+        -60,
+        378,
+        600
+      ],
+      "source": "inferred from overhangs",
+      "confidence": "inferred"
+    },
+    "pitch_porch": {
+      "value": 0.25,
+      "source": "A-3, A-4, A-5 '3/12 SLOPE'",
+      "confidence": "stated"
+    },
+    "porch_roof_rect": {
+      "value": [
+        336,
+        0,
+        490,
+        428
+      ],
+      "source": "A-3 10'-10\" + 2'-0\", 31'-8\" + 2 x 2'-0\", south end flush",
+      "confidence": "inferred"
+    },
+    "porch_roof_high_z": {
+      "value": 270,
+      "source": "A-4, about 112'-6\"",
+      "confidence": "scaled"
+    },
+    "porch_roof_low_z": {
+      "value": 234,
+      "source": "A-4, A-6, about 109'-6\"",
+      "confidence": "scaled"
+    },
+    "chimney": {
+      "x": {
+        "value": null,
+        "source": "west slope",
+        "confidence": "unknown"
+      },
+      "y": {
+        "value": 118,
+        "source": "A-5 West 35.8-36.5 ft from north. Not used: the model puts the chimney above the stove pipe at y 102, because Ryan (2026-11-06) says the stove is centred between the west windows",
+        "confidence": "scaled"
+      },
+      "top_z": {
+        "value": 373,
+        "source": "A-5 West about 121'-1\"",
+        "confidence": "scaled"
+      }
+    }
+  },
+  "porch": {
+    "rect": {
+      "value": [
+        336,
+        24,
+        466,
+        404
+      ],
+      "source": "A-1/A-2/A-3 10'-10\" x 31'-8\", south edge 2'-0\" north of house south line",
+      "confidence": "stated"
+    },
+    "floor_z": {
+      "value": 120,
+      "source": "A-4, A-6",
+      "confidence": "stated"
+    },
+    "post_line_x": {
+      "value": 456,
+      "source": "A-1/A-2 10'-0\" from house east foundation",
+      "confidence": "stated"
+    },
+    "post_y": {
+      "value": [
+        34,
+        124,
+        214,
+        304,
+        394
+      ],
+      "source": "A-1 d1 chain 43'-2\", 35'-8\", 28'-2\", 20'-8\", 13'-2\" from north",
+      "confidence": "inferred"
+    },
+    "wall_height": {
+      "value": 100,
+      "source": "A-4 North '8'-4\"' (A-4 East says 8'-3\")",
+      "confidence": "stated"
+    },
+    "north_landing_rect": {
+      "value": [
+        336,
+        404,
+        466,
+        458
+      ],
+      "source": "A-2 d1 10'-10\" x 4'-6\"",
+      "confidence": "stated"
+    }
+  },
+  "deck": {
+    "south_rect": {
+      "value": [
+        0,
+        -144,
+        440,
+        0
+      ],
+      "source": "A-2 d1 36'-8\" x 12'-0\"",
+      "confidence": "stated"
+    },
+    "east_strip_rect": {
+      "value": [
+        336,
+        0,
+        440,
+        34
+      ],
+      "source": "A-2 d1 2'-10\" strip",
+      "confidence": "inferred"
+    },
+    "floor_z": {
+      "value": 120,
+      "source": "A-5",
+      "confidence": "scaled"
+    },
+    "footing_line_y": {
+      "value": -132,
+      "source": "A-1 d1 '11'-0\" VFY'",
+      "confidence": "stated"
+    },
+    "footing_spacing_x": {
+      "value": 104,
+      "source": "A-1 d1 4 x 8'-8\"",
+      "confidence": "stated"
+    },
+    "driveway_stair": {
+      "value": {
+        "steps": 5
+      },
+      "source": "Ryan, 2026-11-05: the only stairs going down are on the north side toward the driveway, 5 steps; photos PXL_20251004_135433269, PXL_20261101_163043044 (against the house east log wall)",
+      "confidence": "stated (count) / seen (position)",
+      "note": "Built later, not on the plans. Step height not measured."
+    },
+    "south_deck_stair": {
+      "value": null,
+      "source": "Ryan, 2026-11-05: no stairs down from the deck",
+      "confidence": "stated",
+      "note": "A-4 East and A-5 South draw a deck stair at the east end of the south deck; it was not built."
+    }
+  },
+  "grade_z": {
+    "NW_corner": {
+      "value": 96,
+      "source": "A-5 West, A-4 North 'GRADE 98'-0\"'",
+      "confidence": "stated"
+    },
+    "NE_corner": {
+      "value": 96,
+      "source": "A-4 East, A-4 North",
+      "confidence": "stated"
+    },
+    "SE_corner": {
+      "value": 71,
+      "source": "A-4 East grade line about 95'-11\"",
+      "confidence": "scaled",
+      "note": "conflicts with A-5 South and photos, which show the lake wall fully exposed"
+    },
+    "SW_corner": {
+      "value": 71,
+      "source": "A-5 West grade line about 95'-11\"",
+      "confidence": "scaled",
+      "note": "same conflict"
+    },
+    "south_wall_face": {
+      "value": 0,
+      "source": "A-5 South openings to 90'-0\"; photo PXL_20260703_223907684 lawn at slider level",
+      "confidence": "inferred"
+    },
+    "west_wall_flat_to_y": {
+      "value": 256,
+      "source": "A-5 West grade line flat at 98'-0\" for 24'-8\" from the north corner (vector)",
+      "confidence": "scaled"
+    },
+    "east_wall_flat_to_y": {
+      "value": 256,
+      "source": "A-4 East grade line flat at 98'-0\" for 24'-8\" from the north corner (vector)",
+      "confidence": "scaled"
+    },
+    "retaining_walls": {
+      "value": "none",
+      "source": "Ryan, 2026-11-05: there are no retaining walls anywhere on the property",
+      "confidence": "stated",
+      "note": "The ground is level with the slab for 22 ft in front of the walkout (see walkout_pad). Beside the walkout and along the south part of the side walls the ground is an earth slope, not a wall. The plans' 'RETAINING WALL AS REQUIRED' (A-5 South) was not built. The model's ground shape is in src/geo.js gradeAt (assumed)."
+    },
+    "walkout_pad": {
+      "value": {
+        "x": [
+          0,
+          336
+        ],
+        "y": [
+          -264,
+          0
+        ],
+        "z": 0
+      },
+      "source": "Ryan, 2026-11-05: the level pad goes out another 10 ft past the deck (deck 12'-0\" deep, A-2)",
+      "confidence": "stated (length) / assumed (width = house width)",
+      "note": "Mulch under the deck, grass outside it (Ryan, 2026-11-05, stated)."
+    }
+  },
+  "site": {
+    "house_to_lake_ft": {
+      "value": 123.5,
+      "source": "permits p09, p11",
+      "confidence": "stated"
+    },
+    "house_to_west_lot_line_ft": {
+      "value": 67.5,
+      "source": "permits p09, p11",
+      "confidence": "stated"
+    },
+    "house_to_east_lot_line_ft": {
+      "value": 56,
+      "source": "permits p09, p11",
+      "confidence": "stated"
+    },
+    "grade_to_peak_ft": {
+      "value": 26,
+      "source": "permit p05",
+      "confidence": "stated",
+      "note": "plans give 26'-2\""
+    }
+  }
+}
