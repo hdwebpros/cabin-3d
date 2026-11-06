@@ -126,3 +126,7 @@
 - `npm run check` all ok. Not committed.
 - Open for Ryan: recovery room depth (labels 6' vs drawing flush with the 8' sauna), bedroom closet wall and one vs two beds, kitchen window E1 (plan y 216-264 vs photos: small window over the fridge).
 - Ryan (2026-11-06) on the spa corner: the "cold plunge" was only a placeholder (massage chair or similar later). The recovery area is open, with no door. The sauna + recovery row must be narrower than the bedroom below it (1 1/2 to 2 ft less). The basement bath is narrower than the utility room. Done in proposed-basement.js: row 90" (sauna 52", recovery area 34" open to the south, no south wall), bath east wall x 151.75-155.75 (about 14" narrower than the utility room, from the image ratio; vanity 72" against it), open spa area wider. Lower sauna bench 16" deep so it clears the heater rail. `npm run check` all ok. Recovery depth question closed (open area, full sauna depth).
+
+## 2026-11-06 — White screen ("Context Lost")
+- Cause, from the kernel log: the Intel GPU driver (xe) logged "Timedout job ... in chromium" at 14:16 and 16:01 and reset the GPU. The browser then drops the WebGL picture. No other GPU resets in 6 weeks of logs, so this page is what triggers it.
+- Done: sun shadow map 4096 to 2048 and plain PCF shadows (less GPU work per frame). The page now rebuilds its lighting image and draws again when the browser gives the GPU back. Tested with a forced loss: the picture comes back.

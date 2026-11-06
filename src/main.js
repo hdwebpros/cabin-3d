@@ -22,12 +22,16 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
 renderer.setSize(innerWidth, innerHeight)
 renderer.toneMapping = THREE.ACESFilmicToneMapping
 renderer.shadowMap.enabled = true
-renderer.shadowMap.type = THREE.PCFSoftShadowMap
+renderer.shadowMap.type = THREE.PCFShadowMap
 document.body.prepend(renderer.domElement)
 
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xbfd3e6)
-scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture
+const makeEnv = () => { scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture }
+makeEnv()
+// If the graphics driver resets the GPU (Intel xe log: "Timedout job ... in chromium"), the browser drops the picture.
+// three.js asks the browser to give it back; when it does, rebuild the image that only lived on the GPU and draw again.
+renderer.domElement.addEventListener('webglcontextrestored', () => { makeEnv(); changed() })
 scene.environmentIntensity = 0.35
 new HDRLoader().load('/hdri/sky_1k.hdr', (t) => {
   t.mapping = THREE.EquirectangularReflectionMapping
@@ -67,7 +71,7 @@ const sun = new THREE.DirectionalLight(0xfff0d8, 3.2) // the lake is south, so t
 sun.position.copy(P(W / 2 + 500, -1400, 1300))
 sun.target.position.copy(P(W / 2, L / 2, 0))
 sun.castShadow = true
-sun.shadow.mapSize.set(4096, 4096)
+sun.shadow.mapSize.set(2048, 2048) // 4096 made each frame 4x more shadow work; the Intel GPU driver reset during long frames
 Object.assign(sun.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 160 })
 sun.shadow.bias = -0.0004
 sun.shadow.normalBias = 0.02
