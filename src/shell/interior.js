@@ -66,13 +66,13 @@ export function buildMainInterior() {
     // bath block, south wall: from the west log wall to the hall wall (stair top is open, no wall: Ryan, 2026-11-05)
     [[13, 275.5, 171.5, 275.5 + T], []],
     // wall between the west bath and the 3/4 bath, up to the bedroom 1 wall
-    [[77.5, 280, 82, 392.3], []],
-    // wall behind the tub, between the 3/4 bath and the bedroom 1 closet (moved with the south wall of bedroom 1, closet stays 26" deep; position inferred)
-    [[82, 358.3, 167, 362.8], []],
-    // bedroom 1 south wall at y 387.8 so the room is 147" deep (A-2: 12'-3", stated; room y 392.3 to 539.3): west bath door 30" (x 43 to 73) and the 48" closet opening (x 86 to 134, width scaled)
-    [[13, 387.8, 171.5, 387.8 + T], [[43, 73], [86, 134]]],
+    [[77.5, 280, 82, 405], []],
+    // wall behind the tub, between the 3/4 bath and the bedroom 1 closet (guest bath 94.5" deep, A-2 7'-10 1/2", stated; closet 26" deep, A-2 2'-2", stated)
+    [[82, 374.5, 167, 379], []],
+    // bedroom 1 south wall: room face at y 405. A-2's 12'-3" (stated) starts at the north foundation line (red dashed line, tick checked on the sheet), so 552 - 147 = 405; the chain 12'-3" + 2'-2" + 7'-10 1/2" is continuous: west bath door 30" (x 43 to 73) and the 48" closet opening (x 86 to 134, width scaled)
+    [[13, 400.5, 171.5, 400.5 + T], [[43, 73], [86, 134]]],
     // hall west wall, bath doors and bedroom 1 wall: 3/4 bath door 30", bedroom 1 door 32"
-    [[167, 275.5, 171.5, 454.3], [[291, 321], [414, 446]]],
+    [[167, 275.5, 171.5, 454.3], [[299, 329], [414, 446]]],
     // hall north end
     [[167, 449.8, 220, 454.3], []],
     // hall east wall at x 215.5 so the hall is 44" wide (A-2, stated): the entry is open to the hall over its full 65" (A-2 draws no wall; photo PXL_20230205_212415772),
@@ -104,8 +104,8 @@ export function buildMainInterior() {
   // Doors standing open 90 degrees against the walls they open toward (leaf only; the leaves are not solid)
   const d = A.doorT
   add([
-    leaf([73 - d, 357.8, 73, 387.8]), // west bath, hinged at the east jamb, opens south into the bath
-    leaf([137, 321 - d, 167, 321]), // guest (3/4) bath, hinged at the north jamb, opens west into the bath (A-2 draws the swing this way; clears the vanity)
+    leaf([73 - d, 370.5, 73, 400.5]), // west bath, hinged at the east jamb, opens south into the bath
+    leaf([137, 329 - d, 167, 329]), // guest (3/4) bath, hinged at the north jamb, opens west into the bath (A-2 draws the swing this way). Opening y 299 to 329: A-2 '1'-6" wall return at door' (stated; 19" so the leaf swing clears the vanity corner)
     leaf([135, 414, 167, 414 + d]), // bedroom 1, hinged at the south jamb, opens west into the bedroom
     leaf([220, 418.5, 252, 418.5 + d]), // bedroom 2, hinged at the south jamb, opens east into the bedroom
   ], woodDoor,
@@ -125,8 +125,8 @@ export function buildMainInterior() {
   solids.push(...vb)
 
   // ---------- 1b. bathrooms ----------
-  // Master bath (west bath, x 13 to 77.5, y 280 to 387.8): photos PXL_20231229_221430030 (2023, tiling not done) and received_328693656296719 (finished).
-  // Guest bath (3/4 bath, x 82 to 167, y 280 to 358.3): Ryan, 2026-11-06, stated, plus A-2 drawing 1 for the sizes.
+  // Master bath (west bath, x 13 to 77.5, y 280 to 400.5): photos PXL_20231229_221430030 (2023, tiling not done) and received_328693656296719 (finished).
+  // Guest bath (3/4 bath, x 82 to 167, y 280 to 374.5): Ryan, 2026-11-06, stated, plus A-2 drawing 1 for the sizes.
   const tile = std(0xf4f3ef, 0.35), hex = std(0x4a4643, 0.6), lvp = std(0x5b4a3d, 0.7), grayCab = std(0x8e9296, 0.6)
   const fiber = std(0xf7f6f2, 0.25), porcelain = std(0xfafafa, 0.2), basin = std(0xe4e4e2, 0.2)
   const toilet = (cx, back) => [ // faces north: tank against the wall at y = back, bowl toward +y (sizes assumed)
@@ -143,7 +143,7 @@ export function buildMainInterior() {
     `Master bath shower: white textured large-format tile on all three walls up to the top of the wall, tiled curb 6" high across the front, no door or glass (photo received_328693656296719, seen). Inside about ${MS[2] - MS[0]}" wide x ${MS[3] - MS[1] - 4}" deep (A-2 drawing 1: shower 3'-0" x 5'-0", stated; width less the chase, estimated). Two black corner shelves not drawn.`)
   add([boxGeo([MS[0] + 0.5, MS[1] + 0.5, FLOOR1, MS[2] - 0.5, MS[3] - 4, FLOOR1 + 0.3])], hex,
     'Master bath shower floor: dark gray hexagon mosaic tile with a square drain (photo received_328693656296719, seen).')
-  add([boxGeo([13, MS[3], FLOOR1, 77.5, 387.8, FLOOR1 + 0.2])], lvp,
+  add([boxGeo([13, MS[3], FLOOR1, 77.5, 400.5, FLOOR1 + 0.2])], lvp,
     'Master bath floor: dark brown wood-look vinyl plank (photos PXL_20231229_221430030 and received_328693656296719, seen).')
   add([...toilet(30, MS[3]), ...toilet(100, 280)], porcelain,
     'Toilets, white. Master bath: tank against the shower chase and curb, facing north toward the door (photo received_328693656296719, seen; A-2 draws it against the west wall facing east, the photo wins). ' +
@@ -158,16 +158,16 @@ export function buildMainInterior() {
     [mv[0], mv[1], FLOOR1, mv[2], mv[3], FLOOR1 + 34.5], [gv[0], gv[1], FLOOR1, gv[2], gv[3], FLOOR1 + 34.5])
 
   // Guest bath: fiberglass tub-shower along the north wall, linen closet east of it (Ryan, 2026-11-06, stated; A-2 drawing 1: 5'-0" tub, "LINENS")
-  const TUB = [82, 328.3, 142, 358.3] // 60" x 30" (A-2: 5'-0", stated; 30" depth scaled)
+  const TUB = [82, 344.5, 142, 374.5] // 60" x 30" (A-2: 5'-0", stated; 30" depth scaled)
   add([boxGeo([TUB[0], TUB[1], FLOOR1, TUB[2], TUB[3], FLOOR1 + 20]),
     boxGeo([TUB[0], TUB[3] - 1, FLOOR1 + 20, TUB[2], TUB[3], FLOOR1 + 76]), boxGeo([TUB[0], TUB[1], FLOOR1 + 20, TUB[0] + 1, TUB[3], FLOOR1 + 76]),
     boxGeo([TUB[2] - 1, TUB[1], FLOOR1 + 20, TUB[2], TUB[3], FLOOR1 + 76])], fiber,
     'Guest bath: white fiberglass tub-shower, one piece, along the north wall, 60" x 30", surround about 76" high (Ryan, 2026-11-06, stated: fiberglass tub and shower on the north side; A-2 drawing 1: 5\'-0" tub, stated; depth scaled; surround height assumed). Shower curtain not drawn.')
   add([boxGeo([TUB[0] + 3, TUB[1] + 3, FLOOR1 + 20, TUB[2] - 3, TUB[3] - 4, FLOOR1 + 20.1])], basin, 'Inside of the tub (look assumed).')
-  const LIN = [[142, 325.5, 146.5, 358.3], [146.5, 325.5, 167, 330]] // closet side wall beside the tub, front wall facing the bath
+  const LIN = [[142, 341.7, 146.5, 374.5], [146.5, 341.7, 167, 346.2]] // closet side wall beside the tub, front wall facing the bath
   add(LIN.map(([x0, y0, x1, y1]) => boxGeo([x0, y0, FLOOR1, x1, y1, CEIL])), drywall,
     'Guest bath linen closet, east of the tub end, about 20" wide and as deep as the tub (Ryan, 2026-11-06, stated: small linen closet next to the tub; A-2 drawing 1 "LINENS", size scaled).')
-  add([boxGeo([148.5, 324.8, FLOOR1, 165, 325.5, FLOOR1 + A.door])], woodDoor, 'Guest bath linen closet door, 16 1/2", shown closed (A-2 drawing 1 draws a door; width scaled).')
+  add([boxGeo([148.5, 341, FLOOR1, 165, 341.7, FLOOR1 + A.door])], woodDoor, 'Guest bath linen closet door, 16 1/2", shown closed (A-2 drawing 1 draws a door; width scaled).')
   solids.push([TUB[0], TUB[1], FLOOR1, TUB[2], TUB[3], FLOOR1 + 20], ...LIN.map(([x0, y0, x1, y1]) => [x0, y0, FLOOR1, x1, y1, CEIL]))
 
   // ---------- 2. kitchen: island, counters, appliances ----------
@@ -279,7 +279,7 @@ export function buildMainInterior() {
     const dome = new THREE.SphereGeometry(7 * IN, 20, 8, 0, Math.PI * 2, 0, Math.PI / 2)
     dome.translate(px * IN, (FLOOR1 + 66) * IN, -py * IN)
     pend.push(dome)
-    chain.push(cylBetween([px, py, FLOOR1 + 72], [px, py, CEIL], 0.5, 6))
+    chain.push(cylBetween([px, py, FLOOR1 + 72], [px, py, roofUnder(px)], 0.5, 6)) // south of the loft edge (y 224): hangs from the roof boards
   }
 
   add(bodies, frame, `Kitchen cabinet bodies: island (kitchen face Shaker, west face beadboard), east wall run and north wall run, 24" deep 34 1/2" high (depth and height assumed; A-2 drawing 1 shows the counters, "final layout by owner", positions scaled; the layout of fridge, sink and range is from Ryan, 2026-11-06, stated). Natural light hickory, darker here to show the door gaps (${PH}, seen).`)
@@ -299,7 +299,7 @@ export function buildMainInterior() {
   add(leather, std(0x8a4b2a, 0.6), '2 leather counter stools, brown/cognac, on the island west side (photo PXL_20260310_232308808, seen: 2 stools); seat 24" high, size assumed.')
   const pm = std(0x1a1a1c, 0.5); pm.side = THREE.DoubleSide
   add(pend, pm, 'Two black dome pendant lights over the island, about 14" wide (photo PXL_20260310_232308808, seen: 2; size estimated; hang height assumed).')
-  add(chain, mats.black, 'Black chains of the island pendants up to the loft floor underside (photo PXL_20260310_232308808, seen).')
+  add(chain, mats.black, 'Black chains of the island pendants up to the roof boards (the island is south of the loft) (photo PXL_20260310_232308808, seen).')
 
   // Chandelier in the great room (photo PXL_20260523_151144457.MP, seen; Ryan, 2026-11-06, stated)
   const CH = { x: RIDGE_X, y: 118, z: FLOOR1 + 110 } // bottom of the arms. Position and height estimated from the photo: hangs from the roof boards about mid-room, bottom about level with the loft railing

@@ -117,3 +117,12 @@
 - `npm run check` all ok. Screenshots work/shots/bath-*.png.
 - Ryan (2026-11-06): screenshots overload his computer while he works. Take as few as possible, and none while he says he is busy.
 - Committed and pushed with the entry/laundry/linen closet changes above.
+
+## 2026-11-06 — Recheck of the inside (Ryan asked; outside skipped)
+- Three read-only Sonnet agents: work/findings/recheck-basement.md, recheck-proposed.md, recheck-main.md.
+- Basement as it sits: no wrong values. Fixed the stale stair_area fact (y 132.1, x 157.8).
+- Proposed basement: sauna and recovery room are in the right corner and order. Added the plan's bench (60") and towel cabinet (30") against the bedroom north wall. Fixed stale size notes (sauna 60 x 94.5, recovery 46.5 x 70, bedroom 99.25 wide).
+- Main floor: bedroom 1 south face moved from y 392.3 to 405. A-2's 12'-3" starts at the north foundation line (main session checked the tick on crop main-r1c1; the 2026-11-05 interior review had read it from the inside face). Guest bath now 94.5" deep (A-2); tub, tub wall, linen closet and master bath follow. Guest bath door y 299 to 329 (A-2 1'-6" return; leaf clears the vanity). Island pendant chains go up to the roof boards.
+- `npm run check` all ok. Not committed.
+- Open for Ryan: recovery room depth (labels 6' vs drawing flush with the 8' sauna), bedroom closet wall and one vs two beds, kitchen window E1 (plan y 216-264 vs photos: small window over the fridge).
+- Ryan (2026-11-06) on the spa corner: the "cold plunge" was only a placeholder (massage chair or similar later). The recovery area is open, with no door. The sauna + recovery row must be narrower than the bedroom below it (1 1/2 to 2 ft less). The basement bath is narrower than the utility room. Done in proposed-basement.js: row 90" (sauna 52", recovery area 34" open to the south, no south wall), bath east wall x 151.75-155.75 (about 14" narrower than the utility room, from the image ratio; vanity 72" against it), open spa area wider. Lower sauna bench 16" deep so it clears the heater rail. `npm run check` all ok. Recovery depth question closed (open area, full sauna depth).

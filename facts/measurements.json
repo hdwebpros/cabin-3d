@@ -292,11 +292,11 @@
         "rect": {
           "value": [
             12.8,
-            154.1,
-            123,
+            132.1,
+            157.8,
             275.1
           ],
-          "source": "A-1 d2 stair outline: stair wall face x 12.8 to top of run B x 123, y 154.1 (bottom riser) to 275.1 (utility wall south face)",
+          "source": "Stair as built in the model after Ryan's 9 + landing + 9 treads (2026-11-06): stair wall face x 12.8 to upper run end x 157.8, y 132.1 (bottom step) to 275.1 (utility wall south face). A-1 d2 drew y 154.1 and x 123",
           "confidence": "scaled"
         }
       },
@@ -319,11 +319,11 @@
         "rect": {
           "value": [
             13,
-            392,
+            405,
             182,
             539
           ],
-          "source": "A-2 d1 14'-4\" x 12'-3\" less 3\" (Ryan, 2026-11-06: master loses 3\"); width 169\"",
+          "source": "A-2 d1 14'-4\" x 12'-3\" less 3\" (Ryan, 2026-11-06: master loses 3\"); width 169\". The 12'-3\" starts at the north foundation line (y 552), so the south face is y 405 (recheck 2026-11-06, tick read on the sheet)",
           "confidence": "stated (Ryan) / inferred (position)",
           "note": "Partition at x 182 to 186.5. Settles the 4 1/2\" conflict (conflicts.md, Other conflicts)."
         }
