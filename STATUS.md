@@ -105,3 +105,15 @@
 - Bedroom: no egress window. Ryan and Emily checked the code; it passes. Settled. Do not bring it up again.
 - Entertainment area contents: decide later. Do not ask design-detail questions during Phase 1.
 - Old note: Ryan said to use the zip. `~/Downloads/Photos-1-001.zip` holds only the same 3 photos already in `source/photos/`. Ryan will look for more if asked.
+
+## 2026-11-06 — Entry, laundry and hall closet fixed (Ryan)
+- Ryan: the entry has two separate small rooms side by side (washer/dryer, and a laundry sink), and a tiny hall closet was missing. Photos from `~/Downloads/Photos-1-001 (4).zip` copied to `source/photos/entry/`.
+- interior.js: laundry split into a sink bay (x 220-255, white vanity, steel sink) and a washer/dryer bay (x 259.5-323, washer and dryer), each open to the entry; hall linen closet (A-2 "LINENS") x 220-249 with a 17" door in the hall east wall; the entry is open to the hall over its full 65" (A-2 and photo). Facts in cabin-facts.md and sources.md. Not committed.
+
+## 2026-11-06 — Baths and chandelier (Ryan)
+- Master bath from photos baths/PXL_20231229_221430030 and baths/received_328693656296719 (copied to source/photos/baths/): tiled shower across the south end with curb, tiled plumbing chase on the west logs, toilet facing north, gray vanity, vinyl plank floor.
+- Guest bath (Ryan): sink and toilet on the south side, fiberglass tub-shower on the north side, linen closet beside the tub (A-2). Its door now hinges at the north jamb (A-2), so it clears the vanity.
+- Chandelier in the great room from photo PXL_20260523_151144457.MP (position estimated).
+- `npm run check` all ok. Screenshots work/shots/bath-*.png.
+- Ryan (2026-11-06): screenshots overload his computer while he works. Take as few as possible, and none while he says he is busy.
+- Committed and pushed with the entry/laundry/linen closet changes above.

@@ -1,7 +1,7 @@
 // Main floor inside, as the cabin sits today: partition walls and doors, kitchen island and counters,
 // the stair to the loft, the wood stove with its pipe. Facts use inches, x = east, y = north, z = up (see geo.js).
 import * as THREE from 'three'
-import { M, v, IN, FLOOR1, up, roofUnder, boxGeo, cylBetween, mesh, std, mats } from '../geo.js'
+import { M, v, IN, FLOOR1, up, roofUnder, RIDGE_X, boxGeo, cylBetween, cylGeo, mesh, std, mats } from '../geo.js'
 
 const LS = M.stairs.main_to_loft
 const RISE = v(LS.total_rise) // 114 (levels 100'-0" to 109'-6", stated)
@@ -75,37 +75,100 @@ export function buildMainInterior() {
     [[167, 275.5, 171.5, 454.3], [[291, 321], [414, 446]]],
     // hall north end
     [[167, 449.8, 220, 454.3], []],
-    // hall east wall at x 215.5 so the hall is 44" wide (A-2, stated): opening to the entry (no door drawn; 48" width assumed), bedroom 2 door 32" (ends at the hall end wall)
-    [[215.5, 275.5, 220, 454.3], [[331, 379], [417.8, 449.8]]],
+    // hall east wall at x 215.5 so the hall is 44" wide (A-2, stated): the entry is open to the hall over its full 65" (A-2 draws no wall; photo PXL_20230205_212415772),
+    // the hall linen closet door (about 20" on A-2, scaled; 17" here to fit the 19" closet), bedroom 2 door 32" (ends at the hall end wall)
+    [[215.5, 275.5, 220, 454.3], [[325.5, 390.5], [396, 413], [417.8, 449.8]]],
     // bedroom partition x 182 to 186.5: the master (bedroom 1, west) is 169" (A-2 says 172") and the guest room (bedroom 2) 136.5" (A-2 says 138"). The plan sizes plus the 4 1/2" wall are 4 1/2" more than the 310" between the log walls; the master loses 3" and the guest 1.5" (Ryan, 2026-11-06, stated)
     [[182, 454.3, 186.5, 539.3], []],
     // bedroom 2 south wall, with the 48" closet opening (x 255 to 303)
     [[220, 414, 323, 418.5], [[255, 303]]],
     // entry north wall at y 390.5: entry is 109" x 65" (A-2, stated; x 214 to 323 from the hall side, y 325.5 to 390.5; behind it the bedroom 2 closet)
     [[218.5, 390.5, 323, 395], []],
-    // entry south wall = laundry north wall: 60" bifold opening (x 258 to 318)
-    [[220, 321.5, 323, 325.5], [[258, 318]]],
+    // hall linen closet (A-2 "LINENS", door from the hall): wall between it and the bedroom 2 closet; closet 29" wide (A-2, scaled)
+    [[249, 395, 253.5, 414], []],
+    // entry south wall = front of the two laundry bays, each open to the entry (photo PXL_20230205_212421589.MP): sink bay x 220 to 255, washer/dryer bay x 259.5 to 323
+    [[220, 321.5, 323, 325.5], [[221, 254], [262, 320]]],
+    // wall between the sink bay and the washer/dryer bay (A-2 and the photo). A-2 gives 3'-3 1/2" + 5'-5" plus the wall = 109", 6" more than the 103" here; each bay loses about 3"
+    [[255, 280, 259.5, 321.5], []],
     // laundry south wall
     [[220, 275.5, 323, 280], []],
   ]
   const wallBoxes = walls.flatMap(([b, o]) => wall(b, o))
   add(wallBoxes.map(boxGeo), drywall,
-    'Interior walls on the main floor: bedroom 1, bedroom 2, west bath, 3/4 bath, hall, entry, laundry and closets. ' +
+    'Interior walls on the main floor: bedroom 1, bedroom 2, west bath, 3/4 bath, hall, entry, laundry sink bay, washer/dryer bay, hall linen closet and bedroom closets. ' +
     'Positions from A-2 drawing 1 scaled and squared up (the plan draws the bedroom doors on an angled wall pair), confidence scaled / inferred. ' +
     `Walls ${A.wall}" thick and ${WH}" high up to the loft joists, 8'-0" above the floor (A-6, stated; thickness and white drywall assumed). ` +
-    'Door openings: 30" (baths), 32" (bedrooms), 48" closets, 60" laundry (A-2, stated); opening height 80" assumed. The 48" opening between the hall and the entry is assumed (A-2 gives no width; no door drawn). Wall pieces beside the openings and the tub wall: position inferred from the room sizes. Bedroom 1 is 147" deep and the entry 109" x 65" (A-2, stated); the hall is 44" wide (A-2, stated).')
+    'Door openings: 30" (baths), 32" (bedrooms), 48" closets (A-2, stated); laundry bays open to the entry, 33" and 58" (photo PXL_20230205_212421589.MP, seen; A-2 draws a 60" bifold on the washer/dryer bay); hall linen closet 17" (A-2 about 20", scaled); opening height 80" assumed. The entry is open to the hall over its full depth (A-2; photo PXL_20230205_212415772, seen). Wall pieces beside the openings and the tub wall: position inferred from the room sizes. Bedroom 1 is 147" deep and the entry 109" x 65" (A-2, stated); the hall is 44" wide (A-2, stated).')
   solids.push(...wallBoxes)
 
   // Doors standing open 90 degrees against the walls they open toward (leaf only; the leaves are not solid)
   const d = A.doorT
   add([
     leaf([73 - d, 357.8, 73, 387.8]), // west bath, hinged at the east jamb, opens south into the bath
-    leaf([137, 291, 167, 291 + d]), // 3/4 bath, hinged at the south jamb, opens west into the bath
+    leaf([137, 321 - d, 167, 321]), // guest (3/4) bath, hinged at the north jamb, opens west into the bath (A-2 draws the swing this way; clears the vanity)
     leaf([135, 414, 167, 414 + d]), // bedroom 1, hinged at the south jamb, opens west into the bedroom
     leaf([220, 418.5, 252, 418.5 + d]), // bedroom 2, hinged at the south jamb, opens east into the bedroom
   ], woodDoor,
     'Interior doors standing open 90 degrees: west bath 30", 3/4 bath 30", bedroom 1 32", bedroom 2 32" (A-2 drawing 1, stated widths). ' +
     'Which side each door hinges on and the 80" height and 1 3/4" thickness are assumed. The plan draws no doors on the closets or the laundry (bifold, not drawn).')
+
+  // Laundry bays: washer and dryer side by side, and a white vanity with a steel utility sink (photo PXL_20230205_212421589.MP; sizes assumed)
+  const white = std(0xf2f2f0, 0.5), wd = [], vb = [[221, 280, FLOOR1, 245, 301, FLOOR1 + 34]]
+  for (const x0 of [262, 291]) {
+    wd.push(boxGeo([x0, 280, FLOOR1, x0 + 27, 310, FLOOR1 + 39]))
+    solids.push([x0, 280, FLOOR1, x0 + 27, 310, FLOOR1 + 39])
+  }
+  add(wd, white, 'Washer and dryer side by side in the washer/dryer bay (Ryan, 2026-11-06, stated; A-2 "W/D"). Front-loading, 27" wide, 30" deep, 39" high (assumed).')
+  add(vb.map(boxGeo), white, 'White two-door vanity in the laundry sink bay, against the back wall at the west side (photo PXL_20230205_212421589.MP, seen). 24" x 21" x 34" (assumed).')
+  add([boxGeo([221, 280, FLOOR1 + 34, 245, 301, FLOOR1 + 35])], steel, 'Stainless utility sink on the laundry vanity (photo PXL_20230205_212421589.MP, seen; A-2 draws a sink here). Size assumed.')
+  add([boxGeo([224, 283, FLOOR1 + 35, 242, 298, FLOOR1 + 35.1])], std(0x1f2022, 0.5), 'Bowl of the laundry sink (assumed look).')
+  solids.push(...vb)
+
+  // ---------- 1b. bathrooms ----------
+  // Master bath (west bath, x 13 to 77.5, y 280 to 387.8): photos PXL_20231229_221430030 (2023, tiling not done) and received_328693656296719 (finished).
+  // Guest bath (3/4 bath, x 82 to 167, y 280 to 358.3): Ryan, 2026-11-06, stated, plus A-2 drawing 1 for the sizes.
+  const tile = std(0xf4f3ef, 0.35), hex = std(0x4a4643, 0.6), lvp = std(0x5b4a3d, 0.7), grayCab = std(0x8e9296, 0.6)
+  const fiber = std(0xf7f6f2, 0.25), porcelain = std(0xfafafa, 0.2), basin = std(0xe4e4e2, 0.2)
+  const toilet = (cx, back) => [ // faces north: tank against the wall at y = back, bowl toward +y (sizes assumed)
+    boxGeo([cx - 10, back, FLOOR1 + 15, cx + 10, back + 8, FLOOR1 + 30]),
+    cylGeo(cx, back + 18, 5, FLOOR1, FLOOR1 + 10, 16), cylGeo(cx, back + 18, 8, FLOOR1 + 10, FLOOR1 + 15.5, 20)]
+  const sinkTop = (r) => [boxGeo([r[0], r[1], FLOOR1 + 33, r[2], r[3], FLOOR1 + 34.5])]
+  const sinkBowl = ([x0, y0, x1, y1]) => [boxGeo([x0 + 4, y0 + 5, FLOOR1 + 34.5, x1 - 4, y1 - 5, FLOOR1 + 34.6])]
+  const mv = [13, 349, 34, 379], gv = [119, 280, 155, 301] // vanities [x0, y0, x1, y1]
+  const MS = [21, 280, 77.5, 318] // master shower, inside the curb
+  add([boxGeo([13, 280, FLOOR1, 21, 318, CEIL])], tile,
+    'Master bath: tiled plumbing chase about 8" deep against the west log wall along the shower (photos PXL_20231229_221430030 and received_328693656296719, seen: framed box with PVC pipes, tiled; depth estimated from the photo). It holds the shower wall off the round logs.')
+  add([boxGeo([MS[0], MS[1], FLOOR1, MS[2], MS[1] + 0.5, CEIL]), boxGeo([MS[2] - 0.5, MS[1], FLOOR1, MS[2], MS[3], CEIL]),
+    boxGeo([MS[0], MS[3] - 4, FLOOR1, MS[2], MS[3], FLOOR1 + 6])], tile,
+    `Master bath shower: white textured large-format tile on all three walls up to the top of the wall, tiled curb 6" high across the front, no door or glass (photo received_328693656296719, seen). Inside about ${MS[2] - MS[0]}" wide x ${MS[3] - MS[1] - 4}" deep (A-2 drawing 1: shower 3'-0" x 5'-0", stated; width less the chase, estimated). Two black corner shelves not drawn.`)
+  add([boxGeo([MS[0] + 0.5, MS[1] + 0.5, FLOOR1, MS[2] - 0.5, MS[3] - 4, FLOOR1 + 0.3])], hex,
+    'Master bath shower floor: dark gray hexagon mosaic tile with a square drain (photo received_328693656296719, seen).')
+  add([boxGeo([13, MS[3], FLOOR1, 77.5, 387.8, FLOOR1 + 0.2])], lvp,
+    'Master bath floor: dark brown wood-look vinyl plank (photos PXL_20231229_221430030 and received_328693656296719, seen).')
+  add([...toilet(30, MS[3]), ...toilet(100, 280)], porcelain,
+    'Toilets, white. Master bath: tank against the shower chase and curb, facing north toward the door (photo received_328693656296719, seen; A-2 draws it against the west wall facing east, the photo wins). ' +
+    'Guest bath: on the south wall, west side, facing north (Ryan, 2026-11-06, stated: sink and toilet on the south side; position along the wall from A-2 drawing 1, scaled). Sizes assumed.')
+  add([boxGeo([mv[0], mv[1], FLOOR1, mv[2], mv[3], FLOOR1 + 33]), boxGeo([gv[0], gv[1], FLOOR1, gv[2], gv[3], FLOOR1 + 33])], grayCab,
+    'Bath vanities. Master bath: gray Shaker two-door vanity against the west log wall, north of the toilet, 30" x 21" (photos PXL_20231229_221430030 and received_328693656296719, seen; size estimated). ' +
+    `Guest bath: on the south wall, east of the toilet, ${gv[2] - gv[0]}" x 21" (Ryan, 2026-11-06, stated: small single sink on the south side; A-2 drawing 1, scaled). Its color is not known; drawn like the master vanity (assumed).`)
+  add([...sinkTop(mv), ...sinkTop(gv)], porcelain, 'White one-piece vanity tops with the sink bowl molded in (master: photos, seen; guest: assumed).')
+  add([...sinkBowl(mv), ...sinkBowl(gv)], basin, 'Sink bowls (shape assumed).')
+  solids.push([13, 280, FLOOR1, 21, 318, CEIL], [MS[0], MS[3] - 4, FLOOR1, MS[2], MS[3], FLOOR1 + 6],
+    [20, MS[3], FLOOR1, 40, MS[3] + 26, FLOOR1 + 30], [90, 280, FLOOR1, 110, 306, FLOOR1 + 30],
+    [mv[0], mv[1], FLOOR1, mv[2], mv[3], FLOOR1 + 34.5], [gv[0], gv[1], FLOOR1, gv[2], gv[3], FLOOR1 + 34.5])
+
+  // Guest bath: fiberglass tub-shower along the north wall, linen closet east of it (Ryan, 2026-11-06, stated; A-2 drawing 1: 5'-0" tub, "LINENS")
+  const TUB = [82, 328.3, 142, 358.3] // 60" x 30" (A-2: 5'-0", stated; 30" depth scaled)
+  add([boxGeo([TUB[0], TUB[1], FLOOR1, TUB[2], TUB[3], FLOOR1 + 20]),
+    boxGeo([TUB[0], TUB[3] - 1, FLOOR1 + 20, TUB[2], TUB[3], FLOOR1 + 76]), boxGeo([TUB[0], TUB[1], FLOOR1 + 20, TUB[0] + 1, TUB[3], FLOOR1 + 76]),
+    boxGeo([TUB[2] - 1, TUB[1], FLOOR1 + 20, TUB[2], TUB[3], FLOOR1 + 76])], fiber,
+    'Guest bath: white fiberglass tub-shower, one piece, along the north wall, 60" x 30", surround about 76" high (Ryan, 2026-11-06, stated: fiberglass tub and shower on the north side; A-2 drawing 1: 5\'-0" tub, stated; depth scaled; surround height assumed). Shower curtain not drawn.')
+  add([boxGeo([TUB[0] + 3, TUB[1] + 3, FLOOR1 + 20, TUB[2] - 3, TUB[3] - 4, FLOOR1 + 20.1])], basin, 'Inside of the tub (look assumed).')
+  const LIN = [[142, 325.5, 146.5, 358.3], [146.5, 325.5, 167, 330]] // closet side wall beside the tub, front wall facing the bath
+  add(LIN.map(([x0, y0, x1, y1]) => boxGeo([x0, y0, FLOOR1, x1, y1, CEIL])), drywall,
+    'Guest bath linen closet, east of the tub end, about 20" wide and as deep as the tub (Ryan, 2026-11-06, stated: small linen closet next to the tub; A-2 drawing 1 "LINENS", size scaled).')
+  add([boxGeo([148.5, 324.8, FLOOR1, 165, 325.5, FLOOR1 + A.door])], woodDoor, 'Guest bath linen closet door, 16 1/2", shown closed (A-2 drawing 1 draws a door; width scaled).')
+  solids.push([TUB[0], TUB[1], FLOOR1, TUB[2], TUB[3], FLOOR1 + 20], ...LIN.map(([x0, y0, x1, y1]) => [x0, y0, FLOOR1, x1, y1, CEIL]))
 
   // ---------- 2. kitchen: island, counters, appliances ----------
   // Layout (Ryan, 2026-11-06, stated): sink in the east log wall counter, refrigerator at its south end (right of the sink when you face east),
@@ -237,6 +300,22 @@ export function buildMainInterior() {
   const pm = std(0x1a1a1c, 0.5); pm.side = THREE.DoubleSide
   add(pend, pm, 'Two black dome pendant lights over the island, about 14" wide (photo PXL_20260310_232308808, seen: 2; size estimated; hang height assumed).')
   add(chain, mats.black, 'Black chains of the island pendants up to the loft floor underside (photo PXL_20260310_232308808, seen).')
+
+  // Chandelier in the great room (photo PXL_20260523_151144457.MP, seen; Ryan, 2026-11-06, stated)
+  const CH = { x: RIDGE_X, y: 118, z: FLOOR1 + 110 } // bottom of the arms. Position and height estimated from the photo: hangs from the roof boards about mid-room, bottom about level with the loft railing
+  const bronze = std(0x3a2a1e, 0.5, { metalness: 0.6 }), shade = std(0xf1e6c8, 0.6, { emissive: 0xffd9a0, emissiveIntensity: 0.35 })
+  const chMetal = [cylGeo(CH.x, CH.y, 9, CH.z + 4, CH.z + 16, 24), cylBetween([CH.x, CH.y, CH.z + 16], [CH.x, CH.y, roofUnder(CH.x)], 0.4, 6)]
+  const chShades = []
+  for (const [n, r, z] of [[8, 17, CH.z], [4, 10, CH.z + 14]]) {
+    for (let k = 0; k < n; k++) {
+      const a = (k + 0.5) * (2 * Math.PI) / n, sx = CH.x + r * Math.cos(a), sy = CH.y + r * Math.sin(a)
+      chMetal.push(cylBetween([CH.x, CH.y, z + 4], [sx, sy, z], 0.5, 6))
+      chShades.push(cylGeo(sx, sy, 2.5, z, z + 5, 10))
+    }
+  }
+  add(chMetal, bronze, 'Chandelier in the great room: dark bronze ring with a pine-tree cutout band, arms and a chain up to the roof boards (photo PXL_20260523_151144457.MP, seen). ' +
+    'About 36" wide and 12 lights in two tiers (counted in the photo: 8 lower, 4 upper; size estimated). Position over the middle of the great room on the ridge line and hang height estimated from the photo (low confidence).')
+  add(chShades, shade, 'Chandelier glass shades, frosted cream bell shape, 12 (photo PXL_20260523_151144457.MP, seen). Shown slightly lit; no real light added.')
 
   // ---------- 3. stair to the loft: up going north along the west wall, landing, turn right, up going east ----------
   const lo = v(M.stairs.main_to_loft.lower_run_rect) // [14, 184, 57, 229] (A-2 d1, scaled)

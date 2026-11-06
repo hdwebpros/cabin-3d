@@ -49,12 +49,16 @@ Viewing copies: `work/crops/photos/`, `work/crops/photos2/`. Findings: `work/fin
 | PXL_20261009_180844424 | Outside, lake gable from the path (278) | Lake gable from the path; no facts used |
 | PXL_20261009_181108106 | Outside, porch side toward the lake (74) | 3 porch windows and door; concrete foundation under the deck; address 8539 |
 | PXL_20261101_163043044 | Outside, road gable and driveway (175) | Road gable windows; board band; outlet box at north-east corner; propane tank |
+| entry/PXL_20230205_212415772 | Main floor, from the hall looking east to the entry door (2023, during building) | Entry open to the hall; long drywall wall on the north side; hall linen closet door near the hall; laundry bay corner on the south side |
+| entry/PXL_20230205_212421589.MP | Main floor, from the hall looking south-east at the laundry (2023) | Two laundry bays side by side, open to the entry: washer/dryer bay against the east log wall (boxes), sink bay west of it with a white vanity and steel sink; stud wall between |
 | PXL_20260906_133531021 | Outside, path to dock (70) | Slope to the lake only |
 | PXL_20260310_232308808 | Inside, kitchen toward the lake gable | Lake wall window and slider; kitchen finishes; unfinished trim |
 | PXL_20260310_232337640 | Inside, living area, wood stove, loft stair | Stove on west wall; log loft stair; drywall under it; floor-level log guard rail (possible basement stair top) |
 | PXL_20221020_201833908 | Inside during construction (2022), loft stair from the south-east. Sent by Ryan on 2026-11-06 (in his Downloads, not in source/) | 5 log steps to the first landing; upper run east to the loft; floor-level log railing (posts, top rail, balusters) under the upper run that guards the basement stair opening |
 | PXL_20260311_135523110 | Inside, from the loft to the lake gable | 4 gable windows (triangle, pentagon, pentagon, triangle); purlins; main lake wall window/slider/window |
-| PXL_20260523_151144457.MP | Inside, main level toward the east wall (16) | Sliding door to the porch; kitchen sink on the east wall; loft over the north end; steel cables |
+| PXL_20260523_151144457.MP | Inside, main level toward the east wall (16) | Sliding door to the porch; kitchen sink on the east wall; loft over the north end; steel cables; chandelier in the great room (dark bronze ring with pine-tree band, 12 cream bell shades in two tiers, chain up to the roof boards; Ryan, 2026-11-06) |
+| baths/PXL_20231229_221430030 | Master bath from the door, looking south (2023, shower boards up, not tiled). Ryan, 2026-11-06 | Shower across the south end; framed plumbing chase against the west logs beside the shower; toilet in front of the chase facing north; gray Shaker vanity on the west wall; west window; dark vinyl plank floor |
+| baths/received_328693656296719 | Master bath finished, from the door looking south. Ryan, 2026-11-06 | White textured large tile on the shower walls and chase, dark hex mosaic shower floor, tiled curb, no glass; toilet faces north; gray vanity with white top |
 | PXL_20260523_151758429 | Inside, from the loft (98) | West wall window near the lake corner; stove pipe |
 | PXL_20260523_152023253 | Inside, dining area at the lake wall (103) | Lake wall: window, sliding door, window |
 | PXL_20260529_181557772 | Inside, up at the lake gable (94) | Gable windows and log post |
