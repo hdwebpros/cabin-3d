@@ -113,6 +113,8 @@ Each item below changes with that choice:
 
 38. **Main floor bedroom sizes. Resolved.** The plan sizes (bedroom 1 14'-4", bedroom 2 11'-6") plus the partition were 4 1/2" more than the space between the log walls. Ryan: the master loses 3" (169") and the guest loses 1.5" (136.5"); partition at x 182 to 186.5 | Ryan, 2026-11-06 | stated.
 
+39. **Porch ceiling. Resolved in favor of the video.** A-6 draws the porch ceiling flat, 8'-8" above the porch floor. Ryan's video `source/photos/porch/PXL_20240211_164017035.mp4` (Feb 2024, framing stage) shows the ceiling follows the 3/12 porch roof: it starts just above the outer log beam (about 8'-10" above the floor) and rises to about 11'-7" at the house wall (scaled from the 16" stud spacing in the triangles above the end beams; inferred). That is about 3 ft higher at the house side; Ryan said "about four feet". The ceiling is dark ribbed panels in the video, not T&G. The roof outside was already at these heights in the model and did not change. The triangles above the two end log beams and the strip of house wall above the top log are framing and OSB in the video; Ryan says they get T&G like the porch walls.
+
 ## Check pass fixes
 
 Independent check, 2026-11-05. Method: the vector lines and dimension tick marks in the plan PDF (exact to about 1/4"), plus the text layer. 20 key numbers checked. Fixes:

@@ -1,7 +1,7 @@
 // Part of the cabin above or around the basement: east porch, south deck, north landing, the outside stair.
 // Facts use inches, x = east, y = north, z = up from the top of the basement slab.
 import * as THREE from 'three'
-import { M, v, IN, W, FLOOR1, up, roofTop, gradeAt, bx, ni, boxGeo, cylGeo, cylBetween, beamGeo, mesh, pbr, std, mats, worldUV } from '../geo.js'
+import { M, v, IN, W, FLOOR1, WALL_TOP, up, roofTop, gradeAt, bx, ni, boxGeo, cylGeo, cylBetween, beamGeo, mesh, pbr, std, mats, worldUV, pineBoards } from '../geo.js'
 
 // The house log walls (walls part)
 const LOG_FACE = 5 // outer face 5" outside the foundation line
@@ -92,7 +92,7 @@ export function buildPorchDeck() {
     stain: std(0x3b2d24, 0.8),
     log: mats.log, // same as the house logs (walls part)
     siding: pbr('wood_planks', 1.22, { color: 0x4b5055 }),
-    pine: pbr('coated_pine', 0.6, { color: 0xffe6c8 }),
+    pine: pineBoards(), // T&G inside the porch (Ryan, 2026-11-06), same boards as the basement finish
     shingle: mats.shingle, // same as the main roof (roof part); shingle rows run along the eave: own texture coordinates below
     fascia: mats.trim, // as the main roof trim (roof part)
     door: mats.doorWhite,
@@ -223,7 +223,7 @@ export function buildPorchDeck() {
     bx('x', W, DOOR[0], NN - C, NN + C + SD, FLOOR1, CEIL), bx('x', DOOR[1], PX + C, NN - C, NN + C + SD, FLOOR1, CEIL),
   )
   add(
-    mesh(core, m.pine, 'Porch walls: framed walls on the porch floor between the log posts (A-4; photos). The log beams on top are 8\'-4" above the floor (A-4 North, stated; A-4 East says 8\'-3", conflicts.md item 9). 2x4 framing and pine boards inside (assumed: the inside is not in any photo).'),
+    mesh(core, m.pine, 'Porch walls: framed walls on the porch floor between the log posts (A-4; photos). The log beams on top are 8\'-4" above the floor (A-4 North, stated; A-4 East says 8\'-3", conflicts.md item 9). 2x4 framing. Inside: tongue-and-groove pine (Ryan, 2026-11-06; the 2024 video PXL_20240211_164017035 shows bare OSB), also on the triangles above the end log beams, up to the sloped ceiling.'),
     mesh(sid, m.siding, 'Porch siding: horizontal cedar boards (A-4 North note "cedar siding", stated) with dark gray stain (photos PXL_20261101_163027116, PXL_20251004_135433269, seen). Board size assumed.'),
   )
 
@@ -277,7 +277,14 @@ export function buildPorchDeck() {
   add(
     mesh(shingles, m.shingle, `Porch roof: shed roof, 3/12 (A-3, A-4, A-5, stated), asphalt shingles like the main roof (A-4 note). 12'-10" out from the house foundation line, from the house south line to 2'-0" past the porch north end (A-3, stated and inferred). The top meets the main roof at the house east line at ${zTop(RR[0]).toFixed(0)}" (A-4 scales about 112'-6" = 308" raised); low edge ${zTop(RR[2]).toFixed(0)}" (A-4 and A-6 scale about 109'-6" = 272" raised).`),
     mesh(slab(0.75, A.roof), m.fascia, `Porch roof framing, dark fascia and soffit (photos, seen). Roof ${A.roof}" thick (assumed: A-6 lists rafters, sheathing and shingles, no sizes).`),
-    mesh(boxGeo([FACE, SN + C, CEIL, PX - C, NN - C, CEIL + 0.75]), m.pine, 'Porch ceiling: tongue-and-groove pine, 8\'-8" above the porch floor (A-6 section, stated). Drawn flat (assumed).'),
+  )
+  // Ceiling follows the roof slope, from just above the outer log beam up to the house wall (video PXL_20240211_164017035, seen).
+  // A-6 draws it flat at 8'-8"; the video wins (conflicts.md item 39). The end-wall boards above the beams (walls above) now show inside.
+  const cy0 = SN + C, cy1 = NN - C, cym = (cy0 + cy1) / 2, cx0 = FACE - 3.5, cx1 = PX - C, ceilT = 0.75
+  const ceil = beamGeo([cx0, cym, zUnder(cx0) - ceilT / 2], [cx1, cym, zUnder(cx1) - ceilT / 2], cy1 - cy0, ceilT * ct)
+  add(
+    mesh(ceil, mats.trim, `Porch ceiling: dark ribbed panels on the underside of the 3/12 porch roof (video PXL_20240211_164017035, seen; A-6 says T&G, flat at 8'-8"). About ${(zUnder(cx1) - FLOOR1).toFixed(0)}" above the floor at the outer wall and ${(zUnder(cx0) - FLOOR1).toFixed(0)}" at the house wall (follows the roof, inferred; the video matches within a few inches).`),
+    mesh(boxGeo([cx0, cy0, WALL_TOP - 2, cx0 + 0.75, cy1, zUnder(cx0)]), m.pine, `Porch side of the house east wall, above the top log: board strip from the log top (${WALL_TOP.toFixed(0)}") up to the porch ceiling (video PXL_20240211_164017035: bare OSB in 2024; T&G like the porch walls, Ryan 2026-11-06).`),
   )
 
   // ---------- stairs and railings ----------

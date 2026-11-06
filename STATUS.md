@@ -131,3 +131,10 @@
 - Cause, from the kernel log: the Intel GPU driver (xe) logged "Timedout job ... in chromium" at 14:16 and 16:01 and reset the GPU. The browser then drops the WebGL picture. No other GPU resets in 6 weeks of logs, so this page is what triggers it.
 - Done: sun shadow map 4096 to 2048 and plain PCF shadows (less GPU work per frame). The page now rebuilds its lighting image and draws again when the browser gives the GPU back. Tested with a forced loss: the picture comes back.
 - Ryan (2026-11-06): the north gable wall in the loft is T&G inside; the outside stays log siding. Done in roof.js: flat 3/4" T&G pine face on the inside of the gable logs, from the loft floor to the ceiling, boards level, holes for G-N1 and G-N2. The north ridge post is now inside the wall (hidden from the loft).
+
+## 2026-11-06 — Porch ceiling from Ryan's video
+- Ryan: the porch roof's west side (house side) is about 4 ft higher than modeled, which adds areas to cover with T&G. Video copied to source/photos/porch/PXL_20240211_164017035.mp4; frames in work/porch-frames/.
+- Finding: the outside porch roof in the model already matches the video. The inside ceiling was the problem: flat at 8'-8" (A-6). It now follows the roof underside (zUnder in porch.js), about 110" at the outer wall to 139" at the house wall; dark ribbed panels as in the video. The triangles above the end log beams now show inside, and a board strip covers the house wall from the top log to the ceiling.
+- Porch inside walls now use the T&G texture. pineBoards() moved from basement-finish.js to geo.js so both use it.
+- conflicts.md item 39, cabin-facts.md, sources.md updated. `npm run check` all ok. Screenshot work/shots/porch-south.png.
+

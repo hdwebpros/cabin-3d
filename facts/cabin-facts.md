@@ -217,7 +217,8 @@ Offsets are along the outside of the wall, from the west end (north and south wa
 - No ducts are in the basement (heat is hot water), so no duct soffits are needed | photos-basement.md | seen
 - Main floor to underside of loft log joists = 8'-0" | A-6 section | stated
 - Main great room and loft ceiling = T&G pine on the underside of the roof (follows the 10/12 slope), log purlins and ridge log | A-6 detail 4; photos | stated / seen
-- Porch ceiling = 8'-8" above the first floor, T&G | A-6 section | stated
+- Porch ceiling = slopes with the 3/12 porch roof, about 8'-10" above the porch floor at the outer wall to about 11'-7" at the house wall, dark ribbed panels | video source/photos/porch/PXL_20240211_164017035.mp4 | seen / inferred. A-6 says flat at 8'-8", T&G (conflicts.md item 39)
+- Porch walls inside, the triangles above the end log beams and the house wall above the top log = T&G pine | Ryan, 2026-11-06 | stated (bare OSB in the 2024 video)
 - Proposed plan says "10'-0" ceiling" in the basement. With 12 ft walls this fits, less the drop ceiling below the pipes | see proposed-vs-existing.md
 
 ## 8. Floor-to-floor heights

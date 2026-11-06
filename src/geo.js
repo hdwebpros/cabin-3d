@@ -190,3 +190,37 @@ export const mats = {
   metal: std(0xa9adb1, 0.35, { metalness: 0.6 }),
   black: std(0x1d1d20, 0.45),
 }
+
+const BOARD = 5.5 // face width of 1x6 tongue-and-groove (assumed, the usual size)
+// Light knotty-pine tongue-and-groove, painted on a canvas: 4 horizontal boards per tile with a dark groove at each joint
+export function pineBoards() {
+  const n = 512, c = document.createElement('canvas')
+  c.width = c.height = n
+  const g = c.getContext('2d'), r = rng(7), bh = n / 4
+  for (let b = 0; b < 4; b++) {
+    const y0 = b * bh, tone = 135 + r() * 25
+    g.fillStyle = `rgb(${tone + 40},${tone + 8},${tone - 50})` // warm honey pine
+    g.fillRect(0, y0, n, bh)
+    for (let i = 0; i < 40; i++) { // grain: long faint streaks along the board
+      g.strokeStyle = `rgba(120,70,20,${0.05 + r() * 0.1})`
+      g.lineWidth = 1 + r() * 2
+      const y = y0 + 4 + r() * (bh - 8)
+      g.beginPath(); g.moveTo(0, y)
+      g.bezierCurveTo(n / 3, y + (r() - 0.5) * 10, (2 * n) / 3, y + (r() - 0.5) * 10, n, y)
+      g.stroke()
+    }
+    if (r() < 0.7) { // a knot
+      g.fillStyle = 'rgba(110,60,20,0.55)'
+      g.beginPath(); g.ellipse(r() * n, y0 + bh / 2, 6 + r() * 6, 4 + r() * 3, 0, 0, Math.PI * 2); g.fill()
+    }
+    g.fillStyle = 'rgba(70,40,15,0.8)' // groove at the joint
+    g.fillRect(0, y0, n, 3)
+  }
+  const map = new THREE.CanvasTexture(c)
+  map.colorSpace = THREE.SRGBColorSpace
+  map.wrapS = map.wrapT = THREE.RepeatWrapping
+  map.anisotropy = 8
+  const m = new THREE.MeshStandardMaterial({ map, roughness: 0.75 })
+  m.userData.tile = 4 * BOARD * IN // the tile is 4 boards tall (and as wide)
+  return m
+}

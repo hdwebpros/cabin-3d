@@ -127,3 +127,4 @@ Second set, same day (given by Ryan in the session, 2026-11-05):
 - Lake distance photo check: `work/findings/lake-distance.md`.
 - Screenshot from Ryan: `source/photos/screenshot-2026-11-06_08-35-30.png`. It highlights a missing finish on the south face of the utility room south wall in the finished version. Fixed in the model.
 - Photo PXL_20221020_201833908 (loft stair, sent earlier by Ryan).
+- Porch video: `source/photos/porch/PXL_20240211_164017035.mp4` (Feb 2024, 32 s, framing stage; walks the inside of the porch and the north landing). Frames in `work/porch-frames/`. Used for the sloped porch ceiling and the board areas above the end beams and the house logs (seen).
