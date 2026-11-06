@@ -4,10 +4,11 @@
 // Layout notes and sizes: work/findings/proposed-layout.md
 import * as THREE from 'three'
 import { M, v, bx, boxGeo, cylGeo, beamGeo, mesh, std, mats } from '../geo.js'
-const TG = 0.75 // finish board thickness (as basement-finish.js)
 import { H, WEST, EAST, NORTH, SOUTH } from '../basement.js'
+import { END_X } from './stair-walls.js'
+const TG = 0.75 // finish board thickness (as basement-finish.js)
 
-const T = v(M.rooms.basement.centerline_partition_thickness) // 4.5: new stud wall thickness (A-1 partition 4 1/2", stated)
+const T = 4 // new stud wall: 2x4 studs (3 1/2 in.) with 1/4 in. drywall each side (Ryan, 2026-11-06, stated). A-1 draws 4 1/2 in.
 const DOOR_H = 80 // new door height (assumed, normal 6'-8")
 const LEAF = 1.75 // door leaf thickness (assumed)
 const FIT = 'proposed fit by the model, not decided by Ryan'
@@ -15,12 +16,12 @@ const FIT = 'proposed fit by the model, not decided by Ryan'
 // ---------- the layout (every number is a chosen value; see the findings file) ----------
 const HALL = [172, 220] // hall: 48" clear (proposed plan note 3), east of the utility room
 const UTIL_E = 169.7 // face of the existing utility east wall studs
-const BATH_E = [167.5, 172] // bath east wall (the centerline partition)
-const TOILET = { x1: 103.5, wall: [103.5, 108], nY: [461.8, 466.3] } // toilet room (A-1: 42" deep, zone 96" wide)
+const BATH_E = [172 - T, 172] // bath east wall (the centerline partition)
+const TOILET = { x1: 103.5, wall: [103.5, 103.5 + T], nY: [461.8, 461.8 + T] } // toilet room (A-1: 42" deep, zone 96" wide)
 const SHOWER = [WEST, 487.25, 58.75, NORTH] // 48" x 54" stall (A-1 stub: 48" wide, drain at x 38, y 508)
 const BED = { x0: HALL[1] + T, y0: 215.5 + T, y1: 395 } // bedroom inside: x 224.5 to EAST, y 220 to 395
-const SAUNA = { x0: 212.75, x1: 272.75, y0: 445.25 } // inside 60" x 96"
-const REC = { x0: 277.25, y0: 469.25 } // recovery inside 48" x 72"
+const SAUNA = { x0: 212.75, x1: 272.75, y0: 440.75 + T } // inside 60" wide
+const REC = { x0: 272.75 + T, y0: 469.25 } // recovery inside 48" x 72"
 
 // Wall pieces. axis 'x': wall runs east-west, s = x, d = y. axis 'y': wall runs north-south, s = y, d = x (bx in geo.js).
 function wall(axis, d0, d1, s0, s1, ops = []) {
@@ -45,6 +46,8 @@ const DOORS = {
 }
 
 export const WALLS = [
+  // drywall skin on the open-basement side of the utility room south wall (its studs are bare today, src/basement.js), from the stair end wall to the hall face
+  [END_X[1], 275.1, 0, HALL[0], 275.6, H],
   // flat face for the hall past the centre post (the post sticks out 2 1/4" past the utility wall studs)
   ...wall('y', UTIL_E, HALL[0], 275.6, 419.3, [[329.5, 365.5, 82]]), // 82" header, same as the existing utility doorway in basement.js
   // bath east wall, from the utility north wall to the north wall, with the bath entry door
@@ -68,9 +71,9 @@ export const WALLS = [
 export const ROOMS = [
   { name: 'Shower', rect: [SHOWER[0], SHOWER[1], SHOWER[2], SHOWER[3]], floor: 'epoxy' },
   { name: 'Toilet room', rect: [WEST, 419.3, TOILET.x1, TOILET.nY[0]], floor: 'epoxy' },
-  { name: 'Bathroom', rect: [58.75, 466.3, BATH_E[0], NORTH], floor: 'epoxy' },
-  { name: 'Bathroom', rect: [WEST, 466.3, 58.75, SHOWER[1]], floor: 'epoxy' },
-  { name: 'Bathroom', rect: [TOILET.wall[1], 419.3, BATH_E[0], 466.3], floor: 'epoxy' },
+  { name: 'Bathroom', rect: [58.75, TOILET.nY[1], BATH_E[0], NORTH], floor: 'epoxy' },
+  { name: 'Bathroom', rect: [WEST, TOILET.nY[1], 58.75, SHOWER[1]], floor: 'epoxy' },
+  { name: 'Bathroom', rect: [TOILET.wall[1], 419.3, BATH_E[0], TOILET.nY[1]], floor: 'epoxy' },
   { name: 'Utility room', rect: [WEST, 279.1, 166.2, 415.8], floor: 'epoxy' },
   { name: 'Hall', rect: [HALL[0], 215.5, HALL[1], 399.5], floor: 'epoxy' },
   { name: 'Spa entry', rect: [HALL[0], 399.5, SAUNA.x0 - T, NORTH], floor: 'epoxy' },
@@ -81,9 +84,9 @@ export const ROOMS = [
   { name: 'Bedroom 1', rect: [BED.x0, BED.y0, EAST, BED.y1], floor: 'carpet' },
   { name: 'Entertainment area', rect: [WEST, SOUTH, EAST, 88], floor: 'epoxy' },
   { name: 'Entertainment area', rect: [58.75, 88, EAST, 215.5], floor: 'epoxy' },
-  { name: 'Entertainment area', rect: [123, 215.5, HALL[0], 275.6], floor: 'epoxy' },
+  { name: 'Entertainment area', rect: [END_X[1], 215.5, HALL[0], 275.1], floor: 'epoxy' },
   { name: 'Stair area', rect: [WEST, 88, 58.75, 275.6], floor: 'epoxy' },
-  { name: 'Stair area', rect: [58.75, 215.5, 123, 275.6], floor: 'epoxy' },
+  { name: 'Stair area', rect: [58.75, 215.5, END_X[1], 275.6], floor: 'epoxy' },
 ]
 
 // Door leaf standing open 90 degrees. hinge = position along the wall of the jamb, side = +1/-1 toward the opening along the wall,
@@ -111,7 +114,7 @@ export function buildProposedBasement() {
   const glass = mats.glass
 
   add(mesh(WALLS.map(boxGeo), paint,
-    `New stud walls, 4 1/2" thick, plain painted face, slab to the floor framing (thickness: A-1 partition; positions: ${FIT}; doorways with headers at ${DOOR_H}", door height assumed; the utility doorway header is 82", as the existing doorway). The bath east wall is at x ${BATH_E[0]} to ${BATH_E[1]}, about 1.8" east of the A-1 partition (x 165.7 to 170.2), so its east face lines up with the hall face at x 172. Walls: bath, toilet room, bedroom, sauna, recovery room, hall face.`))
+    `New stud walls, ${T}" thick, plain painted face, slab to the floor framing (thickness: 2x4 studs and 1/4" drywall each side, Ryan, 2026-11-06, stated; positions: ${FIT}; doorways with headers at ${DOOR_H}", door height assumed; the utility doorway header is 82", as the existing doorway). The bath east wall is at x ${BATH_E[0]} to ${BATH_E[1]}, about 1.8" east of the A-1 partition (x 165.7 to 170.2), so its east face lines up with the hall face at x 172. Walls: bath, toilet room, bedroom, sauna, recovery room, hall face.`))
 
   // Doors standing open
   const D = DOORS

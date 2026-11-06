@@ -15,15 +15,13 @@ const ASSUMED = {
   studSpacing: 16,
   trussSpacing: 24,
   doorHead: 82, // utility doorway height
-  maxRiser: 7.75, // code maximum step height; used to work out how many steps a 12 ft basement needs
-  post: 8, // posts are drawn 8x8 on A-1, size "as required"
 }
 
 const W = v(M.footprint.width_x) // 336
 const L = v(M.footprint.length_y) // 552
-const T = v(M.walls.foundation_thickness) // 8
+const T = v(M.walls.foundation_thickness) // 10 (Ryan)
 export const H = v(M.levels_z.basement_underside_of_floor_system) // 144 (12 ft walls, Ryan)
-const TRUSS = v(M.structure.floor_trusses.depth_ryan) // 12
+const TRUSS = v(M.structure.floor_trusses.depth_ryan) // 16 (Ryan: use the plan's 1'-4")
 const SLAB = v(M.walls.slab_thickness)
 const A = ASSUMED
 // Finished faces of the basement: the version layers (src/variants) import these, so they follow the foam and furring sizes
@@ -73,17 +71,20 @@ function studWall(w, s0, s1, depth, openings = [], spacing = A.studSpacing) {
 
 // ---------- stairs (pure numbers, checked by scripts/check.mjs) ----------
 
-// The plans draw 15 risers for a 120" rise. With 12 ft walls the rise is larger, so the stair
-// needs more steps. The upper run (main floor down to the landing) keeps its drawn 6 treads;
-// the extra steps go on the lower run, so its bottom step moves south toward the lake.
+// Ryan's count (2026-11-06): 9 treads from the slab up to the landing, 9 from the landing up to the main floor,
+// so 10 risers in each run. The plans draw 7 + 6 treads for a 120" rise. The landing stays where A-1 draws it;
+// with the drawn 11" treads the upper run reaches 3 treads further east than drawn and the lower run starts
+// 2 treads further north.
 export function stairPlan(rise = FLOOR1) {
   const s = M.stairs.basement
-  const landing = v(s.landing_rect), upper = v(s.upper_run_rect), lower = v(s.lower_run_rect)
-  const risers = Math.ceil(rise / A.maxRiser)
+  const landing = v(s.landing_rect), lower = v(s.lower_run_rect)
+  const risers = v(s.risers) // 20
   const riser = rise / risers
-  const upperTreads = 6 // A-1 d2 run B, 6 drawn treads
-  const lowerTreads = risers - (upperTreads + 1) - 1
+  const upperTreads = v(s.treads_upper_run) // 9
+  const lowerTreads = v(s.treads_lower_run) // 9
   const tread = v(s.tread_depth)
+  const upper = [...v(s.upper_run_rect)]
+  upper[2] = landing[2] + upperTreads * tread // east end of the upper run (the top step)
   const landingZ = rise - (upperTreads + 1) * riser
   const bottomY = landing[1] - lowerTreads * tread
   return { rise, risers, riser, tread, upperTreads, lowerTreads, landingZ, bottomY, landing, upper, lower }
@@ -123,7 +124,7 @@ export function buildBasement() {
     'Basement slab: bare concrete, 6" thick (A-6, stated). In-floor heat tubes are in it (photos). Finish later: epoxy (Ryan).'))
   const fw = [[0, 0, 0, T, L, H], [W - T, 0, 0, W, L, H], [T, L - T, 0, W - T, L, H]]
   add(group, mesh(fw.map(boxGeo), m.concrete,
-    'Foundation wall: 8" poured concrete (A-1 note, stated). 12 ft tall (Ryan, stated).'))
+    `Foundation wall: ${T}" poured concrete (Ryan, 2026-11-06, stated; A-1 note says 8" minimum). 12 ft tall (Ryan, stated).`))
   solids.push([0, 0, 0, WEST, L, H], [EAST, 0, 0, W, L, H], [0, NORTH, 0, W, L, H], [0, 0, 0, W, SOUTH, H])
 
   // Pink foam and wood furring on the north, east and west concrete walls (Ryan; photos)
@@ -253,14 +254,14 @@ export function buildBasement() {
       'Vanity drain stub-ins for the 22" x 72" double vanity on the north wall (A-1). Exact positions not drawn; assumed.'),
   )
 
-  // Posts and the beam at the stair (A-1). Sizes "as required"; drawn 8x8.
+  // Posts and the beam at the stair (A-1). 6x6 (Ryan)
   const posts = M.structure.basement_posts
-  const ph = A.post / 2
+  const ph = 5.5 / 2 // a 6x6 is 5 1/2" square
   const beam = M.structure.basement_beams[0]
   const bx = beam.from[0]
   const postTop = (p) => (v(p.x) === bx ? H - 11.25 : H) // the two stair posts stop under the beam
   add(group, mesh(posts.map((p) => boxGeo([v(p.x) - ph, v(p.y) - ph, 0, v(p.x) + ph, v(p.y) + ph, postTop(p)])), m.lumber,
-    'Posts (A-1): center post 14\'-0" from the west wall and 22\'-6" south of the north wall (stated); two stair posts (y stated, x inferred). They carry the floor above and cannot move. Size "as required", drawn 8x8.'))
+    'Posts (A-1): center post 14\'-0" from the west wall and 22\'-6" south of the north wall (stated); two stair posts (y stated, x inferred). They carry the floor above and cannot move. 6x6 (Ryan, 2026-11-06, stated "I believe"; A-1 draws 8x8).'))
   for (const p of posts) solids.push([v(p.x) - ph, v(p.y) - ph, 0, v(p.x) + ph, v(p.y) + ph, H])
   add(group, mesh(boxGeo([bx - 1.75, beam.to[1] - ph, H - 11.25, bx + 1.75, beam.from[1] + ph, H]), m.lumber,
     'Floor truss support beam at the stair, 5\'-7" span between the stair posts (A-1, stated). Size not given; drawn 3 1/2" x 11 1/4".'))
@@ -300,7 +301,7 @@ export function buildBasement() {
   for (const y of [uy0 + 0.75, uy1 - 0.75])
     stringer.push(beamGeo([st.landing[2] - 2, y, nu(st.landing[2] - 2) - 14], [ux1 + 2, y, nu(ux1 + 2) - 14], 1.5, 9.25))
   const stairLabel = `Basement stair: down from the main floor going west, landing, turn left, down going south (A-1; Ryan). 3'-10" wide (A-1, stated). ` +
-    `${st.risers} steps of ${st.riser.toFixed(2)}" for a ${st.rise}" rise: worked out for 12 ft walls, so the bottom step is ${Math.round(v(M.stairs.basement.bottom_step_y) - st.bottomY)}" closer to the lake than drawn. Real step count not measured. Construction under the stair not known.`
+    `${st.upperTreads} treads, landing, ${st.lowerTreads} treads (Ryan, 2026-11-06, stated; he is less sure of the upper run): ${st.risers} risers of ${st.riser.toFixed(2)}" for a ${st.rise}" rise (worked out). Treads 11" (A-1, scaled). Construction under the stair not known.`
   add(group, mesh([...sb.map(boxGeo), ...stringer], m.lumber, stairLabel))
 
   // Ceiling: open-web floor trusses running east-west, batts above them, and the floor above (photos)
@@ -331,14 +332,14 @@ export function buildBasement() {
   const trussGeos = tr.map((b) => (b[0] === 'w' ? beamGeo(b[1], b[2], tw, 1.5) : boxGeo(b)))
   const headers = [[T, HY - 1.5, H, bx - 1.75, HY, zt], [ux1, uy0 - 4, H, ux1 + 1.5, uy1 + 4, zt]]
   add(ceiling, mesh([...trussGeos, ...headers.map(boxGeo)], m.lumber,
-    `Open-web wood floor trusses running east-west (photos; A-1). Depth ${TRUSS}" (Ryan, about 1 ft, not measured). Spacing assumed ${A.trussSpacing}". Bottom at 12 ft (Ryan). Framing at the stair opening assumed.`))
+    `Open-web wood floor trusses running east-west (photos; A-1). Depth ${TRUSS}" (Ryan, 2026-11-06: use the plan's 1'-4"; A-6, stated). Spacing assumed ${A.trussSpacing}". Bottom at 12 ft (Ryan). Framing at the stair opening assumed.`))
   add(ceiling, mesh([[0, 0, H, 3, L, zt], [W - 3, 0, H, W, L, zt], [3, L - 3, H, W - 3, L, zt], [3, 0, H, W - 3, 3, zt]].map(boxGeo), m.lumber,
     'Double LVL rim joist around the floor trusses, at the outside face of the walls (A-6 detail 5, stated; drawn 3" thick, assumed). A-6 also shows a treated sill plate; not drawn.'))
   const outline = [[0, 0], [W, 0], [W, L], [0, L]]
   add(ceiling, mesh(sheetGeo(outline, [opening], zt - 6), m.batts,
     'Unfaced fiberglass batts between the floor trusses (photos).'))
   add(ceiling, mesh(sheetGeo(outline, [opening], FLOOR1), m.planks,
-    `Main floor, wood-look planks (photos, seen), about ${FLOOR1}" above the slab (12 ft wall + about 1 ft truss + subfloor; assumed). Plans say 120".`))
+    `Main floor, wood-look planks (photos, seen), about ${FLOOR1}" above the slab (12 ft wall + 1'-4" truss + subfloor; inferred). Plans say 120".`))
   solids.push([0, 0, H, W, HY, FLOOR1], [0, uy1, H, W, L, FLOOR1], [bx - 1.75, HY, H, W, uy0, FLOOR1], [ux1, uy0, H, W, uy1, FLOOR1])
 
   return {

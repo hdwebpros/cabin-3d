@@ -7,7 +7,7 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
 - The basement today has the stairs, the utility room and the bathroom stub-in (drain and water lines only). Nothing else is built | Ryan, 2026-11-05 | stated
 - The utility room and the bathroom stub-in stay where they are | Ryan, 2026-11-05 | stated
 - The deck stair from the driveway up to the deck at the road (north) end was built later. It is not on the plans | Ryan, 2026-11-05 | stated
-- Second set of answers, same day (details in each section below): the basement lake wall is a wood stud wall; a window about 5 x 5 ft is on each side of the basement slider; the utility room door is in the middle of its east wall; the Navien is a combi boiler (no separate water heater); the big black tank is a whole-house water filter; no sump pit and no sewage pump; the basement stair top is open with a log railing; pink foam is on every basement wall except the lake wall; floor trusses are about 1 ft deep (assumed: Ryan is not sure); use the drawings for drain positions | Ryan, 2026-11-05 | stated unless noted
+- Second set of answers, same day (details in each section below): the basement lake wall is a wood stud wall; a window about 5 x 5 ft is on each side of the basement slider; the utility room door is in the middle of its east wall; the Navien is a combi boiler (no separate water heater); the big black tank is a whole-house water filter; no sump pit and no sewage pump; the basement stair top is open with a log railing; pink foam is on every basement wall except the lake wall; floor trusses 1'-4" deep (Ryan chose the plan value on 2026-11-06; see section 3); use the drawings for drain positions | Ryan, 2026-11-05 | stated unless noted
 - Window sizes from the Menards window order (9/6/2021): `work/findings/menards-windows.md` | stated (order) / inferred (which opening each unit is)
 
 ## Directions used in this file
@@ -23,7 +23,7 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
 - Area = 1288 SF per floor (lower and main), "taken to outside face of foundation" = 28 x 46 | title block on every sheet; permit p05 "28 ft x 46 ft = 1288" | stated
 - Cross-check: 28 x 46 holds on A-1, A-2, A-3, A-5, A-6 (28 ft scaled in section), permit p05 and the proposed plan. Only A-4 North writes "30'-0" FOUNDATION" (drawn width scales 28'-0"). See conflicts.md, item 1.
 - Upper level (loft) = 710 SF; total 3286 SF; enclosed porch 343 SF; deck 509 SF | title blocks | stated
-- Main and upper walls = whole round hand-crafted logs, 18" average diameter, chinked, saddle-notch corners with log ends sticking out | title block "LOG SIZE: 18" AVG."; A-6 detail 1; photos | stated / seen
+- Main and upper walls = whole round hand-crafted logs, 18" average diameter, **not chinked** (hand scribed logs, no chinking between logs), saddle-notch corners with log ends sticking out | title block "LOG SIZE: 18" AVG."; A-6 detail 1; photos | stated / seen. No chinking | Ryan, 2026-11-06 | stated
 - Log wall thickness as drawn = 18" | A-2 (75 px), A-3 (75 px), A-6 section | scaled
 - Log wall centerline = 4" inside the foundation line; outer log face about 5" outside it; inner log face about 13" inside it | A-3 joist string 8 x 3'-5" = 27'-4" between log centerlines | inferred (string stated)
 - East log wall (between house and porch) drawn about 13" thick, not 18" | A-2 | scaled | Unknown why; see question 13
@@ -35,9 +35,9 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
 
 ## 2. Foundation and basement walls
 
-- Foundation walls = poured concrete, "8" MIN" | A-1 drawing 1 note | stated
-- Foundation wall thickness: A-6 detail 5 label "8-10"" and dimension 10"; A-1 and the A-6 section draw about 8" | A-6 detail 5 (stated), A-1 / A-6 (scaled) | **use 8" for now**; the utility room size (13'-6 1/2" from the inside face to a partition on the 14'-0" centerline) fits 8" | inferred | see conflicts.md item 5 and question 21
-- Inside basement size if walls are 8" = 26'-8" x 44'-8" | inferred
+- Foundation walls = poured concrete, **10" thick** | Ryan, 2026-11-06 ("10\" concrete was used") | stated. A-1 note says "8" MIN"
+- Foundation wall thickness: A-1 note "8" MIN"; A-6 detail 5 label "8-10"" and dimension 10" | A-1 (stated), A-6 detail 5 (stated) | **use 10"** (settled by Ryan, 2026-11-06, stated) | conflicts.md item 5 (resolved)
+- Inside basement size with 10" walls = 26'-4" x 44'-4" (316" x 532") | inferred
 - Footing = continuous 24" wide x 10" deep, centered under all walls, (2) #5 bars | A-1 note; A-6 detail 5 | stated
 - Footing top = bottom of slab, about 89'-6" (z = -6") | A-6 section; dashed line 6" below lower level on A-4 East and A-5 West | inferred
 - "Step footing as required per grade"; "continuous frost footing per local code" | A-6 section | stated
@@ -59,8 +59,8 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
 
 - First floor (over basement) = floor trusses spanning east-west (across the 28 ft), "FLOOR TRUSS VFY DEPTH", "CONFIRM FLOOR TRUSS STYLE AND DEPTH W/ OWNER" | A-1 drawing 1 (arrows), A-6 section | stated (note) / inferred (direction from arrows). Basement photos show open-web wood floor trusses with metal plates running east-west, unfaced fiberglass batts in the floor above, no drywall | PXL_20250905_215819202_ceiling.jpg, PXL_20250906_011045382_ceiling.jpg | seen
 - First floor system depth = 1'-4" | A-6 section | stated; drawn 1'-6" | scaled. The 1'-4" dimension starts 2" below the first-floor line, and the 8'-6" clear dimension starts where it ends. So 1'-4" is likely the truss only, and the full build-up (z 102" to 120") is 18" | A-6 tick positions | inferred | see conflicts.md item 4
-- **Floor truss depth as built: about 1'-0"** | Ryan, 2026-11-05 | **assumed** (Ryan's memory; he is not sure). The plans say 1'-4" (A-6, stated). Check by tape on the next visit
-- **Main floor height check:** 144" (12 ft basement wall, slab to underside of trusses) + 12" truss + about 2" subfloor and finish (the A-6 build-up above the truss) = **about 158" (13'-2") from the top of the slab to the main floor**. The plans give 120" (10'-0"), so the main floor is about 38" higher than drawn. With a 16" truss (plans) it would be about 162". Confidence: assumed (rests on the truss depth). Used in conflicts.md top item
+- **Floor truss depth: use 1'-4" (16")** | Ryan, 2026-11-06 (he does not remember the exact depth; he chose the plan value) | stated. This replaces his earlier memory of about 1 ft (2026-11-05, assumed). Tape check is still welcome on a future visit
+- **Main floor height:** 144" (12 ft basement wall, slab to underside of trusses) + 16" truss + 2" subfloor and finish (the A-6 build-up of 18" less the 16" truss) = **162" (13'-6") from the top of the slab to the main floor**. The plans give 120" (10'-0"), so the main floor is 42" higher than drawn | 144 (stated) + 16 (stated) + 2 (inferred) | inferred | `levels_z.first_floor_ryan_check` = 162, `levels_z.ryan_basement_offset` = 42. Used in conflicts.md top item
 - Sill: treated 2x sill plate, double LVL rim, 3/4" T&G subfloor, half sill log on top | A-6 detail 5 | stated
 - Stair beam: "FLOOR TRUSS SUPPORT BEAM AT STAIR", north-south between the two stair posts, span 5'-7", size "VFY w/ floor truss manufacturer" | A-1 | stated | size unknown, see questions 1 and 20
 - No beam is drawn along the center line. Whether the trusses clear-span 28 ft or rest on the center partition is not stated | A-1 | see question 1
@@ -106,15 +106,15 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
 
 ### Main level (A-2 drawing 1)
 
-- Bedroom 1 (north-west) = 14'-4" x 12'-3" | stated
-- Bedroom 2 (north-east) = 11'-6" x 10'-0 1/2" | stated
+- Bedroom 1 (master, north-west) = 14'-4" x 12'-3" on the plan; **built model width 169" (14'-1")**: it loses 3" | plan stated; Ryan, 2026-11-06, stated | x 13 to 182
+- Bedroom 2 (guest, north-east) = 11'-6" x 10'-0 1/2" on the plan; **built model width 136.5" (11'-4 1/2")**: it loses 1.5" | plan stated; Ryan, 2026-11-06, stated | x 186.5 to 323. The partition between the bedrooms is at x 182 to 186.5 (4 1/2"). This settles the old conflict (the plan sizes add up to 4 1/2" more than the space between the log walls)
 - Partition between bedrooms runs 7'-5 1/2" south from the north wall; two 32" doors; 48" bifold closet in each bedroom (2'-2" and 2'-4 1/2" deep) | stated
 - Bath (west wall): 5'-4" / 5'-8 1/2" / 5'-0" wide; shower 3'-0" x 5'-0"; 30" door | stated
 - 3/4 bath (center): 7'-2 1/2" x 7'-10 1/2", 5'-0" tub, 30" door | stated | labels look swapped (conflicts.md item 13)
 - Hall 3'-8" wide at the bath | stated
 - Entry = 9'-1" x 5'-5" (east side) | stated
 - Laundry closet: 60" bifold, washer/dryer 5'-5" + sink 3'-3 1/2", 3'-5" deep | stated
-- Kitchen: "FINAL LAYOUT BY OWNER"; island 8'-6" x 3'-8" with sink and dishwasher on the plan | stated. Photo shows the kitchen sink on the east wall under a mirror | PXL_20260523_151144457.MP | seen | see question 10
+- Kitchen: "FINAL LAYOUT BY OWNER"; island 8'-6" x 3'-8" on the plan. **As built: the sink is in the east log wall counter; the refrigerator is at the right (south) end of that counter when you face the sink; the range is against the drywall on the north side of the kitchen** | Ryan, 2026-11-06 | stated. Matches the photo of the sink on the east wall | PXL_20260523_151144457.MP | seen. See "Kitchen details" in the section "Answers of 2026-11-06"
 - Great room: 19'-1" from the stair enclosure's south wall to the south foundation line | stated (end ticks checked on crop `A-2/main-r2c1.png`)
 - Free-standing wood stove on a stone base near the west wall, between windows W2 and W3, firebox 20" x 30"; base about 4' x 4' at x about 1'-10" to 5'-10", y about 6'-6" to 10'-5" | A-2 (stated firebox), crop (scaled base) ; photos show a black stove on the west wall near the lake end | seen
 - Loft overhang line across kitchen at about 27'-9" south of the north wall | A-2 drawing 1 | scaled
@@ -134,16 +134,16 @@ Ryan's answers are given as source "Ryan, 2026-11-05" with confidence **stated**
   - At the main level the stair top is reached from the 3'-9" VFY space east of the run, through a 30" door facing the kitchen (x about 10'-3" to 14'-0") | A-2 drawing 1 | stated (3'-9", 30"). **As built: no door. The stair top is open, protected by a log railing on the main level** | Ryan, 2026-11-05 | stated; matches the floor-level log rail beside the TV in PXL_20260310_232337640 | seen | conflicts.md item 23 (resolved)
   - Whether the bottom of the stair is closed in with walls is not known. Ryan is looking for photos of the basement stairs | Ryan, 2026-11-05
   - Cross-check: A-1 run B (x 4'-9" to 10'-3") lines up with the main-level loft stair's upper run on A-2 (scaled x 4'-9" to 10'-4"), so the basement stair sits directly under the loft stair | inferred
-  - Total rise = 10'-0" (z 0 to 120") on the plans | A-4, A-5, A-6 | stated. With Ryan's 12 ft walls the rise is larger, so the stair needs more steps than drawn (conflicts.md, top item)
+  - Total rise = 10'-0" (z 0 to 120") on the plans | A-4, A-5, A-6 | stated. With Ryan's 12 ft walls and the 1'-4" truss the rise is 162", so the stair has 20 risers (9 + 9 treads) | inferred (conflicts.md, top item)
   - How it is used: you go down from the main floor, reach a landing, turn left, and go down more stairs to the basement | Ryan, 2026-11-05 | stated. This matches A-1 and A-2: you enter at the east end of run B, walk west down to the landing in the north-west corner, then turn left (south) down run A toward the lake | inferred (check, no mismatch)
-  - Treads drawn: 7 in run A and 6 in run B, 11" deep. That is 15 risers at 8.0", above the usual 7 3/4" code maximum, so the built stair may have 16 | A-1 (counted) | scaled | see question 22
-  - Run A is 3'-10" between the stair wall face (x 12.8", 4.8" in from the concrete) and the west face of the stair posts (x 58.8"); landing y 19'-3" to 22'-11" | A-1 vector geometry | scaled
+  - Treads: **9 treads from the slab to the landing, and 9 treads from the landing to the main floor** | Ryan, 2026-11-06 ("I think" for the upper run) | stated. That is 20 risers of 8.1" (162" / 20) | inferred. The plan draws 7 + 6 treads at 11" (15 risers at 8.0") | A-1 (counted) | scaled
+  - Run A is 3'-10" between the stair wall face (x 12.8", 4.8" in from the concrete) and the west face of the stair posts (x 58.8"); landing y 19'-3" to 22'-11". With 9 treads at 11" the bottom step is at y 132.1" and the upper run ends at x 157.8" (landing x 58.8 + 9 x 11) | inferred | A-1 vector geometry | scaled
 - **Main to loft stair** = L-shaped; "UP" at its south end, first run north along the west wall (about 3'-7" wide, from y about 15'-4" to the landing), landing in the north-west corner, second run east (3'-10" wide); log stringers, half-log treads, log rail | A-2 (stated 3'-10", rest scaled), photo PXL_20260310_232337640 (seen)
   - Rise = 9'-6" | A-4, A-6 | stated
   - Drywall partition under the loft stair | photo | seen
-  - 5 steps, then the first landing (A-2 draws 4) | Ryan, 2026-11-06, photo PXL_20221020_201833908 | stated
-  - With the plan's 11" treads, the first step is at y 14'-6" (174"), north of the window beside the stove (W-west-2, y 138" to 168"); photo PXL_20260310_232337640 shows the steps start past that window | A-2 tread spacing (scaled), photo (seen) | inferred
-  - Upper run: 6 treads as drawn, so 13 risers of about 8.8" | A-2 (drawn) | inferred, see question 33
+  - 4 treads from the main floor to the landing, then 10 treads from the landing to the loft (16 risers of about 7.1") | Ryan, 2026-11-06 | stated (treads) / inferred (riser height). Earlier he said 5 lower treads; he corrected it. A-2 draws 4 lower treads
+  - These are log stairs, so the rise and run are unusual (Ryan, 2026-11-06). The first tread is just outside the north edge of the nearest window (W-west-2, y 168) | Ryan, 2026-11-06 | stated. Lower treads are about 15.25" deep (61" / 4) | inferred. Upper treads are 10" deep, so the run ends at x 157, short of the log post at x 168; loft floor / stair top STAIR_X = 157 | assumed
+  - Riser height about 7.1" (114" plan rise + offset spread over 16 risers) | inferred. The plan draws 6 upper treads (13 risers of about 8.8" with 5 lower treads); that is replaced by Ryan's count
   - Log railing at floor level along the south side of the basement stair opening (y 19'-1"), under the upper run, from the landing corner post to the stair-top space; posts, top rail and log balusters | Ryan, 2026-11-06, photo PXL_20221020_201833908 | stated / seen
   - How it is used: you go up, reach a landing, turn right, and go up to the loft | Ryan, 2026-11-05 | stated. This matches A-2: the first run goes north along the west wall, the landing is in the north-west corner, the second run goes east | inferred (check, no mismatch)
 
@@ -227,7 +227,7 @@ Offsets are along the outside of the wall, from the west end (north and south wa
 
 - All three sheets with levels (A-4, A-5, A-6) agree on every marker | inferred (cross-check)
 - These are the plan values. Ryan's 12 ft basement walls do not fit them; the heights that change are listed in conflicts.md, top item
-- Main floor height check with Ryan's numbers: 12 ft wall + about 1 ft truss + about 2" subfloor = **about 158" (13'-2") above the slab**, about 38" above the plan value | Ryan, 2026-11-05 (truss depth assumed) | assumed. See section 3
+- Main floor height with Ryan's numbers: 12 ft wall + 16" truss + 2" subfloor = **162" (13'-6") above the slab**, 42" above the plan value | Ryan, 2026-11-06 (truss depth chosen by Ryan) | inferred. See section 3
 - Grade to peak = 26'-2" on the plans; permit p05 says 26 ft | stated (both)
 
 ## 9. Roof
@@ -299,7 +299,7 @@ Plan datum: lower level slab = 90'-0", first floor = 100'-0".
 - White propane tank off the west side toward the road end | photos PXL_20260703_223907684, PXL_20261101_163043044 | seen
 - Septic tank south-west of the house, two 65 ft chamber trenches between the house and the lake, system elevation 91.58 (local) | permits p13, p17, p18 | stated
 - Well: "well area" west-south-west of the house; "No well currently on property" in 2021 (permit time) | permits p09, p17 | stated. A well pressure tank is now in the utility room, so a well exists | PXL_20221016_151511095.jpg | seen
-- Kitchen sink on the main-level east wall (photo) or in the island (plan) | see question 10
+- Kitchen: sink on the east log wall counter, fridge at its south end, range on the north drywall | Ryan, 2026-11-06 | stated (conflicts.md item 22 resolved)
 - Main-level baths and laundry are in the north-center part of the house (over the basement bath and utility zone) | A-2 | stated (positions drawn)
 
 ## 13. Basement structure that limits the new layout
@@ -307,10 +307,43 @@ Plan datum: lower level slab = 90'-0", first floor = 100'-0".
 - **Center post** at x = 14'-0", y = 23'-6" (14'-0" from both side walls, 22'-6" south of the north wall); "SUPPORT POST AS REQUIRED ALIGNED BELOW LOG POST OVERHEAD"; 24" x 24" x 10" footing | A-1 drawings 1 and 2 | stated. It carries the main-level log post, which carries the loft beam (A-3 beam and post at 22'-6", A-2 log post at the bath corner) | inferred. **It cannot move.**
 - **Stair post 1** at x about 5'-3", y = 18'-9"; **stair post 2** at x about 5'-3", y = 13'-2"; each on a 24" x 24" x 10" footing | A-1 drawing 1 (Y chain stated, x from a 4'-7" dimension to the inside wall face plus 8") | stated / inferred
 - **Stair beam** between the two stair posts, north-south, 5'-7" span | A-1 | stated
-- Post sizes and beam size = "as required", not given | A-1 | Unknown, see question 20. All three posts are drawn 8" x 8" | A-1 | scaled
+- Post sizes and beam size = "as required", not given | A-1 | Unknown, see question 20. All three posts are drawn 8" x 8" on A-1 (scaled), but **the basement posts are 6x6** | Ryan, 2026-11-06 ("I believe") | stated. Log posts on the main floor and the loft are about 14" | Ryan, 2026-11-06 | stated (about)
 - Centerline partition (west face of the open area) from the north wall to the stair: not marked as bearing, no beam drawn above it | A-1 | Unknown, see question 1
 - The stair runs down to y about 12'-11", so the stair and both stair posts sit inside the south 20 ft of the west side | A-1 | scaled
 - Utility room and bath stub-in stay where they are | Ryan, 2026-11-05 | stated
 - Lake wall: A-1 draws three 6'-0" openings in concrete with 2'-6" piers | A-1 | stated. **As built it is a wood stud wall that can be changed freely** | Ryan, 2026-11-05 | stated. It does not limit the layout
 - Only the lake wall has openings; the other three basement walls are below or partly below grade | A-1, A-5 | stated
 - No posts, beams, ducts or plumbing stub-ins are visible in the open east half (photo view) | PXL_20250905_215819202.jpg | seen. The center post and stair posts are not in any photo
+
+## Answers of 2026-11-06 (Ryan, in `questions-for-ryan.md`; source "Ryan, 2026-11-06", confidence stated unless noted)
+
+Ryan answered every open question and wants no more questions for now. Each fact is also placed in its section above.
+
+- Address: 8539 W Teal Point Ln. This settles 8585 against 8539
+- Basement concrete walls: 10". This settles the 8" against 10" conflict
+- Floor trusses: use 1'-4". He does not remember the exact depth and chose the plan value. Main floor is 162" above the slab
+- Basement posts: 6x6 ("I believe"). Log posts on the main floor and the loft: about 14". Post positions: "you have this close for now"
+- Basement stair: 9 treads from the slab to the landing, 9 treads from the landing to the main floor ("I think" for the upper run). 20 risers of 8.1" (inferred). Bottom step y 132.1" (inferred). Upper run ends at x 157.8" (inferred)
+- Loft stair: log stairs, unusual rise and run. 4 treads from the main floor to the landing, 10 treads from the landing to the loft. First tread just outside the north edge of W-west-2 (y 168). 16 risers of about 7.1" (inferred). Lower treads about 15.25" (inferred). Upper treads 10" (assumed). STAIR_X = 157 (assumed)
+- Room under the basement stair: hidden door in the east end wall, facing east. Size does not matter. It will eventually be a clever or hidden door. Model: 30" x 80" (assumed)
+- Mural: keep where it is for now. It can move later
+- Main floor bedrooms: master (bedroom 1, west) loses 3" and is 169" wide. Guest (bedroom 2) loses 1.5" and is 136.5" wide. The partition is at x 182 to 186.5
+- Wood stove: black pad, as in the photo (the photo is real). Stove pipe straight up is fine
+- Lake: Ryan wrote "You have it close maybe, I am guessing 125 feet." The model keeps the far shore at half a mile. See conflicts.md item 36
+- Confirmed by Ryan as right or close enough: dock placement, porch, master bath window, the log wall between the house and the porch, basement window positions, door and gable window sizes
+- Outside items (corner grade photos, north stair step height): Ryan says leave the outside for last
+
+### Kitchen details
+
+- Sink in the east log wall counter. Refrigerator at the right (south) end of that counter when you face the sink. Range against the drywall on the north side of the kitchen. All appliances are stainless steel. The sink is a stainless farmhouse (apron-front) sink
+- Photos in `source/photos/kitchen/` (3 photos; findings in `work/findings/kitchen-photos.md`) | seen: hickory Shaker cabinets, charcoal counters, no backsplash, upper cabinets on the north drywall only, island with 2 stools and 2 black pendants
+- The photos show a white range and a dark sink without an apron. Ryan's statement wins (the photos may be older). conflicts.md item 37
+- Model positions (assumed sizes): refrigerator 36" wide x 30" deep x 70" high at x 293 to 323, y 105.6 to 141.6; sink 30" at y 181.5 to 211.5; dishwasher 24" at y 211.5 to 235.5; range 30" at x 242 to 272 on the north wall | assumed
+
+### Finishes and wall thicknesses
+
+- No chinking between logs. The logs are hand scribed
+- Drop ceiling grid: 24" x 24" for metal panels
+- Tongue-and-groove is 3/4" thick. Drywall is 1/4" thick
+- Stick-framed walls: Ryan wrote "1.5 inch thick". The model reads this as 2x4 studs (1 1/2" x 3 1/2"). New walls are 3 1/2" studs + 1/4" drywall on each side = 4" | inferred
+- Screenshot `source/photos/screenshot-2026-11-06_08-35-30.png`: it showed a missing finish on the south face of the utility room south wall in the finished version. It is fixed in the model

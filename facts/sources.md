@@ -8,7 +8,7 @@ No sheet has a north arrow. All plan sheets have a text layer; dimension strings
 
 | Sheet | Page image | What it shows | Facts taken from it | Findings file |
 |---|---|---|---|---|
-| A-1 | `work/pages/plan-1.png` | Foundation Plan; Lower Level floor plan; title block | 28 x 46 footprint; 8" walls; 24x10 footings; lake wall openings (2'-6" piers, three 6'-0" openings); center post and two stair posts with 24x24x10 footings; stair beam; truss direction; utility room 13'-6 1/2" x 11'-3 1/2"; bath stub-in layout (shower, toilet room, vanity); basement doors; basement stair shape and width; floor drain and shower drain positions; furring wall note; porch and deck footings; section cut 6/A-6 | `work/findings/A-1.md` |
+| A-1 | `work/pages/plan-1.png` | Foundation Plan; Lower Level floor plan; title block | 28 x 46 footprint; 8" min walls (built 10", Ryan 2026-11-06); 24x10 footings; lake wall openings (2'-6" piers, three 6'-0" openings); center post and two stair posts with 24x24x10 footings; stair beam; truss direction; utility room 13'-6 1/2" x 11'-3 1/2"; bath stub-in layout (shower, toilet room, vanity); basement doors; basement stair shape and width; floor drain and shower drain positions; furring wall note; porch and deck footings; section cut 6/A-6 | `work/findings/A-1.md` |
 | A-2 | `work/pages/plan-2.png` | Main Level and Upper Level floor plans | Main-level rooms and sizes; window and door widths and positions on all four walls; porch size, posts, doors; north landing; deck size; main and loft stair; 3'-9" stair-top space with 30" door; loft edge 27'-4" VFY; 5 ft headroom line; north gable windows; log wall thickness | `work/findings/A-2.md` |
 | A-3 | `work/pages/plan-3.png` | Loft Framing Plan; Roof Plan | Log wall centerlines 27'-4" apart; loft joists at 3'-5"; loft beam and post at 22'-6"; 4'-10 1/2" cantilever; roof overhangs 3'-6" / 4'-0" / 5'-0"; 10/12 and 3/12 pitches; porch 10'-10" x 31'-8" and roof outline | `work/findings/A-3.md` |
 | A-4 | `work/pages/plan-4.png` | North and East elevations | Level marks; 8'-0" lower level to grade; north and east grade lines; north wall window positions, sills and heights; north gable windows; porch wall height 8'-4" / 8'-3"; porch east windows 5'-0" x 5'-0"; the "30'-0"" conflict | `work/findings/A-4.md` |
@@ -112,6 +112,14 @@ Second set, same day (given by Ryan in the session, 2026-11-05):
 - No sump pit, no sewage pump. The sewer pipe leaves under the slab to the septic system. Not needed for the design.
 - Top of the basement stair: open, protected by a log railing on the main level. No door.
 - Pink foam board on every basement wall except the south walkout wall (the others are concrete). All will be covered with tongue-and-groove.
-- Floor trusses about 1 ft deep. Confidence **assumed** (Ryan is not sure). Main floor check: about 158" (13'-2") above the slab.
+- Floor trusses: first about 1 ft (assumed); on 2026-11-06 Ryan chose the plan value 1'-4". Main floor check: 162" (13'-6") above the slab.
 - Pipes under the slab: do not worry about them; use the drawings for drain locations.
 - Ryan is trying to find photos of the basement stairs.
+
+## Ryan's answers and files, 2026-11-06 (stated)
+
+- Answers written inline in `facts/questions-for-ryan.md` (lines that start with "Answer:"). All recorded in `facts/cabin-facts.md`, section "Answers of 2026-11-06", and in `facts/conflicts.md` items 36 to 38.
+- Kitchen photos: `source/photos/kitchen/` (3 photos). Findings: `work/findings/kitchen-photos.md`. Used for the cabinets, counters and island (seen). The appliance statements come from Ryan and win over the photos.
+- Lake distance photo check: `work/findings/lake-distance.md`.
+- Screenshot from Ryan: `source/photos/screenshot-2026-11-06_08-35-30.png`. It highlights a missing finish on the south face of the utility room south wall in the finished version. Fixed in the model.
+- Photo PXL_20221020_201833908 (loft stair, sent earlier by Ryan).

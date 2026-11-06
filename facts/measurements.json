@@ -7,7 +7,8 @@
     "Opening offsets: along the outside foundation line, from the west end (north and south walls) or from the south end (east and west walls). Sill is above the floor of that level.",
     "Rectangles: [x_min, y_min, x_max, y_max].",
     "Values marked 'scaled' are measured on 1/4\"=1'-0\" drawings, about +/- 2 in. 'inferred' values are worked out from other facts. null = unknown; see facts/questions-for-ryan.md.",
-    "Window unit sizes from the Menards window order (source/orders/menards-windows.pdf, 9/6/2021) are in work/findings/menards-windows.md. Only the basement windows W-L1 and W-L2 are changed here; main-level matches (S3, W-west-bath, W1, N1-N3, G-N1, G-N2) are listed there and in conflicts.md item 35."
+    "Window unit sizes from the Menards window order (source/orders/menards-windows.pdf, 9/6/2021) are in work/findings/menards-windows.md. Only the basement windows W-L1 and W-L2 are changed here; main-level matches (S3, W-west-bath, W1, N1-N3, G-N1, G-N2) are listed there and in conflicts.md item 35.",
+    "Ryan's answers of 2026-11-06 are recorded in cabin-facts.md section 'Answers of 2026-11-06'."
   ],
   "footprint": {
     "width_x": {
@@ -30,19 +31,19 @@
   },
   "walls": {
     "foundation_thickness": {
-      "value": 8,
-      "source": "A-1 note '8\" MIN POURED FOUNDATION WALLS'; A-1/A-6 drawn about 8\"",
+      "value": 10,
+      "source": "Ryan, 2026-11-06: \"10\\\" concrete was used\"; A-6 detail 5 dimensions 10\"",
       "confidence": "stated",
-      "note": "A-6 detail 5 says 8-10\" and dimensions 10\"; see conflicts.md"
+      "note": "A-1 note says 8\" minimum; the built wall is 10\"."
     },
     "foundation_inside_width_x": {
-      "value": 320,
-      "source": "336 - 2 x 8",
+      "value": 316,
+      "source": "336 - 2 x 10",
       "confidence": "inferred"
     },
     "foundation_inside_length_y": {
-      "value": 536,
-      "source": "552 - 2 x 8",
+      "value": 532,
+      "source": "552 - 2 x 10",
       "confidence": "inferred"
     },
     "furring_wall_depth_future": {
@@ -119,6 +120,38 @@
       "source": "Ryan, 2026-11-05; PXL_20250905_215819202_southwall.jpg (seen)",
       "confidence": "stated",
       "note": "Wood stud wall with R19 batts, not concrete. It can be changed freely. It will get tongue-and-groove. A-1 draws 8\" concrete with 2'-6\" piers; resolved, see conflicts.md item 17. Stud size and wall thickness not known."
+    },
+    "chinking": {
+      "value": "none",
+      "source": "Ryan, 2026-11-06: no chinking, logs are hand scribed",
+      "confidence": "stated"
+    },
+    "stick_wall_stud": {
+      "value": [
+        1.5,
+        3.5
+      ],
+      "source": "Ryan, 2026-11-06: Ryan wrote \"1.5 inch thick\"; read as 2x4 studs (1 1/2\" x 3 1/2\")",
+      "confidence": "inferred",
+      "note": "New stick-framed walls = 3 1/2\" studs + 1/4\" drywall each side = 4\"."
+    },
+    "drywall_thickness": {
+      "value": 0.25,
+      "source": "Ryan, 2026-11-06",
+      "confidence": "stated"
+    },
+    "tongue_and_groove_thickness": {
+      "value": 0.75,
+      "source": "Ryan, 2026-11-06",
+      "confidence": "stated"
+    },
+    "drop_ceiling_grid": {
+      "value": [
+        24,
+        24
+      ],
+      "source": "Ryan, 2026-11-06: 24\" x 24\" for metal panels",
+      "confidence": "stated"
     }
   },
   "levels_z": {
@@ -141,16 +174,16 @@
       "note": "Use 144 for the 3D model. Plans say 102 clear and 120 to the first floor; see conflicts.md top item. Drop ceiling hangs lower, below the pipes."
     },
     "ryan_basement_offset": {
-      "value": 38,
-      "source": "first_floor_ryan_check 158 - plan first floor 120",
-      "confidence": "assumed",
-      "note": "The first-floor and higher z values below are plan values. With Ryan's 12 ft walls and about 1 ft trusses, add 38 to each of them (first floor about 158). With the plan's 16\" truss it would be 42 (first floor about 162). Rests on the truss depth, which Ryan is not sure of. Whether grade moves too is open; see conflicts.md top item."
+      "value": 42,
+      "source": "first_floor_ryan_check 162 - plan first floor 120",
+      "confidence": "inferred",
+      "note": "Add 42 to every plan height from the first floor up (and the plan grade)."
     },
     "first_floor_ryan_check": {
-      "value": 158,
-      "source": "144 (12 ft wall, Ryan, stated) + 12 (truss depth, Ryan, assumed) + 2 (subfloor and finish above the truss, A-6 build-up 18\" less the 16\" truss, inferred)",
-      "confidence": "assumed",
-      "note": "About 13'-2\" from top of slab to the main floor. Plans: 120. Check the truss depth by tape (questions-for-ryan.md question 1)."
+      "value": 162,
+      "source": "144 (12 ft wall, Ryan, stated) + 16 (truss, Ryan 2026-11-06 / A-6, stated) + 2 (subfloor and finish, A-6 build-up 18\" less the 16\" truss, inferred)",
+      "confidence": "inferred",
+      "note": "13'-6\" from the top of the slab to the main floor. Plans: 120."
     },
     "first_floor_system_depth": {
       "value": 16,
@@ -287,23 +320,24 @@
           "value": [
             13,
             392,
-            185,
+            182,
             539
           ],
-          "source": "A-2 d1 14'-4\" x 12'-3\" from inner log faces",
-          "confidence": "stated (size) / inferred (position)"
+          "source": "A-2 d1 14'-4\" x 12'-3\" less 3\" (Ryan, 2026-11-06: master loses 3\"); width 169\"",
+          "confidence": "stated (Ryan) / inferred (position)",
+          "note": "Partition at x 182 to 186.5. Settles the 4 1/2\" conflict (conflicts.md, Other conflicts)."
         }
       },
       "bedroom_2": {
         "rect": {
           "value": [
-            185,
+            186.5,
             418.5,
             323,
             539
           ],
-          "source": "A-2 d1 11'-6\" x 10'-0 1/2\"",
-          "confidence": "stated (size) / inferred (position)"
+          "source": "A-2 d1 11'-6\" x 10'-0 1/2\" less 1.5\" (Ryan, 2026-11-06: guest loses 1.5\"); width 136.5\"",
+          "confidence": "stated (Ryan) / inferred (position)"
         }
       },
       "bath_west": {
@@ -347,7 +381,7 @@
           ],
           "source": "A-2 d1 8'-6\" x 3'-8\"",
           "confidence": "stated",
-          "note": "photo shows sink on east wall; layout by owner"
+          "note": "Ryan, 2026-11-06: the sink is in the east wall counter, not the island. The island is in the photos (2 stools, 2 black pendants)."
         }
       },
       "great_room": {
@@ -381,6 +415,51 @@
           "source": "A-2 d1",
           "confidence": "stated"
         }
+      },
+      "kitchen_appliances": {
+        "note": "Ryan, 2026-11-06: sink in the east log wall counter; refrigerator at the right (south) end of that counter when facing the sink; range against the drywall on the north side of the kitchen. All appliances stainless steel; sink is a stainless farmhouse (apron-front) sink. Appliance sizes are assumed.",
+        "fridge": {
+          "rect": {
+            "value": [
+              293,
+              105.6,
+              323,
+              141.6
+            ],
+            "source": "Ryan, 2026-11-06; position stated, size assumed (36 x 30 x 70 high)",
+            "confidence": "stated (position) / assumed (size)"
+          },
+          "height": {
+            "value": 70,
+            "source": "model size",
+            "confidence": "assumed"
+          }
+        },
+        "sink": {
+          "value": [
+            181.5,
+            211.5
+          ],
+          "source": "y range of a 30\" sink, east wall; Ryan, 2026-11-06",
+          "confidence": "stated (place) / assumed (size)"
+        },
+        "dishwasher": {
+          "value": [
+            211.5,
+            235.5
+          ],
+          "source": "y range of a 24\" dishwasher next to the sink; model",
+          "confidence": "assumed"
+        },
+        "range": {
+          "value": [
+            242,
+            272
+          ],
+          "source": "x range of a 30\" range on the north drywall; Ryan, 2026-11-06",
+          "confidence": "stated (place) / assumed (size)"
+        },
+        "photos_note": "source/photos/kitchen/ (3 photos; work/findings/kitchen-photos.md): hickory Shaker cabinets, charcoal counters, no backsplash, upper cabinets on the north drywall only, island with 2 stools and 2 black pendants. The photos show a white range and a dark sink without an apron; Ryan's statement wins (conflicts.md)."
       }
     },
     "upper": {
@@ -1056,18 +1135,19 @@
         "value": 120,
         "source": "levels 90'-0\" to 100'-0\"",
         "confidence": "stated",
-        "note": "Plan value. With Ryan's 12 ft walls and about 1 ft trusses the rise is about 158 (162 with the plan's 16\" truss); see levels_z.first_floor_ryan_check and conflicts.md top item."
+        "note": "Plan value. With Ryan's 12 ft walls and the 1'-4\" truss the rise is 162 (levels_z.first_floor_ryan_check); see conflicts.md top item."
       },
       "risers": {
-        "value": 15,
-        "source": "A-1 d2 drawn treads: 7 in run A (y 154.1 to 231.1 at 11\") + 6 in run B (x 57.8 to 122.8) = 13 treads, 15 risers; 120/15 = 8.0\"",
-        "confidence": "scaled",
-        "note": "Plan drawing. A 158 rise needs about 21 risers (about 7 1/2\" each); the built count is unknown. Question 22."
+        "value": 20,
+        "source": "Ryan, 2026-11-06: 9 treads from the slab to the landing, and (he thinks) 9 treads from the landing to the main floor. 9 treads + the step onto the landing = 10 risers per run.",
+        "confidence": "stated",
+        "note": "162 / 20 = 8.1\" each (worked out, not measured)."
       },
       "tread_depth": {
         "value": 11,
         "source": "A-1 d2 tread spacing",
-        "confidence": "scaled"
+        "confidence": "scaled",
+        "note": "Plan tread depth, kept for the 9 + 9 treads."
       },
       "landing_rect": {
         "value": [
@@ -1083,25 +1163,25 @@
         "value": [
           57.8,
           229.1,
-          122.8,
+          157.8,
           275.1
         ],
-        "source": "A-1 d2 run B (dashed, overhead), X 4'-9\" to 10'-3\"",
-        "confidence": "scaled"
+        "source": "A-1 d2 run B start; end x 157.8 = landing x 58.8 + 9 treads x 11\" (inferred)",
+        "confidence": "inferred"
       },
       "lower_run_rect": {
         "value": [
           12.8,
-          154.1,
+          132.1,
           58.8,
           231.1
         ],
-        "source": "A-1 d2 run A: stair wall face x 12.8 to stair post west face x 58.8 (46\" = 3'-10\"), bottom riser y 154.1, 7 treads at 11\"",
-        "confidence": "scaled"
+        "source": "A-1 d2 stair wall face x 12.8 to stair post west face x 58.8; bottom step y 132.1 (9 treads at 11\" from the landing, inferred)",
+        "confidence": "inferred"
       },
       "top_landing_main_rect": {
         "value": [
-          123,
+          157.8,
           229,
           168,
           275
@@ -1116,9 +1196,9 @@
         "note": "A-2 draws a 30\" door; not built. Whether the bottom of the stair is walled in is not known (Ryan is looking for photos)."
       },
       "bottom_step_y": {
-        "value": 154.1,
-        "source": "A-1 d2",
-        "confidence": "scaled"
+        "value": 132.1,
+        "source": "landing y 231.1 less 9 treads x 11\"",
+        "confidence": "inferred"
       },
       "direction": "Walk down from main level going west (upper run), turn at NW landing, walk down going south (toward lake) along the west wall.",
       "direction_ryan": {
@@ -1126,20 +1206,54 @@
         "source": "Ryan, 2026-11-05",
         "confidence": "stated",
         "note": "Matches A-1/A-2: west down run B, left (south) down run A."
+      },
+      "treads_lower_run": {
+        "value": 9,
+        "source": "Ryan, 2026-11-06",
+        "confidence": "stated"
+      },
+      "treads_upper_run": {
+        "value": 9,
+        "source": "Ryan, 2026-11-06 (\"I think\")",
+        "confidence": "stated (\"I think\")",
+        "note": "Ryan is not fully sure of this run."
+      },
+      "riser_height": {
+        "value": 8.1,
+        "source": "162 / 20 risers",
+        "confidence": "inferred"
+      },
+      "hidden_door": {
+        "wall": "east end wall of the room under the basement stair, facing east",
+        "size": {
+          "value": [
+            30,
+            80
+          ],
+          "source": "model size (Ryan: size irrelevant; will eventually be a clever or hidden door)",
+          "confidence": "assumed"
+        },
+        "source": "Ryan, 2026-11-06",
+        "confidence": "stated (place)"
+      },
+      "mural": {
+        "value": "kept where the model puts it (long wall beside the lower run, open basement side)",
+        "source": "Ryan, 2026-11-06: \"For now, we can easily shift that with a future run\"",
+        "confidence": "stated"
       }
     },
     "main_to_loft": {
       "lower_treads": {
-        "value": 5,
-        "source": "Ryan, 2026-11-06, with photo PXL_20221020_201833908 (sent by Ryan; also seen in PXL_20260310_232337640)",
+        "value": 4,
+        "source": "Ryan, 2026-11-06: 4 treads from the main floor to the landing (corrects the 5 told on 2026-11-06 earlier); A-2 d1 also draws 4",
         "confidence": "stated",
-        "note": "Five steps, then the first landing. A-2 d1 draws only 4."
+        "note": "Replaces the earlier count of 5."
       },
       "tread_depth": {
         "value": 11,
         "source": "A-2 d1 tread spacing (lower run 4 treads in 44\", upper run 6 treads in 66\")",
         "confidence": "scaled",
-        "note": "With 5 lower treads the run starts at y 174 (229 - 5 x 11), north of window W-west-2 (y 138 to 168), as the photo PXL_20260310_232337640 shows (inferred)."
+        "note": "Plan spacing (A-2 d1). The built log stair differs: see tread_depth_lower and tread_depth_upper."
       },
       "width_upper_run": {
         "value": 46,
@@ -1159,21 +1273,21 @@
       "lower_run_rect": {
         "value": [
           14,
-          184,
+          168,
           57,
           229
         ],
-        "source": "A-2 d1 crop main-r2c1, 'UP' at south end",
-        "confidence": "scaled"
+        "source": "A-2 d1 x range; first tread y 168 (Ryan, 2026-11-06), 4 treads of about 15.25\" to the landing at y 229",
+        "confidence": "stated (first tread) / inferred"
       },
       "upper_run_rect": {
         "value": [
           57,
           229,
-          123,
+          157,
           275
         ],
-        "source": "A-2 d1",
+        "source": "A-2 d1 start; end x 157 (10 treads at 10\", assumed)",
         "confidence": "scaled"
       },
       "enclosure_south_y": {
@@ -1186,6 +1300,37 @@
         "source": "Ryan, 2026-11-05",
         "confidence": "stated",
         "note": "Matches A-2: north along the west wall, right (east) to the loft."
+      },
+      "upper_treads": {
+        "value": 10,
+        "source": "Ryan, 2026-11-06: 10 treads from the landing to the loft",
+        "confidence": "stated"
+      },
+      "risers": {
+        "value": 16,
+        "source": "4 + 10 treads, 114\" rise (plan) + offset; about 7.1\" each",
+        "confidence": "inferred"
+      },
+      "tread_depth_lower": {
+        "value": 15.25,
+        "source": "61\" run / 4 treads",
+        "confidence": "inferred",
+        "note": "Log stairs: the rise and run are unusual (Ryan, 2026-11-06)."
+      },
+      "tread_depth_upper": {
+        "value": 10,
+        "source": "model, so the run ends at x 157, short of the log post at x 168",
+        "confidence": "assumed"
+      },
+      "lower_run_first_tread_y": {
+        "value": 168,
+        "source": "Ryan, 2026-11-06: first tread just outside the north edge of the nearest window (W-west-2, y 168)",
+        "confidence": "stated"
+      },
+      "stair_x": {
+        "value": 157,
+        "source": "STAIR_X in the model: loft floor / stair top; upper run ends here",
+        "confidence": "assumed"
       }
     }
   },
@@ -1204,10 +1349,10 @@
           "confidence": "stated"
         },
         "size": {
-          "value": null,
-          "source": "'SUPPORT POST AS REQUIRED'",
-          "confidence": "unknown",
-          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+          "value": 6,
+          "source": "Ryan, 2026-11-06: \"I believe basement posts are 6x6\"",
+          "confidence": "stated",
+          "note": "A-1 draws 8x8, \"as required\"."
         },
         "footing": {
           "value": [
@@ -1233,10 +1378,10 @@
           "confidence": "stated"
         },
         "size": {
-          "value": null,
-          "source": "A-1",
-          "confidence": "unknown",
-          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+          "value": 6,
+          "source": "Ryan, 2026-11-06: \"I believe basement posts are 6x6\"",
+          "confidence": "stated",
+          "note": "A-1 draws 8x8, \"as required\"."
         },
         "footing": {
           "value": [
@@ -1261,10 +1406,10 @@
           "confidence": "stated"
         },
         "size": {
-          "value": null,
-          "source": "A-1",
-          "confidence": "unknown",
-          "note": "drawn 8\" x 8\" on A-1 (scaled); text says 'as required'"
+          "value": 6,
+          "source": "Ryan, 2026-11-06: \"I believe basement posts are 6x6\"",
+          "confidence": "stated",
+          "note": "A-1 draws 8x8, \"as required\"."
         },
         "footing": {
           "value": [
@@ -1314,10 +1459,10 @@
         "note": "Total floor build-up drawn 18\" (z 102 to 120); 16\" is likely truss only. VFY."
       },
       "depth_ryan": {
-        "value": 12,
-        "source": "Ryan, 2026-11-05: about 1 ft (memory, not sure)",
-        "confidence": "assumed",
-        "note": "Use for the main floor height check (levels_z.first_floor_ryan_check = 158). Measure on the next visit (question 1)."
+        "value": 16,
+        "source": "Ryan, 2026-11-06 (questions file, answer to question 1: \"then go 1'4\"\")",
+        "confidence": "stated",
+        "note": "Ryan does not remember the exact depth; he chose the plan value 1'-4\" (A-6). Replaces the earlier memory of about 1 ft."
       },
       "source": {
         "value": null,
@@ -1354,6 +1499,11 @@
         "source": "A-3 '4'-10 1/2\"'",
         "confidence": "stated"
       }
+    },
+    "log_posts_main_and_loft": {
+      "value": 14,
+      "source": "Ryan, 2026-11-06: standard log widths, around 14\"",
+      "confidence": "stated (about)"
     }
   },
   "plumbing": {
@@ -1700,7 +1850,8 @@
     "house_to_lake_ft": {
       "value": 123.5,
       "source": "permits p09, p11",
-      "confidence": "stated"
+      "confidence": "stated",
+      "note": "Ryan, 2026-11-06 guessed 125 ft for the cabin-to-shore distance; matches 123'-6\"."
     },
     "house_to_west_lot_line_ft": {
       "value": 67.5,
@@ -1717,6 +1868,18 @@
       "source": "permit p05",
       "confidence": "stated",
       "note": "plans give 26'-2\""
-    }
+    },
+    "address": {
+      "value": "8539 W Teal Point Ln",
+      "source": "Ryan, 2026-11-06 (settles 8585 vs 8539)",
+      "confidence": "stated"
+    },
+    "far_shore_ft": {
+      "value": 2640,
+      "source": "model keeps the far shore at half a mile; photo check (work/findings/lake-distance.md) gives about 2,000-5,000 ft",
+      "confidence": "assumed",
+      "note": "Ryan's 125 ft is most likely the cabin-to-shore distance, not the width of the lake. conflicts.md."
+    },
+    "confirmed_by_ryan_2026-11-06": "Dock placement, porch, master bath window, house-to-porch log wall, basement window positions, door and gable window sizes: Ryan says the model is right or close enough. Outside grade items are left for last."
   }
 }

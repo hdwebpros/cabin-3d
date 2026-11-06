@@ -72,12 +72,23 @@
 - Full log railing at floor level along y 229 from the landing corner post to x 168 (posts, top and bottom rail, balusters). Replaces the short top rail and the hidden wall.
 - Verified: `npm run check` all ok; walking routes all pass; screenshots work/shots/loftstair-front.png and -stove.png match the photos' layout.
 
+## 2026-11-06 — Ryan's inline answers applied (Ryan away; said "commit and push", no more questions)
+- Ryan answered everything inline in facts/questions-for-ryan.md, plus extra fixes. A Sonnet agent moved the answers into facts/ and rewrote the questions file (no open questions now).
+- Heights: truss 16" (Ryan picked the plan's 1'-4"), so FLOOR1 162, RAISE 42, LOG_BASE 160. Concrete walls 10". Basement posts 6x6 (log posts upstairs stay 14").
+- Basement stair: 9 treads, landing, 9 treads = 20 risers of 8.1" (stairPlan reads `stairs.basement.risers / treads_*`). Upper run now ends at x 157.8; bottom step y 132.1. Stair walls (stair-walls.js) follow it: end wall at the upper run end, hidden door moved into the east end wall (Ryan: "facing east").
+- Missed wall from Ryan's screenshot (source/photos/screenshot-2026-11-06_08-35-30.png): the bare studs of the utility room south wall, east of the stair. proposed-basement.js adds a drywall skin there (in WALLS), so the finish layer boards it.
+- New basement walls 4" (2x4 studs + 1/4" drywall each side, Ryan); T&G 3/4". Main-floor partitions stay 4.5" because Ryan's bedroom sizes use 4.5".
+- Drop ceiling: the grid tees sat above the panels and showed only as broken dots. Now the grid hangs at 120" with panels 1/4" above it; 24" x 24"; wall angle around walls and openings only.
+- No chinking (logs are hand scribed): removed from walls.js; gable backing uses the log end colour.
+- Main floor: bedroom partition x 182-186.5 (master 169", guest 136.5"). Kitchen rebuilt from Ryan + photos (source/photos/kitchen/, work/findings/kitchen-photos.md): sink (stainless farmhouse) and fridge (south end) on the east counter, range on the north drywall, hickory Shaker cabinets, charcoal tops, uppers on the north wall, island with overhang, 2 stools, 2 pendants. All stainless (Ryan beats the photos, which show a white range).
+- Loft stair: 4 treads (about 15", first tread at the north edge of window W-west-2, y 168), landing, 10 treads of 10" (assumed) to the loft at x 157 (STAIR_X, exported from interior.js, used by roof.js). 16 risers of about 7.1".
+- Lake: Ryan guessed "125 feet"; a photo check (work/findings/lake-distance.md) puts the far shore at 2,000-5,000 ft, so the half mile stays. Recorded in conflicts.md.
+- `npm run check` now also walks slab to main floor and main floor to loft (all ok, no console errors). Screenshots: work/shots/bsmt-*.png, kitchen-*.png, loft-*.png.
+
 ## Next session: start here
-1. Tell Ryan what was built (see the 2026-11-05/06 entries above) and point him to facts/questions-for-ryan.md questions 25-34 (28 answered).
-2. Ask Ryan: commit everything? Only CLAUDE.md, HANDOFF.md and .gitignore are in git. src/, scripts/, facts/, public/ (textures 21 MB, Poly Haven CC0), package files and STATUS.md are not. work/ and source/ are ignored.
-3. Done: the gravel at the north-east corner is continuous, and the proposed-basement fixtures stand clear of the finish boards. Left: main floor stools, sink, dishwasher, washer and dryer not drawn; audit items not done are listed in work/findings/cleanup-audit.md.
-4. Possible next work, only if Ryan wants it: more finish sets as extra versions (only one set is decided), real mural artwork, interior lighting fixtures.
-- The dev server was stopped on 2026-11-06 (the computer was low on memory). Run `npm run dev` to look.
+1. Tell Ryan what changed (entry above). Committed and pushed to main as he asked.
+2. Possible next work, only if Ryan wants it: the outside items (he said "last"), more finish sets as versions, real mural artwork, lighting fixtures, main-floor stools/sink details beyond the kitchen.
+3. Audit items not done are in work/findings/cleanup-audit.md.
 
 ## Answers from Ryan (2026-11-05)
 - Direction (Ryan, settled): the cabin is on the north side of the lake. The walkout faces the lake to the south. The gravel driveway is on the north side. This matches the plans' "south" = lake end. The phone compass data in photos-2 said east; Ryan's answer wins. Record the photo reading in facts/conflicts.md only.

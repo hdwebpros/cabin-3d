@@ -2,6 +2,7 @@
 // Facts use inches, x = east, y = north, z = up from the top of the basement slab (see geo.js).
 import * as THREE from 'three'
 import { M, IN, P, v, up, RAISE, W, L, FLOOR1, PITCH, RIDGE_X, ROOF_DEPTH, roofTop, roofUnder, WALL_TOP, LOG_BASE, boxGeo, beamGeo, ni, mesh, std, mats } from '../geo.js'
+import { STAIR_X } from './interior.js'
 
 // Sizes the facts do not have. Each label says when one of these is used.
 const ASSUMED = {
@@ -35,7 +36,7 @@ const BEAM_Y = v(M.structure.loft_beam.y) // 282 (A-3, scaled)
 const POST_X = v(M.structure.loft_beam.post_x) // 168 (A-3, scaled)
 const LOFT_E = v(M.rooms.upper.loft_east_half.rect) // [168, 224, 323, 539]
 const LOFT_W = v(M.rooms.upper.loft_west_half.rect) // [13, 282, 168, 539]
-const STAIR_X = v(M.stairs.main_to_loft.upper_run_rect)[2] // 123: the loft stair arrives here going east
+// STAIR_X (imported): the loft stair arrives here going east, 157
 const RAIL_H = v(M.rooms.upper.railing_height) // 36 (A-6, stated)
 const CHIM = M.roof.chimney
 const CHIM_TOP = up(v(CHIM.top_z)) // 411 (A-5 West, scaled)
@@ -123,7 +124,7 @@ export function buildRoof() {
   const add = (geos, mat, label) => group.add(mesh(geos.map(ni), mat, label))
 
   // Materials. Logs match the log walls (walls.js). The log, slope and floor meshes carry their own texture coordinates.
-  const { log: logMat, logEnd: endMat, chink: chinkMat, shingle: shingleMat, trim: trimMat } = mats
+  const { log: logMat, logEnd: endMat, shingle: shingleMat, trim: trimMat } = mats
   const pine = logMat.clone() // T&G pine boards (photos: pine ceiling following the roof slope)
   pine.color.set(0xfff1e0)
   const bodyMat = std(0x4a423a, 0.9)
@@ -181,7 +182,7 @@ export function buildRoof() {
 
   // ---------- gable ends ----------
   // Log courses continue the north and south wall coursing (walls.js: centres LOG_BASE + 18n), clipped to the roof
-  // and cut around windows and posts. Behind them a 10" chinked core with the window holes.
+  // and cut around windows and posts. Behind them a 10" backing core with the window holes.
   const sill = LOG_BASE + Math.ceil((WALL_TOP + WR - LOG_BASE) / (2 * WR)) * 2 * WR + WR // top of the first gable course (309)
   function gable(name, yc, wins, posts, note) {
     const obstacles = [
@@ -201,7 +202,7 @@ export function buildRoof() {
     const label = `${name} gable end: log siding (A-4 North note, stated), drawn as 18" logs (title block, stated) continuing the wall courses, in the log wall plane. Includes the top of the last wall course above ${WALL_TOP.toFixed(1)}", where the wall part cuts it. ${note}`
     add(wall.side, logMat, label)
     add(wall.ends, endMat, label)
-    add([prism([[WEST, WALL_TOP], [EAST, WALL_TOP], [RIDGE_X, RIDGE_UNDER]], yc - 5, yc + 5, wins)], chinkMat, `${name} gable end: chinking and backing behind the logs (photos: chinked logs).`)
+    add([prism([[WEST, WALL_TOP], [EAST, WALL_TOP], [RIDGE_X, RIDGE_UNDER]], yc - 5, yc + 5, wins)], endMat, `${name} gable end: backing behind the logs. No chinking: the logs are hand scribed (Ryan, 2026-11-06, stated).`)
     const pl = logs().add(...posts.map(([x, z0, z1]) => logWithGrain([x, yc, z0], [x, yc, z1], R)))
     const postLabel = `${name} gable log posts up to the ${posts.length > 1 ? 'ridge log and purlins' : 'ridge log'}. ${note}`
     add(pl.side, logMat, postLabel)
@@ -238,12 +239,12 @@ export function buildRoof() {
     `No sizes on the plans ("FIELD MEASURE ALL WINDOWS IN GABLE END"): shapes fitted to the gable, sill on the first gable log at ${sill.toFixed(0)}", posts under the inner purlins (all assumed).`)
 
   // ---------- loft ----------
-  // Floor: the two loft halves (A-2, A-3) plus a landing at the loft stair top over cantilevered joists (A-3 note, inferred)
+  // Floor: the two loft halves (A-2, A-3) plus a landing at the loft stair top over cantilevered joists; the stair top lands on the floor from x STAIR_X east (stair length: Ryan 2026-11-06, 10 treads; A-3 note, inferred)
   const floors = [[LOFT_W[0], LOFT_W[1], STAIR_X, LOFT_W[3]], [STAIR_X, LOFT_E[1], LOFT_E[2], LOFT_E[3]]]
   const loftNote = `Second floor 109'-6" (A-4, A-5, A-6, stated), raised ${RAISE}" to z ${LOFT}. East half to 27'-4" VFY from the north line (A-2 d2, stated), west half to the beam (A-3, scaled).`
   add(floors.map(([x0, y0, x1, y1]) => planUV(boxGeo([x0, y0, JOIST_TOP, x1, y1, LOFT - 0.75]), 42)), pine,
     `Loft built-up floor: T&G pine ceiling seen from below, sleepers, 2x6 joists, T&G underlayment, about 7 3/4" (A-6 detail 2, stated / scaled). ` +
-    `Includes a landing at the loft stair top (x ${STAIR_X} to ${POST_X}) on cantilevered joists (A-3 note "cantilever log joists as required for stair conn.", inferred). ${loftNote}`)
+    `Includes a landing at the loft stair top (x ${STAIR_X} to ${POST_X}) on cantilevered joists; the stair top lands on the floor from x ${STAIR_X} east (stair length: Ryan 2026-11-06, 10 treads; A-3 note "cantilever log joists as required for stair conn.", inferred). ${loftNote}`)
   add(floors.map(([x0, y0, x1, y1]) => boxGeo([x0, y0, LOFT - 0.75, x1, y1, LOFT])), floorMat,
     `Loft finished floor, wood-look planks (assumed, same as the main level in the photos). ${loftNote}`)
   for (const [x0, y0, x1, y1] of floors) solids.push([x0, y0, JOIST_TOP, x1, y1, LOFT])

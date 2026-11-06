@@ -179,7 +179,6 @@ export const mats = {
   // Red-orange stained pine logs (photos). Walls, roof, porch and interior all use this one; copy it with .clone() to change it.
   log: noTile(pbr('coated_pine', 1, { color: 0xffdcc4, roughnessMap: null, roughness: 0.75 })),
   logEnd: std(0xb9794a, 0.8), // log end grain
-  chink: std(0xc4bcab, 0.95), // chinking between the logs
   // Dark gray asphalt shingles (photos). Closest Poly Haven set is slate; its roughness map is left off so the roof stays matte
   shingle: noTile(pbr('roof_slates_03', 1, { color: 0x6e6e72, roughnessMap: null, roughness: 0.9 })),
   trim: std(0x34302c, 0.7), // dark fascia and rake boards (photo PXL_20261009_180831582)

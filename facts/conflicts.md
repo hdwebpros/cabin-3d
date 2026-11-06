@@ -14,17 +14,17 @@ Directions are real compass directions: the lake wall faces south, the driveway 
 ### Heights that change because of this (work these out from the drawings)
 
 With 144" clear plus the 18" floor build-up drawn on A-6, the first floor is about 162" (13'-6") above the slab, not 120".
-**Update with Ryan's truss depth (Ryan, 2026-11-05, about 1 ft, assumed: he is not sure):** 144" + 12" truss + about 2" subfloor = **about 158" (13'-2")**, so the first floor is about **38"** higher than drawn (was 42"). Working value: 158 (`levels_z.first_floor_ryan_check`, `levels_z.ryan_basement_offset` = 38). Plan truss: 1'-4" (A-6, stated). Measure on the next visit (question 1).
+**Update with Ryan's truss depth (Ryan, 2026-11-06: he chose the plan value 1'-4"; he does not remember the exact depth):** 144" + 16" truss + 2" subfloor = **162" (13'-6")**, so the first floor is **42"** higher than drawn. Working value: 162 (`levels_z.first_floor_ryan_check`, `levels_z.ryan_basement_offset` = 42). Plan truss: 1'-4" (A-6, stated). Tape check welcome on a future visit.
 Two ways this can be true:
 - (a) The slab is 42" lower than drawn, and everything from the first floor up stays where the plans put it relative to the ground.
 - (b) The slab is where drawn, and the whole house above it is 42" higher.
 
 Each item below changes with that choice:
-1. **First floor z** = about 158" instead of 120". All main-level, loft and roof z values in measurements.json are plan values from the slab; add 38" to each (`levels_z.ryan_basement_offset`).
+1. **First floor z** = 162" instead of 120". All main-level, loft and roof z values in measurements.json are plan values from the slab; add 42" to each (`levels_z.ryan_basement_offset`).
 2. **Grade at the north wall.** Plans: 98'-0", 8'-0" above the slab and 2'-0" below the first floor. Reading (a): grade stays 2'-0" below the first floor, so about 11'-6" above the slab. Reading (b): grade stays 8'-0" above the slab, so the first floor is 5'-6" above grade on the driveway side. Photos of the road gable show the bottom log close to the ground, which favors (a). Ryan says the basement is almost fully underground on the driveway side, which fits (a).
 3. **Grade lines on the side walls and at the lake corners** (A-4 East, A-5 West): all shift with the same choice. The walkout at the lake stays at slab level (Ryan: flat walkout).
 4. **Basement lake wall openings.** Plans: window and slider heads at 7'-0", windows 5'-0" high with a 2'-0" sill. With a 12 ft wall, either the heads stay at 7'-0" and about 5'-0" of wall sits above them, or the openings are higher. The photo PXL_20250905_215819202 shows a framed wall above the slider header. Head heights cannot be worked out from the drawings; keep 7'-0" until a photo or tape shows otherwise. The wall is wood framed and can be changed freely (Ryan, 2026-11-05), so this does not block the design.
-5. **Basement stair.** Plans: 120" total rise, 13 treads, 15 risers. A 158" rise needs about 21 risers at about 7 1/2", so about 6 more treads (about 5'-6" more run). The landing turn matches Ryan's description, so the extra treads are in the runs: run A may end closer to the lake than y 12'-11", or the runs start higher. Question 22 (count the steps).
+5. **Basement stair.** Plans: 120" total rise, 13 treads, 15 risers. Resolved by Ryan (2026-11-06): 9 treads from the slab to the landing and 9 from the landing to the main floor ("I think" for the upper run). That is 20 risers of 8.1" (162" / 20, inferred). The bottom step is at y 132.1" and the upper run ends at x 157.8" (inferred).
 6. **Foundation wall height.** Plans draw about 10'-0" of concrete. Under reading (a) the north, east and west concrete walls are about 3'-6" taller. Footing depth below the slab is not affected.
 7. **Grade to peak height.** Permit p05 says 26 ft and the plans give 26'-2". Reading (a) keeps this; reading (b) adds about 3'-6", which would not match the permit.
 8. **Proposed plan 10'-0" ceiling** now fits under the framing (see proposed-vs-existing.md).
@@ -37,9 +37,9 @@ Each item below changes with that choice:
 
 3. **Grade at the south (lake) corners.** A-5 West and A-4 East draw grade dropping to about 95'-11" at both south corners (about 5'-11" above the slab), which would bury most of the lake-end side walls. A-5 South draws the lake wall fully exposed down to 90'-0" with "RETAINING WALL AS REQUIRED" at each side. Photos PXL_20260703_223907684 and PXL_20261009_180831582 show the lawn at lower-floor level along the lake wall and rising up both sides. Working value: lake wall face at z = 0; corners at z = 71" (scaled) until checked. Ryan: they dug into the hill and the walkout to the lake is flat (Ryan, 2026-11-05, stated); this does not give the corner grade. Question 18. Ryan (2026-11-05, stated): there are no retaining walls anywhere on the property, so the ground slopes down beside the walkout.
 
-4. **First-floor system depth.** A-6 section writes basement clear height 8'-6" and floor system 1'-4", which adds to 9'-10". The level marks give 10'-0" (90'-0" to 100'-0"). The drawn floor system scales about 1'-6". 2" is not explained. A-6 also says "confirm floor truss style and depth with owner". Plan value: underside of floor at z = 102" (8'-6"). The working value is now Ryan's 12 ft (top conflict). The floor build-up depth still matters for the first floor height; question 1 (truss drawings).
+4. **First-floor system depth.** A-6 section writes basement clear height 8'-6" and floor system 1'-4", which adds to 9'-10". The level marks give 10'-0" (90'-0" to 100'-0"). The drawn floor system scales about 1'-6". 2" is not explained. A-6 also says "confirm floor truss style and depth with owner". Plan value: underside of floor at z = 102" (8'-6"). The working value is now Ryan's 12 ft (top conflict). The floor build-up depth still matters for the first floor height; question 1 (truss drawings). **Resolved 2026-11-06: Ryan chose the plan truss depth 1'-4"; first floor 162".**
 
-5. **Foundation wall thickness.** A-1 note: "8" MIN". A-6 detail 5 label: "8-10"" and two 10" dimensions. A-1 and the A-6 section draw about 8". The utility room size (13'-6 1/2" to the 14'-0" centerline partition) fits 8". Working value: 8". Question 21.
+5. **Foundation wall thickness.** A-1 note: "8" MIN". A-6 detail 5 label: "8-10"" and two 10" dimensions. A-1 and the A-6 section draw about 8". The utility room size (13'-6 1/2" to the 14'-0" centerline partition) fits 8". **Resolved: 10"** (Ryan, 2026-11-06, stated: "10\" concrete was used"). Working value: 10".
 
 6. **Log diameter.** Title block: 18" average; A-2, A-3 and the A-6 section draw 18". A-6 details 1 to 4 draw about 14". Working value: 18" (details are generic).
 
@@ -73,7 +73,7 @@ Each item below changes with that choice:
 
 21. **East log wall thickness.** A-2 draws the house wall next to the porch about 13" thick; the other log walls are about 18". No note explains it. Question 13.
 
-22. **Kitchen sink.** A-2: sink and dishwasher in the island ("FINAL LAYOUT BY OWNER"). Photo PXL_20260523_151144457.MP: sink on the east wall under a mirror. This moves the drain line in the basement ceiling. Question 10.
+22. **Kitchen sink. Resolved: sink in the east wall counter (Ryan, 2026-11-06, stated).** A-2: sink and dishwasher in the island ("FINAL LAYOUT BY OWNER"). Photo PXL_20260523_151144457.MP: sink on the east wall under a mirror. This moves the drain line in the basement ceiling.
 
 23. **Top of the basement stair. Resolved: open, protected by a log railing on the main level, no door** (Ryan, 2026-11-05, stated). Earlier text: A-2: the stair top is a 3'-9" VFY space with a 30" door facing the kitchen. Photo PXL_20260310_232337640: a log guard rail at floor level next to the TV, which may be an open stair top. Question 8.
 
@@ -83,7 +83,7 @@ Each item below changes with that choice:
 
 26. **Height grade to peak.** Permit p05: 26 ft. Plans: 98'-0" to 124'-2" = 26'-2". Small.
 
-27. **Address.** Plan title blocks: 8585 W Teal Point Ln. Address number on the porch log post in photos PXL_20251004_135433269 and PXL_20261009_181108106: "8539". Question 14.
+27. **Address. Resolved: 8539 W Teal Point Ln (Ryan, 2026-11-06, stated).** Plan title blocks: 8585 W Teal Point Ln. Address number on the porch log post in photos PXL_20251004_135433269 and PXL_20261009_181108106: "8539".
 
 28. **Lower-level stair labels on A-1.** Drawing 1 calls the open area "STORAGE"; drawing 2 calls it "UNFINISHED LOWER LEVEL". Same space.
 
@@ -107,6 +107,12 @@ Each item below changes with that choice:
    - Not in the order: main S1, west great-room windows, E1, the 4 lake gable windows, porch windows, and all doors (including the basement slider D-L1, which keeps its plan 6'-0" width).
    - If N3 is two 24" x 48" single hung units, bedroom 2 has no egress window (the order marks that unit "does not meet egress"). Main-floor only; not needed for the basement design.
 
+36. **Lake distance and far shore. Not a real conflict; Ryan's number is most likely a different distance.** Ryan wrote: "You have it close maybe, I am guessing 125 feet." | Ryan, 2026-11-06 | stated (his guess). A photo check (`work/findings/lake-distance.md`) puts the far shore at about 2,000 to 5,000 ft. The 125 ft most likely matches the cabin-to-shore distance (123'-6", permits p09 and p11). Working value: the model keeps the far shore at half a mile.
+
+37. **Kitchen photos vs Ryan. Resolved in favor of Ryan.** The photos in `source/photos/kitchen/` show a white range and a dark sink without an apron. Ryan says all appliances are stainless steel and the sink is a stainless farmhouse (apron-front) sink | Ryan, 2026-11-06 | stated. His statement wins; the photos may be older. The model uses his description.
+
+38. **Main floor bedroom sizes. Resolved.** The plan sizes (bedroom 1 14'-4", bedroom 2 11'-6") plus the partition were 4 1/2" more than the space between the log walls. Ryan: the master loses 3" (169") and the guest loses 1.5" (136.5"); partition at x 182 to 186.5 | Ryan, 2026-11-06 | stated.
+
 ## Check pass fixes
 
 Independent check, 2026-11-05. Method: the vector lines and dimension tick marks in the plan PDF (exact to about 1/4"), plus the text layer. 20 key numbers checked. Fixes:
@@ -118,6 +124,6 @@ Independent check, 2026-11-05. Method: the vector lines and dimension tick marks
 5. **Basement slider height.** The frame head is drawn at 7'-0", the same as the windows. 7'-3" (87") was the top of the trim. Height now 84". Fixed in both files.
 6. **Basement stair.** 13 treads are drawn (7 + 6), so 15 risers at 8.0", not "likely 16 at 7 1/2"". Run A sits 4.8" in from the concrete (stair wall face x 12.8") and ends at the west face of the stair posts. Stair rectangles in measurements.json moved to the drawn lines. The stair question was updated (now question 22).
 7. **Floor system (item 4 above).** Not a number change. On A-6 the 1'-4" dimension starts 2" below the first-floor line and the 8'-6" dimension starts where it ends. So 8'-6" + 1'-6" = 10'-0"; the 1'-4" is likely the truss only. measurements.json had 102" + 16" = 118", short of 120"; a note now explains the 2".
-8. **Added from the drawing:** posts drawn 8" x 8"; toilet symbol position (x about 25", y about 440"); positions of the four basement interior doors (were null).
+8. **Added from the drawing:** posts drawn 8" x 8" (Ryan later said the basement posts are 6x6, 2026-11-06); toilet symbol position (x about 25", y about 440"); positions of the four basement interior doors (were null).
 
 Confirmed with no change: 28'-0" x 46'-0" footprint; 8" wall on A-1; 8'-6" clear (ticks checked); levels 90'-0", 98'-0", 100'-0", 109'-6", 124'-2"; stair width 3'-10"; three post positions (14'-0"/23'-6", and the 5'-3" line at 18'-9" and 13'-2"); stair beam 5'-7"; lake wall openings at 2'-6", 11'-0", 19'-6", 6'-0" wide; window 5'-0" high, 2'-0" sill; grade 5'-11" above the slab at both lake corners; floor drain (4'-0", 30'-0"); shower drain (3'-2", 42'-4").

@@ -7,7 +7,7 @@ import { H, WEST, EAST, NORTH, SOUTH } from '../basement.js'
 import { ROOMS, WALLS } from './proposed-basement.js'
 import { WALL_X1, DOOR, SOUTH_Y, NORTH_Y, END_X } from './stair-walls.js'
 
-const TG = 0.75 // board thickness (assumed, 3/4" is the usual T&G size)
+const TG = 0.75 // board thickness (Ryan, 2026-11-06: 3/4")
 const EPOXY = 0.1, CARPET = 0.5 // overlay thickness (assumed); they sit above z 0 so they do not flicker against the slab
 const CEIL = 120 // underside of the drop ceiling: proposed plan "10'-0" typical". Nothing hangs below the trusses at 144", so no lowering is needed.
 const GRID = 24 // 2' x 2' panels (assumed, standard)
@@ -117,19 +117,19 @@ export function buildBasementFinish(model) {
   }
   // Stair walls (stair-walls.js): boards on the two faces seen from the open basement. The mural face keeps its mural;
   // the faces inside the room under the stair stay plain (storage).
-  box([WALL_X1, SOUTH_Y[0] - TG, 0, DOOR.x0, SOUTH_Y[0], H])
-  box([DOOR.x1, SOUTH_Y[0] - TG, 0, END_X[1] + TG, SOUTH_Y[0], H])
-  box([DOOR.x0, SOUTH_Y[0] - TG, DOOR.h, DOOR.x1, SOUTH_Y[0], H])
-  box([END_X[1], SOUTH_Y[0], 0, END_X[1] + TG, NORTH_Y[1], H])
+  box([WALL_X1, SOUTH_Y[0] - TG, 0, END_X[1] + TG, SOUTH_Y[0], H]) // south face of the upper-run wall
+  box([END_X[1], SOUTH_Y[0], 0, END_X[1] + TG, DOOR.y0, H]) // east face of the end wall, around the hidden door
+  box([END_X[1], DOOR.y1, 0, END_X[1] + TG, NORTH_Y[1], H])
+  box([END_X[1], DOOR.y0, DOOR.h, END_X[1] + TG, DOOR.y1, H])
   add(mesh(bd.map(boxGeo), pineBoards(),
-    `Tongue-and-groove boards (Ryan, 2026-11-05, stated) on the foam-covered concrete walls, the lake stud wall and the new walls, room side only. Boards 3/4" thick with 5 1/2" faces, light knotty pine (size, species and stain assumed; painted by the model). Also on the two stair-wall faces seen from the open basement. Not covered: the utility room walls, the mural face, the inside of the room under the stair, the closet front wall. Window, slider and door openings stay open.`))
+    `Tongue-and-groove boards (Ryan, 2026-11-05, stated) on the foam-covered concrete walls, the lake stud wall and the new walls, room side only. Boards 3/4" thick (Ryan, stated) with 5 1/2" faces, light knotty pine (size, species and stain assumed; painted by the model). Also on the two stair-wall faces seen from the open basement. Not covered: the utility room walls, the mural face, the inside of the room under the stair, the closet front wall. Window, slider and door openings stay open.`))
 
   // ---------- drop ceiling ----------
   // Open over the whole stair enclosure. Do not close it: the ceiling at 120" would leave under 80" of head room over the steps.
   // The upper opening starts at y 225 (not 87) because the main-floor stair opening above is there.
   // Two 5" square holes for the boiler vent pipes (src/basement.js: x 11.2+7, y 385 and 394, 3.5" across; hole size assumed).
   const vx = WEST + 0.44 + 7
-  const holes = [[WEST, st.bottomY - 1, 67.5, 275.6], [67.5, 225.1, 126.8, 275.6], [vx - 2.5, 382.5, vx + 2.5, 387.5], [vx - 2.5, 391.5, vx + 2.5, 396.5]]
+  const holes = [[WEST, st.bottomY - 1, WALL_X1, NORTH_Y[1]], [WALL_X1, SOUTH_Y[0], END_X[1], NORTH_Y[1]], [vx - 2.5, 382.5, vx + 2.5, 387.5], [vx - 2.5, 391.5, vx + 2.5, 396.5]]
   let cr = [[WEST, SOUTH, EAST, NORTH]]
   for (const [hx0, hy0, hx1, hy1] of holes) {
     cr = cr.flatMap(([a, b, c, d]) => {
@@ -138,16 +138,20 @@ export function buildBasementFinish(model) {
         .filter(([p, q, r, s]) => r - p > 0.01 && s - q > 0.01)
     })
   }
-  ceiling.add(mesh(cr.map(([a, b, c, d]) => boxGeo([a, b, CEIL - 0.5, c, d, CEIL - 0.1])), std(0xe4e7ea, 0.4, { metalness: 0.3 }),
-    `Drop ceiling panels, aluminum, 2' x 2' (Ryan, 2026-11-05, stated: drop ceiling, aluminum panels). Underside at ${CEIL}" = 10'-0" (proposed plan "10'-0" typical", stated). The floor trusses start at 144" and no pipe hangs below them (src/basement.js), so no lowering. Open over the stair; round holes for the two boiler vent pipes.`, { shadow: false }))
+  // The grid hangs at CEIL (its underside); the panels rest on the tee flanges, 1/4" higher, so the grid shows as lines
+  ceiling.add(mesh(cr.map(([a, b, c, d]) => boxGeo([a, b, CEIL + 0.25, c, d, CEIL + 0.6])), std(0xe4e8eb, 0.4),
+    `Drop ceiling panels, aluminum, 2' x 2' (Ryan, 2026-11-05, stated: drop ceiling, aluminum panels; 24" x 24" grid, Ryan, 2026-11-06, stated). Underside at ${CEIL}" = 10'-0" (proposed plan "10'-0" typical", stated). The floor trusses start at 144" and no pipe hangs below them (src/basement.js), so no lowering. Open over the stair; holes for the two boiler vent pipes.`, { shadow: false }))
   const tees = []
-  for (const [a, b, c, d] of cr) {
-    for (let x = WEST + GRID; x < c; x += GRID) if (x > a) tees.push([x - 0.5, b, CEIL - 0.4, x + 0.5, d, CEIL])
-    for (let y = SOUTH + GRID; y < d; y += GRID) if (y > b) tees.push([a, y - 0.5, CEIL - 0.4, c, y + 0.5, CEIL])
-    tees.push([a, b, CEIL - 0.4, c, b + 1, CEIL], [a, d - 1, CEIL - 0.4, c, d, CEIL])
+  const tee = (x0, y0, x1, y1) => tees.push([x0, y0, CEIL, x1, y1, CEIL + 1.5])
+  for (const [a, b, c, d] of cr) { // grid lines every 24" from the west and south walls, clipped to each ceiling piece
+    for (let x = WEST + GRID; x < c; x += GRID) if (x > a) tee(x - 0.47, b, x + 0.47, d)
+    for (let y = SOUTH + GRID; y < d; y += GRID) if (y > b) tee(a, y - 0.47, c, y + 0.47)
   }
-  ceiling.add(mesh(tees.map(boxGeo), std(0xf4f4f2, 0.5),
-    `Suspended ceiling grid, white tees 1" wide on a 24" grid (assumed: standard). Grid starts at the west and south walls; hanger wires not drawn.`, { shadow: false }))
+  for (const [a, b, c, d] of [[WEST, SOUTH, EAST, NORTH], ...holes]) { // wall angle around the room and around each opening
+    tee(a, b, c, b + 0.94); tee(a, d - 0.94, c, d); tee(a, b, a + 0.94, d); tee(c - 0.94, b, c, d)
+  }
+  ceiling.add(mesh(tees.map(boxGeo), std(0xf7f7f5, 0.5),
+    `Suspended ceiling grid, white tees 15/16" wide on a 24" x 24" grid (Ryan, 2026-11-06, stated), with wall angle around the walls and the openings. Grid starts at the west and south walls (assumed); hanger wires not drawn.`, { shadow: false }))
 
   return { group, solids: [], ceiling }
 }

@@ -17,7 +17,6 @@ const ASSUMED = {
   buck: 1.5, // 2x lumber lining each opening cut in the logs
   frame: [2, 3.5], // vinyl frame face width and depth
   frameIn: 3, // frame set 3" in from the outer log face
-  chink: [4, 10], // chinking strip height and depth (about 3" shows between the logs)
 }
 const SEG = 24 // sides of each log
 const TEX = 40 // wood texture repeat along the log, inches
@@ -120,7 +119,7 @@ export function buildMainWalls() {
   const solids = [], gaps = [] // gaps: door openings the walker can pass
   const B = ASSUMED.buck, [K, FD] = ASSUMED.frame, F0 = ASSUMED.frameIn
 
-  const { log: logMat, logEnd: endMat, chink: chinkMat, doorWhite: doorMat } = mats
+  const { log: logMat, logEnd: endMat, doorWhite: doorMat } = mats
 
   // Course centres. The north and south walls start with a half sill log on the subfloor (A-6 detail 5).
   // The east and west walls sit half a course higher, so the logs cross at the saddle-notch corners.
@@ -182,7 +181,6 @@ export function buildMainWalls() {
     west: 'West log wall',
     east: 'East log wall, between the house and the porch. A-2 draws it about 13" thick; drawn 18" like the other walls (assumed; question 13)',
   }
-  const chink = []
   for (const w of walls) {
     const side = buf()
     const at = w.out + w.dir * R
@@ -195,25 +193,11 @@ export function buildMainWalls() {
       for (const [a, b, l, h] of coursePieces(sA, sB, lo, hi, cuts)) logPiece(side, ends, w.axis, at, a, b, zc, l, h)
     }
     group.add(mesh(toGeo(side), logMat,
-      `${wallText[w.name]}: whole round hand-crafted logs, ${2 * R}" average diameter (title block, stated), ${COURSE}" courses (A-4, A-5, scaled), stained red-orange (photos PXL_20261009_180831582, PXL_20251004_135433269, seen). ` +
+      `${wallText[w.name]}: whole round hand-crafted logs, hand scribed with no chinking (Ryan, 2026-11-06, stated), ${2 * R}" average diameter (title block, stated), ${COURSE}" courses (A-4, A-5, scaled), stained red-orange (photos PXL_20261009_180831582, PXL_20251004_135433269, seen). ` +
       `Centre line ${CENTRE_IN}" inside the foundation line, outer face ${-OUT}" outside it (A-3 joist string, inferred). ` +
       (w.axis === 'x' ? 'Bottom course is a half sill log on the subfloor (A-6 detail 5, stated). ' : 'Courses sit half a course higher than the north and south walls so the logs cross at the corners (assumed). ') +
       `Saddle-notch corners, log ends ${END}" past the foundation line (A-5 West "about 2 ft", scaled; the top corner logs are cut shorter to fit under the eaves, assumed). ` +
       `Top cut flat at ${WALL_TOP.toFixed(1)}" where the roof underside meets the outer log face (no plate height on the plans; follows the assumed roof depth).`))
-
-    // Chinking between the logs, stopped at the openings
-    const joints = w.zs.slice(0, -1).map((zc) => zc + R).filter((z) => z < WALL_TOP - 1)
-    if (w.zs[0] > LOG_BASE) joints.unshift(LOG_BASE + 1) // under the round bottom log of the east and west walls
-    const [ch, cd] = ASSUMED.chink
-    for (const z of joints) {
-      const z0 = Math.max(z - ch / 2, LOG_BASE), z1 = Math.min(z + ch / 2, WALL_TOP)
-      let s = OUT
-      for (const c of cuts.filter((c) => c.z0 < z1 && c.z1 > z0).sort((a, b) => a.s0 - b.s0)) {
-        if (c.s0 > s) chink.push(box(w, s, c.s0, R - cd / 2, R + cd / 2, z0, z1))
-        s = c.s1
-      }
-      chink.push(box(w, s, wallLen(w) - OUT, R - cd / 2, R + cd / 2, z0, z1))
-    }
   }
 
   // Log stub walls: the logs of a short inside log wall pass through the west and east walls and stick out
@@ -230,8 +214,6 @@ export function buildMainWalls() {
     `Outside they reach ${END}" past the foundation line like the corners (assumed); inside they stop at the wall face (the inside wall is not part of this step).`))
   group.add(mesh(toGeo(ends), endMat,
     'Cut log ends at the saddle-notch corners and the log stub walls (A-6 detail 1; A-2; photos PXL_20261009_180831582, PXL_20251004_135433269, seen). End color assumed.'))
-  group.add(mesh(chink.map(boxGeo), chinkMat,
-    'Chinking between the logs (A-6 detail 1 "CHINKING LINE", "CHINK - SEAL AFTER SETTLING", stated). Color and width assumed (light gray-tan, about 3" showing).'))
 
   // ---------- openings: bucks, frames, glass, doors ----------
   const bucks = [], glass = []
