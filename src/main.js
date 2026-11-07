@@ -18,11 +18,15 @@ import { P, IN, FLOOR1, GRADE } from './geo.js'
 const EYE = 65 // eye height in inches
 
 const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
+renderer.setPixelRatio(1) // a sharp screen at 2x is 4x the pixel work per frame; the Intel GPU driver resets on long frames
 renderer.setSize(innerWidth, innerHeight)
 renderer.toneMapping = THREE.ACESFilmicToneMapping
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFShadowMap
+// The sun and its shadow box never move, so shadows are drawn again only when parts show or hide (shadowsDue), not on camera moves.
+renderer.shadowMap.autoUpdate = false
+renderer.shadowMap.needsUpdate = true
+const shadowsDue = () => { renderer.shadowMap.needsUpdate = true }
 document.body.prepend(renderer.domElement)
 
 const scene = new THREE.Scene()
@@ -31,7 +35,7 @@ const makeEnv = () => { scene.environment = new THREE.PMREMGenerator(renderer).f
 makeEnv()
 // If the graphics driver resets the GPU (Intel xe log: "Timedout job ... in chromium"), the browser drops the picture.
 // three.js asks the browser to give it back; when it does, rebuild the image that only lived on the GPU and draw again.
-renderer.domElement.addEventListener('webglcontextrestored', () => { makeEnv(); changed() })
+renderer.domElement.addEventListener('webglcontextrestored', () => { makeEnv(); shadowsDue(); changed() })
 scene.environmentIntensity = 0.35
 new HDRLoader().load('/hdri/sky_1k.hdr', (t) => {
   t.mapping = THREE.EquirectangularReflectionMapping
@@ -139,6 +143,7 @@ function setMode(m) {
   $('chk-shell').disabled = m === 'walk'
   $('chk-ceiling').disabled = shell.visible
   for (const l of Object.values(LAYERS)) if (l.ceiling) l.ceiling.visible = model.ceiling.visible
+  shadowsDue()
   changed()
 }
 
@@ -150,6 +155,7 @@ function setVersion(i) {
   walkSolids.push(...baseSolids, ...on.flatMap((k) => LAYERS[k].solids))
   document.querySelectorAll('#versions button').forEach((b, j) => b.classList.toggle('on', j === version))
   pickDue = true
+  shadowsDue()
   changed()
 }
 

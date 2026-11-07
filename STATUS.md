@@ -138,3 +138,4 @@
 - Porch inside walls now use the T&G texture. pineBoards() moved from basement-finish.js to geo.js so both use it.
 - conflicts.md item 39, cabin-facts.md, sources.md updated. `npm run check` all ok. Screenshot work/shots/porch-south.png.
 
+- Ryan saw the page fail again (local and Vercel). Kernel log: another xe "Timedout job ... in chromium" GPU reset at 18:25. The Vercel build itself was fine. Done in main.js: draw at pixel ratio 1 (was up to 2, so up to 4x the pixels), and the sun shadow map is drawn only when parts show or hide (shadowMap.autoUpdate false, shadowsDue()), not on every camera move. `npm run check` all ok; shadows still show (work/shots/shadow-ov.png).
